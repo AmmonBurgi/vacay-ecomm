@@ -12,7 +12,7 @@ function Login(props){
         .then((res) => {
             props.getUser(res.data)
             props.history.push('/')
-        })
+        }).catch((err) => alert(err.response.data))
     }
 
     return(
@@ -21,7 +21,7 @@ function Login(props){
                 <p>Login</p>
                 <input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
                 <input placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
-                <button>Login</button>
+                <button onClick={loginUser}>Login</button>
             </section>
         </div>
     )

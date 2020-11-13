@@ -19,7 +19,8 @@ const express = require('express'),
     }))
 
     //Endpoints
-    app.get('/api/stuff', authCtrl.login)
+    app.post('/api/login', authCtrl.login)
+    app.post('/api/register', authCtrl.register)
 
     massive({
         connectionString: CONNECTION_STRING,

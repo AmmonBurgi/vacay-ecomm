@@ -1,0 +1,9 @@
+.connect-img{
+    width: 25%;
+}
+
+.connect-main{
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+}

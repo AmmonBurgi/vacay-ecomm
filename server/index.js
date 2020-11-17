@@ -22,6 +22,9 @@ const express = require('express'),
     app.post('/api/login', authCtrl.login)
     app.post('/api/register', authCtrl.register)
 
+    //Product Endpoints
+    
+
     massive({
         connectionString: CONNECTION_STRING,
         ssl: {rejectUnauthorized: false}

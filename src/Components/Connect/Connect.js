@@ -1,11 +1,32 @@
 import React, {useState} from 'react'
 import './connect.css'
+import emailjs from 'emailjs-com'
 
 function Connect(){
     const [name, setName] = useState(''),
         [email, setEmail] = useState(''),
         [phone, setPhone] = useState(''),
         [message, setMessage] = useState('')
+
+    const tempParams = {
+        to_name: 'Ammon',
+        from_name: name,
+        from_email: email,
+        from_phone: phone,
+        message: message
+    }
+
+    const sendFeedback = () => {
+        emailjs.send('service_4i13xqt', 'template_cjdfeyi', tempParams, 
+        'user_TJ1zsDGcnKamDKqHqMJ4s')
+        .then((res) => {
+            console.log(res.text)
+            setName('')
+            setEmail('')
+            setPhone('')
+            setMessage('')
+        }).catch(err => console.log('Failed...', err))
+    }
 
 
     return(
@@ -22,21 +43,21 @@ function Connect(){
             <section className='connect-main'>
                 <span>
                     <label htmlFor='name'>Name</label>
-                    <input id='name' onChange={(e) => setName(e.target.value) } />
+                    <input id='name' value={name} onChange={(e) => setName(e.target.value) } />
                 </span>
                 <span>
                     <label htmlFor='email'>Email</label>
-                    <input id='email' onChange={(e) => setEmail(e.target.value) } />
+                    <input id='email' value={email} onChange={(e) => setEmail(e.target.value) } />
                 </span>
                 <span>
                     <label htmlFor='phone'>phone number</label>
-                    <input id='phone' onChange={(e) => setPhone(e.target.value) } />
+                    <input id='phone' value={phone} onChange={(e) => setPhone(e.target.value) } />
                 </span>
                 <span>
                     <label htmlFor='message'>Message</label>
-                    <textarea id='message' onChange={(e) => setMessage(e.target.value) } />
+                    <textarea id='message' value={message} onChange={(e) => setMessage(e.target.value) } />
                 </span>
-                <button>Send</button>
+                <button onClick={sendFeedback}>Send</button>
             </section>
            
         </div>

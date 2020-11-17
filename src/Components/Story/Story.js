@@ -1,6 +1,8 @@
 import React from 'react'
 
-function Story(){
+function Story(props){
+
+    console.log(props)
     return(
         <div>
             Story Component

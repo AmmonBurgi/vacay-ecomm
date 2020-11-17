@@ -33,5 +33,8 @@ module.exports = {
         delete user[0].password
         req.session.user = user[0]
         res.status(202).send(req.session.user)
+    },
+    session: (req, res) => {
+        res.status(200).send(req.session.user)
     }
 }

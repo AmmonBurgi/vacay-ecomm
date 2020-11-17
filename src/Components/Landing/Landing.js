@@ -1,12 +1,17 @@
 import React, {useState} from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import {connect} from 'react-redux'
 
-function Landing(){
+function Landing(props){
 
+
+    console.log(props)
     return (
         <div>
         </div>
     )
 }
 
-export default Landing
+const mapStateToProps = (reduxState) => reduxState
+
+export default connect(mapStateToProps)(Landing)

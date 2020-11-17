@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {getUser} from '../../redux/reducer'
 
-function Header(){
+function Header(props){
+
+    useEffect(() => {
+        if(Object.keys(props.user).length === 0){
+            session()
+        }
+    }, [])
     return (
         <div className='header-component'>
             <button>Search</button>
-            <button>Log In</button>
-            <button>Create Account</button>
-            <button>Cart</button>
+            <Link to='/account/login'>Log In</Link>
+            <Link to='/account/register' >Create Account</Link>
+            <Link to='/cart'>Cart</Link>
         </div>
     )
 }
 
-export default Header
+const mapStateToProps = (reduxState) => reduxState
+
+export default connect(mapStateToProps, {getUser})(Header)

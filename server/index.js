@@ -21,6 +21,7 @@ const express = require('express'),
     //Endpoints
     app.post('/api/login', authCtrl.login)
     app.post('/api/register', authCtrl.register)
+    app.get('/api/session', authCtrl.session)
 
     //Product Endpoints
     

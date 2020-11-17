@@ -11,19 +11,21 @@ import Search from './Components/Search/Search'
 import Shipping from './Components/Shipping/Shipping'
 import Story from './Components/Story/Story'
 import Register from './Components/Register/Register'
+import Account from './Components/Account/Account'
 
 export default (
     <Switch>
         <Route exact path='/' component={Landing} />
-        <Route exact path='/cart/:id' component={Cart} />
-        <Route exact path='/checkout/:id' component={Checkout} />
-        <Route exact path='/collections' component={Collections} />
-        <Route exact path='/connect' component={Connect} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        <Route exact path='/payment/:id' component={Payment} />
-        <Route exact path='/search' component={Search} />
-        <Route exact path='/shipping/:id' component={Shipping} />
-        <Route exact path='/story' component={Story} />
+        <Route path='/cart/:id' component={Cart} />
+        <Route path='/checkout/:id' component={Checkout} />
+        <Route path='/collections' component={Collections} />
+        <Route path='/connect' component={Connect} />
+        <Route path='/account/login' component={Login} />
+        <Route path='/account/register' component={Register} />
+        <Route path='/account' component={Account} />
+        <Route path='/payment/:id' component={Payment} />
+        <Route path='/search' component={Search} />
+        <Route path='/shipping/:id' component={Shipping} />
+        <Route path='/story' component={Story} />
     </Switch>
 )

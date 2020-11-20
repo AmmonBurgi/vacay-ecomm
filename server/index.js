@@ -18,10 +18,11 @@ const express = require('express'),
         cookie: {maxAge: 1000 * 60 * 60 * 24 * 30}
     }))
 
-    //Endpoints
+    //Auth Endpoints
     app.post('/api/login', authCtrl.login)
     app.post('/api/register', authCtrl.register)
     app.get('/api/session', authCtrl.session)
+    app.get('/api/logout', authCtrl.logout)
 
     //Product Endpoints
     

@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 function Landing(props){
 
 
-    console.log(props)
     return (
         <div>
         </div>

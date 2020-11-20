@@ -35,6 +35,11 @@ module.exports = {
         res.status(202).send(req.session.user)
     },
     session: (req, res) => {
+        // console.log(req.session.user)
         res.status(200).send(req.session.user)
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }

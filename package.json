@@ -5,6 +5,7 @@
   "proxy": "http://localhost:4040",
   "main": "server/index.js",
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.19.26",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",

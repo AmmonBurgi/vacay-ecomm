@@ -1,16 +1,14 @@
-import React, {useState} from 'react'
-// import axios from 'axios'
-import {connect} from 'react-redux'
+import React from 'react'
+import MyCarousel from '../MyCarousel/MyCarousel'
 
 function Landing(props){
 
 
     return (
         <div>
+            <MyCarousel />
         </div>
     )
 }
 
-const mapStateToProps = (reduxState) => reduxState
-
-export default connect(mapStateToProps)(Landing)
+export default Landing

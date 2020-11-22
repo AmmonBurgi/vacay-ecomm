@@ -29,11 +29,11 @@ function Header(props){
 
     return (
         <div className={toggle === true ? 'header-component' : 'header-search-comp'}>
-            <input className={toggle === true ? 'none-header-search' : 'header-search-box'} />
+            <input placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
             <nav className='align-main'>
                 <div className='left-section' onClick={() => setToggle(!toggle)}>
-                <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
-                <button className='left-section-button'>Search</button> 
+                    <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
+                    <p className='left-section-button'>Search</p> 
                 </div>
                 <nav className='right-section'>
                     {Object.keys(props.user).length !== 0 ? <p className='user'>Logged In as {props.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}

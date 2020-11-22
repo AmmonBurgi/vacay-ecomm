@@ -1,11 +1,11 @@
 import React from 'react'
+import StoryVideo from './StoryVideo/StoryVideo'
 
 function Story(props){
 
-    console.log(props)
     return(
         <div>
-            Story Component
+            <StoryVideo />
         </div>
     )
 }

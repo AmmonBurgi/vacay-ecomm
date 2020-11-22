@@ -1,3 +1,6 @@
+.carousel-component{
+    overflow-x: hidden;
+}
 .first-img{
     width: 100%;
 }

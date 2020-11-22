@@ -6,13 +6,13 @@ function NavBar(props){
     return (
         <div className='nav-component'>
             <Link to='/' className='main-link'>
-                <p>Live More</p>
-                <p>Work Less</p>
+                <p className='planet'>OUR PLANET</p>
+                <p className='future'>OUR FUTURE</p>
             </Link>
-            <nav>
-                <Link to='/collections'>Shop</Link>
-                <Link to='/story'>Our Story</Link>
-                <Link to='/connect'>Connect</Link>
+            <nav className='nav-links'>
+                <Link to='/collections'>SHOP</Link>
+                <Link to='/story'>OUR STORY</Link>
+                <Link to='/connect'>CONNECT</Link>
             </nav>
         </div>
     )

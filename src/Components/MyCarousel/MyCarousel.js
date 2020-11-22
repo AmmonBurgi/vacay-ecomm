@@ -12,7 +12,7 @@ function MyCarousel(){
     const [value, setValue] = useState(0)
 
     return (
-        <div>
+        <div className='carousel-component'>
             <Carousel 
             value={value}
             onChange={(value) => setValue(value)}

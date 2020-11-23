@@ -1,0 +1,15 @@
+.story-component{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.story-header-tag{
+    width: 60%;
+}
+.story-header-tag p{
+font-size: 25px;
+}
+.story-header-tag hr{
+    width: 100%;
+}

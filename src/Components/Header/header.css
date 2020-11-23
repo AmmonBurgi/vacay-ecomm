@@ -6,6 +6,7 @@
     width: 100%;
     height: 5vh;
     background-color: black;
+    overflow: hidden;
 }
 .header-search-comp{
     display: flex;

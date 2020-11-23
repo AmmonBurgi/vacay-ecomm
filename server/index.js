@@ -25,6 +25,9 @@ const express = require('express'),
     app.get('/api/logout', authCtrl.logout)
 
     //Product Endpoints
+    app.get('/api/collections/matte', collectCtrl.getMatte)
+    app.get('/api/collections/polarized', collectCtrl.getPolarized)
+    app.get('/api/collections/prescription', collectCtrl.getPrescription)
     
 
     massive({

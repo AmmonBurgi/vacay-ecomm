@@ -8,9 +8,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
     width: 60%;
     font-size: 20px;
+}
+.all-collections-tag{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all-collections-tag button{
+    background-color: transparent;
+    border: 2px solid black;
+    font-weight: bolder;
+    margin: 0px;
+    padding: 5px 12px;
+    font-size: 11px;
+    outline: none;
+    text-transform: uppercase;
 }
 .collections-tag p{
     margin: 0;
@@ -46,6 +60,7 @@
 }
 .type-tag{
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 60%;
     margin-top: 2rem;
@@ -55,7 +70,7 @@
     border: 2px solid black;
     font-weight: bolder;
     margin: 0px;
-    padding: 12px;
+    padding: 5px 12px;
     font-size: 11px;
     outline: none;
 }

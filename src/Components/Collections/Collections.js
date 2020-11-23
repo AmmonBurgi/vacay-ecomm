@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './collections.css'
 
-function Collections(){
+function Collections(props){
     const [matteArr, setMatte] = useState([]),
         [polarizedArr, setPolarized] = useState([]),
         [prescriptionArr, setPres] = useState([])
@@ -44,7 +44,10 @@ function Collections(){
     return(
         <div className='collections-component'>
             <nav className='collections-tag'>
-                <p>COLLECTIONS</p>
+                <nav className='all-collections-tag'> 
+                   <p>COLLECTIONS</p> 
+                   <button onClick={() => props.history.push('/collections/all')} >All Collections</button>
+                </nav>
                 <hr></hr>
             </nav>
             <nav className='type-tag'>

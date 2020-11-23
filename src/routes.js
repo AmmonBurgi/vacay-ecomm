@@ -12,6 +12,7 @@ import Shipping from './Components/Shipping/Shipping'
 import Story from './Components/Story/Story'
 import Register from './Components/Register/Register'
 import Account from './Components/Account/Account'
+import CollectionsAll from './Components/CollectionsAll/CollectionsAll'
 
 export default (
     <Switch>
@@ -27,5 +28,6 @@ export default (
         <Route path='/search' component={Search} />
         <Route path='/shipping/:id' component={Shipping} />
         <Route path='/story' component={Story} />
+        <Route path='/collections/all' component={CollectionsAll} />
     </Switch>
 )

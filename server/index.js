@@ -7,7 +7,8 @@ const express = require('express'),
     {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env,
     port = SERVER_PORT,
     app = express(),
-    authCtrl = require('./controllers/authController')
+    authCtrl = require('./controllers/authController'),
+    collectCtrl = require('./controllers/collectionsController')
 
     app.use(express.json())
 

@@ -6,35 +6,40 @@ function Collections(){
         [polarizedArr, setPolarized] = useState([]),
         [prescriptionArr, setPres] = useState([])
 
+    const matteReq = axios.get('/api/collections/matte')
+    const polarizedReq = axios.get('/api/collections/polarized')
+    const prescriptionReq = axios.get('/api/collections/prescription')
+
     useEffect(() => {
-        axios.all(['/api/collections/matte', '/api/collections/polarized', '/api/collections/prescriptions']).then(axios.spread((...res) => {
-            setMatte(res[0])
-            setPolarized(res[1])
-            setPres(res[2])
+        axios.all([ matteReq, polarizedReq, prescriptionReq ]).then(axios.spread((...res) => {
+            setMatte(res[0].data)
+            setPolarized(res[1].data)
+            setPres(res[2].data)
         })).catch(err => console.log('Error...', err))
     }, [])
 
     const matteMap = matteArr.map((element, index) => {
         return (
-            <div>
-                element.product_title
+            <div key={index}>
+                {element.product_title}
             </div>
         )
     })
     const polarizedMap = polarizedArr.map((element, index) => {
         return (
-            <div>
-                element.product_title
+            <div key={index}>
+                {element.product_title}
             </div>
         )
     })
     const prescriptionMap = prescriptionArr.map((element, index) => {
         return (
-            <div>
-                element.product_title
+            <div key={index}>
+                {element.product_title}
             </div>
         )
     })
+    
     return(
         <div>
             <section>

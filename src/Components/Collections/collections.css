@@ -1,0 +1,64 @@
+.collections-component{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.collections-tag{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 60%;
+    font-size: 20px;
+}
+.collections-tag p{
+    margin: 0;
+    padding: 0;
+}
+.collections-tag hr{
+    width: 100%;
+}
+.matte-section{
+    margin-bottom: 5px;
+    display: flex;
+    width: 60%;
+    height: 300px;
+}
+.polarized-section{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    width: 60%;
+    height: 300px;
+}
+.prescription-section{
+    margin-top: 5px;
+    display: flex;
+    width: 60%;
+    height: 300px;
+}
+.product-card{
+    width: 25%;
+    height: 100%;
+    margin: 1rem;
+    background-color: antiquewhite;
+}
+.type-tag{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 2rem;
+}
+.type-tag button{
+    background-color: transparent;
+    border: 2px solid black;
+    font-weight: bolder;
+    margin: 0px;
+    padding: 12px;
+    font-size: 11px;
+    outline: none;
+}
+.type-tag button:hover{
+    cursor: pointer;
+}

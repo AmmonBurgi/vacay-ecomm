@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import './collections.css'
 
 function Collections(){
     const [matteArr, setMatte] = useState([]),
@@ -20,35 +21,51 @@ function Collections(){
 
     const matteMap = matteArr.map((element, index) => {
         return (
-            <div key={index}>
+            <div className='product-card' key={index}>
                 {element.product_title}
             </div>
         )
     })
     const polarizedMap = polarizedArr.map((element, index) => {
         return (
-            <div key={index}>
+            <div className='product-card' key={index}>
                 {element.product_title}
             </div>
         )
     })
     const prescriptionMap = prescriptionArr.map((element, index) => {
         return (
-            <div key={index}>
+            <div className='product-card' key={index}>
                 {element.product_title}
             </div>
         )
     })
-    
+
     return(
-        <div>
-            <section>
+        <div className='collections-component'>
+            <nav className='collections-tag'>
+                <p>COLLECTIONS</p>
+                <hr></hr>
+            </nav>
+            <nav className='type-tag'>
+                <p>CLASSIC MATTE</p>
+                <button>ALL CLASSIC MATTE</button>
+            </nav>
+            <section className='matte-section'>
                 {matteMap}
             </section>
-            <section>
+            <nav className='type-tag'>
+                <p>CLASSIC POLARIZED</p>
+                <button>ALL CLASSIC POLARIZED</button>
+            </nav>
+            <section className='polarized-section'>
                 {polarizedMap}
             </section>
-            <section>
+            <nav className='type-tag'>
+                <p>CLASSIC PRESCRIPTION</p>
+                <button>ALL CLASSIC PRESCRIPTION</button>
+            </nav>
+            <section className='prescription-section'>
                 {prescriptionMap}
             </section>
         </div>

@@ -19,7 +19,8 @@ export default (
         <Route exact path='/' component={Landing} />
         <Route path='/cart/:id' component={Cart} />
         <Route path='/checkout/:id' component={Checkout} />
-        <Route path='/collections' component={Collections} />
+        <Route path='/collection' component={Collections} />
+        <Route path='/collection-all' component={CollectionsAll} />
         <Route path='/connect' component={Connect} />
         <Route path='/account/login' component={Login} />
         <Route path='/account/register' component={Register} />
@@ -28,6 +29,5 @@ export default (
         <Route path='/search' component={Search} />
         <Route path='/shipping/:id' component={Shipping} />
         <Route path='/story' component={Story} />
-        <Route path='/collections/all' component={CollectionsAll} />
     </Switch>
 )

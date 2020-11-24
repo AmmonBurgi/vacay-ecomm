@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/reducer'
 import axios from 'axios'
@@ -9,7 +9,10 @@ import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import './header.css'
 
 function Header(props){
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(true),
+        [search, setSearch] = useState('')
+
+    const history = useHistory()
 
     const logoutUser = (t) => {
         axios.get('/api/logout')
@@ -27,9 +30,18 @@ function Header(props){
         }
     }, [])
 
+    const enterKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            history.push({
+                pathname: '/search',
+                state: {searchValue: search}
+            })
+        }
+    }
+
     return (
         <div className={toggle === true ? 'header-component' : 'header-search-comp'}>
-            <input placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
+            <input onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
             <nav className='align-main'>
                 <div className='left-section' onClick={() => setToggle(!toggle)}>
                     <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>

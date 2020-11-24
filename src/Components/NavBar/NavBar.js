@@ -10,7 +10,7 @@ function NavBar(props){
                 <p className='future'>OUR FUTURE</p>
             </Link>
             <nav className='nav-links'>
-                <Link to='/collections'>SHOP</Link>
+                <Link to='/collection'>SHOP</Link>
                 <Link to='/story'>OUR STORY</Link>
                 <Link to='/connect'>CONNECT</Link>
             </nav>

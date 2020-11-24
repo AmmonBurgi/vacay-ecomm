@@ -1,6 +1,8 @@
 import React from 'react'
 
-function Search(){
+function Search(props){
+
+    console.log(props)
     return(
         <div>
             Search Component

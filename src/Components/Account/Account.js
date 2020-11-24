@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux' 
+import axios from 'axios'
 
 function Account(props){
 
-    console.log(props.user)
+    useEffect(() => {
+        axios.get('/api/collections/matte').then(() => console.log('hello')).catch(err => console.log(err))
+    }, [])
     return (
         <div>
             Account component

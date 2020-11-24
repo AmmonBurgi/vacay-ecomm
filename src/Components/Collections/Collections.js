@@ -46,7 +46,7 @@ function Collections(props){
             <nav className='collections-tag'>
                 <nav className='all-collections-tag'> 
                    <p>COLLECTIONS</p> 
-                   <button onClick={() => props.history.push('/collections/all')} >All Collections</button>
+                   <button onClick={() => props.history.push('/collection-all')} >All Collections</button>
                 </nav>
                 <hr></hr>
             </nav>

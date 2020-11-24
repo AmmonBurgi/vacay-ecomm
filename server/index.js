@@ -30,6 +30,7 @@ const express = require('express'),
     app.get('/api/collections/matte', collectCtrl.getMatte)
     app.get('/api/collections/polarized', collectCtrl.getPolarized)
     app.get('/api/collections/prescription', collectCtrl.getPrescription)
+    app.get('/api/collections/searched', collectCtrl.searchedCollection)
     
 
     massive({

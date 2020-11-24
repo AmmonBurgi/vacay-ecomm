@@ -30,5 +30,17 @@ module.exports = {
         .then(products => {
             res.status(200).send(products)
         }).catch(err => res.status(500).send('Error...', err))
+    },
+    searchedCollection: async (req, res) => {
+        const db = req.app.get('db')
+        const {searchVal} = req.query
+
+        const titleResult = await db.collections.get_searched_title(searchVal)
+        if(titleResult.length !== 0){
+            return res.status(200).send(titleResult)
+        }
+
+        const detailResult = await db.collections.get_searched_detail(searchVal)
+        res.status(200).send(detailResult)
     }
 }

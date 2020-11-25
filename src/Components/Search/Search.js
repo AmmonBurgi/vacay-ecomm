@@ -14,8 +14,6 @@ function Search(props){
         }).catch(err => console.log('Error...', err))
     }
 
-    console.log(props.searchArray)
-
     return(
         <div>
             <input value={searchInput} onChange={(e) => setSearch(e.target.value)} />

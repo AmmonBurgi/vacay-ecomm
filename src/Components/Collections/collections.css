@@ -36,8 +36,13 @@
 .matte-section{
     margin-bottom: 5px;
     display: flex;
+    align-items: center;
     width: 60%;
     height: 300px;
+    flex-direction: column;
+    overflow-x: scroll;
+    flex-wrap: wrap;
+    background-color: lavender;
 }
 .polarized-section{
     margin-top: 5px;
@@ -53,9 +58,11 @@
     height: 300px;
 }
 .product-card{
-    width: 25%;
+    box-sizing: border-box;
+    width: 250px;
     height: 100%;
-    margin: 1rem;
+    margin-right: 5px;
+    margin-left: 5px;
     background-color: antiquewhite;
 }
 .type-tag{

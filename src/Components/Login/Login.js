@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {getUser} from '../../redux/reducer'
+import {getUser} from '../../redux/authReducer'
 
 function Login(props){
     const [email, setEmail] = useState(''),

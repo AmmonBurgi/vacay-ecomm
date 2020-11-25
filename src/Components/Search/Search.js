@@ -1,31 +1,29 @@
 import React, {useState, useEffect} from 'react'
+import {connect} from 'react-redux'
+import {setSearchArray} from '../../redux/searchReducer'
 import axios from 'axios'
 
 function Search(props){
-    const [searchInput, setSearch] = useState(''),
-        [searchedPro, setSearchedPro] = useState([])
+    const [searchInput, setSearch] = useState('')
 
-    const getSearch = (searchVal) => {
-        axios.get(`/api/collections/searched/?searchVal=${searchVal}`)
+    const getSearch = () => {
+        axios.get(`/api/collections/searched/?searchVal=${searchInput}`)
         .then(res => {
-            setSearchedPro(res.data)
-            console.log(res.data)
+            props.setSearchArray(res.data)
+            setSearch('')
         }).catch(err => console.log('Error...', err))
     }
 
-    useEffect(() => {
-        const {state} = props.location
-        if(state !== undefined){
-            getSearch(state.searchValue)
-        }
-    }, [])
+    console.log(props.searchArray)
 
     return(
         <div>
             <input value={searchInput} onChange={(e) => setSearch(e.target.value)} />
-            <button onClick={() => getSearch(searchInput)} >Search</button>
+            <button onClick={getSearch} >Search</button>
         </div>
     )
 }
 
-export default Search
+const mapStateToProps = (reduxState) => reduxState.searchState
+
+export default connect(mapStateToProps, {setSearchArray})(Search)

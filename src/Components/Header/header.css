@@ -19,6 +19,9 @@
     height: 15vh;
     background-color: black;
 }
+.user{
+    color: white;
+}
 .align-main{
     display: flex;
     justify-content: space-between;

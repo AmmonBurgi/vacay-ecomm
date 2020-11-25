@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getUser} from '../../redux/reducer'
+import {getUser} from '../../redux/authReducer'
+import {setSearchArray} from '../../redux/searchReducer'
 import axios from 'axios'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -14,7 +15,7 @@ function Header(props){
 
     const history = useHistory()
 
-    const logoutUser = (t) => {
+    const logoutUser = () => {
         axios.get('/api/logout')
         .then(() => {
             props.getUser({})
@@ -22,7 +23,7 @@ function Header(props){
     }
 
     useEffect(() => {
-        if(Object.keys(props.user).length === 0){
+        if(Object.keys(props.authState.user).length === 0){
             axios.get('/api/session')
             .then((res) => {
                 props.getUser(res.data)
@@ -32,25 +33,30 @@ function Header(props){
 
     const enterKeyPress = (event) => {
         if(event.key === 'Enter'){
-            history.push({
-                pathname: '/search',
-                state: {searchValue: search}
-            })
-        }
+            axios.get(`/api/collections/searched/?searchVal=${search}`)
+                .then(res => {
+                    props.setSearchArray(res.data)
+                    setSearch('')
+                    setToggle(!toggle)
+                    history.push({
+                        pathname: '/search'
+                    })
+                }).catch(err => console.log('Error...', err))
+            }
     }
 
     return (
         <div className={toggle === true ? 'header-component' : 'header-search-comp'}>
-            <input onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
+            <input value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
             <nav className='align-main'>
                 <div className='left-section' onClick={() => setToggle(!toggle)}>
                     <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
                     <p className='left-section-button'>Search</p> 
                 </div>
                 <nav className='right-section'>
-                    {Object.keys(props.user).length !== 0 ? <p className='user'>Logged In as {props.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
+                    {Object.keys(props.authState.user).length !== 0 ? <p className='user'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
                     <div className='login-border'></div>
-                    {Object.keys(props.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
+                    {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
                     <Link className='link' to='/account/register'>Create Account</Link>}
                     <Link className='link' to='/cart'>Cart</Link>
                 </nav>
@@ -61,4 +67,4 @@ function Header(props){
 
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {getUser})(Header)
+export default connect(mapStateToProps, { getUser, setSearchArray })(Header)

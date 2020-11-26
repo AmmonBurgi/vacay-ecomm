@@ -46,16 +46,17 @@
 .left-section .search-icon{
     color: white;
     margin-right: 5px;
-    font-size: 15px;
+    font-size: 14px;
 }
 .left-section{
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: transparent;
+    text-transform: uppercase;
 }
 .left-section p{
-    font-size: 15px;
+    font-size: 14px;
     color: white;
 }
 .left-section:hover .search-icon{
@@ -71,8 +72,9 @@
 }
 .right-section *{
     margin: 8px;
-    font-size: 15px;
+    font-size: 14px;
     color: white;
+    text-transform: uppercase;
 }
 .login-border{
     border-right: 1px solid rgb(51, 51, 51);

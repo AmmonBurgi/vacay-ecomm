@@ -1,0 +1,26 @@
+footer{
+    width: 100%;
+    height: 15vh;
+    padding-top: 1vh;
+    margin-top: 1vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.logo-list{
+    display: flex;
+    align-items: center;
+}
+.logo-list *{
+    margin-right: 8px;
+    margin-left: 8px;
+    font-size: 32px;
+    color: black;
+}
+footer p{
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}

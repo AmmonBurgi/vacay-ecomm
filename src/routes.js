@@ -20,7 +20,7 @@ export default (
         <Route path='/cart/:id' component={Cart} />
         <Route path='/checkout/:id' component={Checkout} />
         <Route path='/collection' component={Collections} />
-        <Route path='/collection-all' component={CollectionsAll} />
+        <Route path='/collections/:type' component={CollectionsAll} />
         <Route path='/connect' component={Connect} />
         <Route path='/account/login' component={Login} />
         <Route path='/account/register' component={Register} />

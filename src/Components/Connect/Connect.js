@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import './connect.css'
 import emailjs from 'emailjs-com'
+import {connect} from 'react-redux'
 
-function Connect(){
+function Connect(props){
     const [name, setName] = useState(''),
         [email, setEmail] = useState(''),
         [phone, setPhone] = useState(''),
@@ -28,7 +29,7 @@ function Connect(){
         }).catch(err => console.log('Failed...', err))
     }
 
-
+    console.log(name, props.user.first_name)
     return(
         <div className='connect-comp'>
             <header className='connect-header'>
@@ -36,7 +37,7 @@ function Connect(){
                 <hr></hr>
             </header>
             <span>
-                <img className='connect-img' src={'https://cdn.shopify.com/s/files/1/0966/8778/files/Heber_green_office_copy_2048x2048.JPG?11444278074833745647'} />
+                <img alt={'Outdoor office'} className='connect-img' src={'https://cdn.shopify.com/s/files/1/0966/8778/files/Heber_green_office_copy_2048x2048.JPG?11444278074833745647'} />
                 <p>PRESS AND PRODUCT REQUESTS? PLEASE DROP US A NOTE.<br></br>SALES INQUIRES - hello@vacaysunglasses.com</p>
             </span>
 
@@ -64,4 +65,6 @@ function Connect(){
     )
 }
 
-export default Connect
+const mapStateToProps = (reduxState) => reduxState.authState
+
+export default connect(mapStateToProps)(Connect)

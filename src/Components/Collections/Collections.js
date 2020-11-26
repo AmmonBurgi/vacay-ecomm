@@ -20,12 +20,15 @@ function Collections(props){
     }, [])
 
     const matteMap = matteArr.map((element, index) => {
+        if(index > 3){
+            matteArr.splice(index, 1)
+        }
         return (
             <div className='product-card' key={index}>
                 {element.product_title}
             </div>
         )
-    })
+    }, [])
     const polarizedMap = polarizedArr.map((element, index) => {
         return (
             <div className='product-card' key={index}>
@@ -46,27 +49,27 @@ function Collections(props){
             <nav className='collections-tag'>
                 <nav className='all-collections-tag'> 
                    <p>COLLECTIONS</p> 
-                   <button onClick={() => props.history.push('/collection-all')} >All Collections</button>
+                   <button onClick={() => props.history.push('/collections/all')} >All Collections</button>
                 </nav>
                 <hr></hr>
             </nav>
             <nav className='type-tag'>
                 <p>CLASSIC MATTE</p>
-                <button>ALL CLASSIC MATTE</button>
+                <button onClick={() => props.history.push('/collections/matte')}>ALL CLASSIC MATTE</button>
             </nav>
             <section className='matte-section'>
                 {matteMap}
             </section>
             <nav className='type-tag'>
                 <p>CLASSIC POLARIZED</p>
-                <button>ALL CLASSIC POLARIZED</button>
+                <button onClick={() => props.history.push('/collections/polarized')}>ALL CLASSIC POLARIZED</button>
             </nav>
             <section className='polarized-section'>
                 {polarizedMap}
             </section>
             <nav className='type-tag'>
                 <p>CLASSIC PRESCRIPTION</p>
-                <button>ALL CLASSIC PRESCRIPTION</button>
+                <button onClick={() => props.history.push('/collections/prescription')} >ALL CLASSIC PRESCRIPTION</button>
             </nav>
             <section className='prescription-section'>
                 {prescriptionMap}

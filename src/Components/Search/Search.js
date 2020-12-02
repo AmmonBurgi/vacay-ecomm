@@ -14,10 +14,22 @@ function Search(props){
         }).catch(err => console.log('Error...', err))
     }
 
+    const searchMap = props.searchArray.map((element, index) => {
+        return (
+            <div key={index}>
+                <p>{element.product_id}</p>
+                <p>{element.product_title}</p>
+            </div>
+        )
+    })
+
     return(
         <div>
             <input value={searchInput} onChange={(e) => setSearch(e.target.value)} />
             <button onClick={getSearch} >Search</button>
+            <section>
+                {searchMap}
+            </section>
         </div>
     )
 }

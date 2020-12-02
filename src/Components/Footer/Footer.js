@@ -5,11 +5,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 import {faCopyright} from "@fortawesome/free-solid-svg-icons"
+
 function Footer(props){
     return (
         <footer>
             <nav className='logo-list'>
-                <a href='https://www.instagram.com/livemoreworkless/'>
+                <a href='https://www.instagram.com/livemoreworkless/' >
                     <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
                 </a>
                 <a href='https://www.pinterest.com/vacaysunglasses/' >

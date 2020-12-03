@@ -25,21 +25,35 @@ function Collections(props){
         }
         return (
             <div className='product-card' key={index}>
-                {element.product_title}
+                <img src={element.product_img} alt={element.product_title} />
+                <span className='collections-align-title'>
+                    <p>{element.product_title}</p>
+                    <p className='align-price'>$ {element.product_price}</p>
+                </span>
             </div>
         )
     }, [])
     const polarizedMap = polarizedArr.map((element, index) => {
         return (
             <div className='product-card' key={index}>
-                {element.product_title}
+                <img src={element.product_img} alt={element.product_title} />
+                
+                <span className='collections-align-title'>
+                    {element.pro_quantity === 0 ? <p className='collections-sold-out'>Sold Out</p> : null}
+                    <p>{element.product_title}</p>
+                    <p className='align-price'>$ {element.product_price}</p>
+                </span>
             </div>
         )
     })
     const prescriptionMap = prescriptionArr.map((element, index) => {
         return (
             <div className='product-card' key={index}>
-                {element.product_title}
+                <img src={element.product_img} alt={element.product_title} />
+                <span className='collections-align-title'>
+                    <p>{element.product_title}</p>
+                    <p className='align-price'>$ {element.product_price}</p>
+                </span>
             </div>
         )
     })

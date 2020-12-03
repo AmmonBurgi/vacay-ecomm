@@ -18,8 +18,12 @@ function CollectionsAll(props){
 
     const collectionsMap = collections.map((element, index) => {
         return (
-            <div className='collections-all-product' key={index} >
-                {element.product_title}
+            <div className='collections-all-card' key={index} >
+                <img src={element.product_img} alt={element.product_title} />
+                <span className='collections-all-align-title'>
+                    <p>{element.product_title}</p>
+                    <p className='all-align-price'>$ {element.product_price}</p>
+                </span>
             </div>
         )
     })

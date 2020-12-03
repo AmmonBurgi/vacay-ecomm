@@ -21,11 +21,11 @@ function MyCarousel(){
             stopAutoPlayOnHover
             autoPlay={5000}
             animationSpeed={1300} >
-                <img className='first-img' src={first} />
-                <img className='second-img' src={second} />
-                <img className='third-img' src={third} />
-                <img className='fourth-img' src={fourth} />
-                <img className='fifth-img' src={fifth} />
+                <img alt='glasses and girl' className='first-img' src={first} />
+                <img alt='glasses' className='second-img' src={second} />
+                <img alt='glasses and guy' className='third-img' src={third} />
+                <img alt='glasses on the beach' className='fourth-img' src={fourth} />
+                <img alt='glasses and beanie' className='fifth-img' src={fifth} />
             </Carousel>
             <Dots value={value} onChange={(value) => setValue(value)} number={5} />
         </div>

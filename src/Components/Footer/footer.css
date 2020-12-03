@@ -1,4 +1,5 @@
 footer{
+    border-top: groove white 3px;
     width: 100%;
     height: 15vh;
     padding-top: 1vh;

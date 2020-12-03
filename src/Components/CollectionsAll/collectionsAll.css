@@ -21,17 +21,32 @@
 }
 .collections-all-display{
     width: 60%;
+    box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-.collections-all-product{
-    width: 24%;
-    height: 300px;
+.collections-all-card{
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 5px;
-    background-color: antiquewhite;
+    justify-content: space-between;
+    width: 23%;
+    height: 230px;
+    margin: 10px;
+}
+.collections-all-card img{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.collections-all-align-title{
+    position: relative;
+}
+.collections-all-align-title p{
+    margin: 2px;
+}
+.all-align-price{
+    font-size: 14px;
+    font-weight: bolder;
 }

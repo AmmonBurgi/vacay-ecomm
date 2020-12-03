@@ -13,6 +13,7 @@ import Story from './Components/Story/Story'
 import Register from './Components/Register/Register'
 import Account from './Components/Account/Account'
 import CollectionsAll from './Components/CollectionsAll/CollectionsAll'
+import DisplayCollection from './Components/DisplayCollection/DisplayCollection'
 
 export default (
     <Switch>
@@ -20,6 +21,7 @@ export default (
         <Route path='/cart' component={Cart} />
         <Route path='/checkout/:id' component={Checkout} />
         <Route path='/collection' component={Collections} />
+        <Route path='/collections/all/product/:id' component={DisplayCollection} />
         <Route path='/collections/:type' component={CollectionsAll} />
         <Route path='/connect' component={Connect} />
         <Route path='/account/login' component={Login} />

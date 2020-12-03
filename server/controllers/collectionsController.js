@@ -42,5 +42,14 @@ module.exports = {
 
         const detailResult = await db.collections.get_searched_detail(searchVal)
         res.status(200).send(detailResult)
+    },
+    getProduct: async ( req, res ) => {
+        const db = req.app.get('db')
+        const {productId} = req.query
+
+        const mainProduct = await db.collections.get_product(productId)
+        const productDetails = await db.collections.get_product_details(productId)
+
+        res.status(200).send({mainProduct, productDetails})
     }
 }

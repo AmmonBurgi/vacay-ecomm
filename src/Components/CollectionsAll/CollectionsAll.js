@@ -18,9 +18,10 @@ function CollectionsAll(props){
 
     const collectionsMap = collections.map((element, index) => {
         return (
-            <div className='collections-all-card' key={index} >
+            <div onClick={() => props.history.push(`/collections/all/product/${element.product_id}`)} className='collections-all-card' key={index} >
                 <img src={element.product_img} alt={element.product_title} />
                 <span className='collections-all-align-title'>
+                    {element.pro_quantity === 0 ? <p className='collections-all-sold-out'>Sold Out</p> : null}
                     <p>{element.product_title}</p>
                     <p className='all-align-price'>$ {element.product_price}</p>
                 </span>

@@ -14,6 +14,12 @@ function Search(props){
         }).catch(err => console.log('Error...', err))
     }
 
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            getSearch()
+        }
+    }
+
     const searchMap = props.searchArray.map((element, index) => {
         return (
             <div key={index}>
@@ -25,8 +31,8 @@ function Search(props){
 
     return(
         <div>
-            <input value={searchInput} onChange={(e) => setSearch(e.target.value)} />
-            <button onClick={getSearch} >Search</button>
+            <input onKeyPress={handleKeyPress} value={searchInput} onChange={(e) => setSearch(e.target.value)} />
+            <button  onClick={getSearch} >Search</button>
             <section>
                 {searchMap}
             </section>

@@ -64,6 +64,9 @@
     margin-right: 10px;
     margin-left: 10px;
 }
+.product-card:hover{
+    cursor: pointer;
+}
 .collections-sold-out{
     text-transform: uppercase;
     position: absolute;
@@ -107,4 +110,34 @@
 }
 .type-tag button:hover{
     cursor: pointer;
+}
+.collections-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.collections-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.collections-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.collections-prev-home:hover{
+    cursor: pointer;
+}
+.collections-prev-arrow{
+    color: rgb(149,149,149);
+}
+.collections-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
 }

@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import './collections.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {faPinterest} from '@fortawesome/free-brands-svg-icons'
+
 function Collections(props){
     const [matteArr, setMatte] = useState([]),
         [polarizedArr, setPolarized] = useState([]),
@@ -24,20 +28,24 @@ function Collections(props){
             matteArr.splice(index, 1)
         }
         return (
-            <div className='product-card' key={index}>
-                <img src={element.product_img} alt={element.product_title} />
-                <span className='collections-align-title'>
-                    <p>{element.product_title}</p>
-                    <p className='align-price'>$ {element.product_price}</p>
-                </span>
-            </div>
+            <div onClick={() => props.history.push(`/collections/all/product/${element.product_id}`)} className='product-card' key={index}>
+            <img src={element.product_img} alt={element.product_title} />
+            <span className='collections-align-title'>
+                {element.pro_quantity === 0 ? <p className='collections-sold-out'>Sold Out</p> : null}
+                <p>{element.product_title}</p>
+                <p className='align-price'>$ {element.product_price}</p>
+            </span>
+        </div>
         )
     }, [])
+
     const polarizedMap = polarizedArr.map((element, index) => {
+        if(index > 3){
+            polarizedArr.splice(index, 1)
+        }
         return (
-            <div className='product-card' key={index}>
+            <div onClick={() => props.history.push(`/collections/all/product/${element.product_id}`)} className='product-card' key={index}>
                 <img src={element.product_img} alt={element.product_title} />
-                
                 <span className='collections-align-title'>
                     {element.pro_quantity === 0 ? <p className='collections-sold-out'>Sold Out</p> : null}
                     <p>{element.product_title}</p>
@@ -46,11 +54,16 @@ function Collections(props){
             </div>
         )
     })
+
     const prescriptionMap = prescriptionArr.map((element, index) => {
+        if(index > 3){
+            prescriptionArr.splice(index, 1)
+        }
         return (
-            <div className='product-card' key={index}>
+            <div onClick={() => props.history.push(`/collections/all/product/${element.product_id}`)} className='product-card' key={index}>
                 <img src={element.product_img} alt={element.product_title} />
                 <span className='collections-align-title'>
+                    {element.pro_quantity === 0 ? <p className='collections-sold-out'>Sold Out</p> : null}
                     <p>{element.product_title}</p>
                     <p className='align-price'>$ {element.product_price}</p>
                 </span>
@@ -58,8 +71,24 @@ function Collections(props){
         )
     })
 
+
     return(
         <div className='collections-component'>
+            <div className='collections-prev'>
+                <nav className='collections-prev-left'>
+                    <p className='collections-prev-home' onClick={() => props.history.push('/')}>Home </p>
+                    <p className='collections-prev-arrow'>&#62;</p>
+                    <p className='collections-prev-arrow'> Collections</p>
+                </nav>
+                <nav className='collections-icons'>
+                    <a href='https://www.instagram.com/livemoreworkless/' >
+                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                    </a>
+                    <a href='https://www.pinterest.com/vacaysunglasses/' >
+                        <FontAwesomeIcon icon={faPinterest}></FontAwesomeIcon>
+                    </a>
+                </nav>
+            </div>
             <nav className='collections-tag'>
                 <nav className='all-collections-tag'> 
                    <p>COLLECTIONS</p> 

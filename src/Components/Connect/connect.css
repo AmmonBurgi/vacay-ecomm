@@ -1,9 +1,109 @@
-.connect-img{
-    width: 25%;
+.connect-comp{
+    width: 60%;
 }
-
+.connect-img{
+    width: 55%;
+}
+.connect-header p{
+    margin: 0;
+    font-size: 22px;
+    text-transform: uppercase;
+}
 .connect-main{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: antiquewhite;
+    align-items: center;
+    position: relative;
+}
+.connect-data{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 45%;
+    margin: 1vh;
+}
+.connect-data input{
+    width: 100%;
+    background: transparent;
+    padding: 5px;
+    border-style: solid;
+    border-color: rgb(153,153,153);
+}
+.connect-data input:focus{
+    outline: none;
+}
+.connect-data label{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+.connect-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 45%;
+    margin: 1vh;
+}
+.connect-text label{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+.connect-text textarea{
+    resize: none;
+    width: 100%;
+    height: 20vh;
+    background: transparent;
+    padding: 5px;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(153,153,153);
+}
+.connect-text textarea:focus{
+    outline: none;
+}
+.connect-button{
+    position: absolute;
+
+    width: 45%;
+    background-color: black;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.connect-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.connect-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.connect-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.connect-prev-home:hover{
+    cursor: pointer;
+}
+.connect-prev-arrow{
+    color: rgb(149,149,149);
+}
+.connect-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
 }

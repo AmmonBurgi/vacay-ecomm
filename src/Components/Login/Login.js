@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/authReducer'
+import './login.css'
 
 function Login(props){
     const [email, setEmail] = useState(''),
@@ -16,12 +17,23 @@ function Login(props){
     }
 
     return(
-        <div>
-            <section>
+        <div className='login-component'>
+            <div className='login-tag'>
                 <p>Login</p>
-                <input placeholder='Email' onChange={(e) => setEmail(e.target.value)} />
-                <input placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
+                <hr></hr>
+            </div>
+            <section className='login-main'>
+                <span className='login-input'>
+                    <label>Email</label>
+                    <input onChange={(e) => setEmail(e.target.value)} />
+                </span>
+                <span className='login-input'>
+                    <label>Password</label>
+                    <input onChange={(e) => setPassword(e.target.value)} />
+                </span>
+                <p className='login-forgot'>Forgot your password?</p>
                 <button onClick={loginUser}>Login</button>
+                <p onClick={() => props.history.push('/')} className='login-return'>Return to Store</p>
             </section>
         </div>
     )

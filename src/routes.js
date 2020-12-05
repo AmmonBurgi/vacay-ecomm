@@ -14,18 +14,20 @@ import Register from './Components/Register/Register'
 import Account from './Components/Account/Account'
 import CollectionsAll from './Components/CollectionsAll/CollectionsAll'
 import DisplayCollection from './Components/DisplayCollection/DisplayCollection'
+import Recovery from './Components/Recovery/Recovery'
 
 export default (
     <Switch>
         <Route exact path='/' component={Landing} />
         <Route path='/cart' component={Cart} />
         <Route path='/checkout/:id' component={Checkout} />
-        <Route path='/collection' component={Collections} />
         <Route path='/collections/all/product/:id' component={DisplayCollection} />
         <Route path='/collections/:type' component={CollectionsAll} />
+        <Route path='/collections' component={Collections} />
         <Route path='/connect' component={Connect} />
         <Route path='/account/login' component={Login} />
         <Route path='/account/register' component={Register} />
+        <Route path='/account/recovery' component={Recovery} />
         <Route path='/account' component={Account} />
         <Route path='/payment/:id' component={Payment} />
         <Route path='/search' component={Search} />

@@ -59,3 +59,33 @@
     font-size: 14px;
     font-weight: bolder;
 }
+.collections-all-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.collections-all-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.collections-all-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.collections-all-prev-home:hover{
+    cursor: pointer;
+}
+.collections-all-prev-arrow{
+    color: rgb(149,149,149);
+}
+.collections-all-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
+}

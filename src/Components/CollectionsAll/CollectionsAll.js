@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './collectionsAll.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {faPinterest} from '@fortawesome/free-brands-svg-icons'
+
 function CollectionsAll(props){
     const [collections, setCollections] = useState([])
 
@@ -31,6 +35,23 @@ function CollectionsAll(props){
 
     return (
         <div className='collections-all-component'>
+            <div className='collections-all-prev'>
+                <nav className='collections-all-prev-left'>
+                    <p className='collections-all-prev-home' onClick={() => props.history.push('/')}>Home </p>
+                    <p>&#62;</p>
+                    <p className='collections-all-prev-home' onClick={() => props.history.push('/collection')}> collections</p>
+                    <p className='collections-all-prev-arrow'>&#62;</p>
+                    <p className='collections-all-prev-arrow'>{props.match.params.type}</p>
+                </nav>
+                <nav className='collections-all-icons'>
+                    <a href='https://www.instagram.com/livemoreworkless/' >
+                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                    </a>
+                    <a href='https://www.pinterest.com/vacaysunglasses/' >
+                        <FontAwesomeIcon icon={faPinterest}></FontAwesomeIcon>
+                    </a>
+                </nav>
+            </div>
             <div className='collections-all-tag'>
                 <p>{props.match.params.type} Collections</p>
                 <hr></hr>

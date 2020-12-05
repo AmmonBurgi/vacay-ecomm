@@ -11,7 +11,8 @@ import './header.css'
 
 function Header(props){
     const [toggle, setToggle] = useState(true),
-        [search, setSearch] = useState('')
+        [search, setSearch] = useState(''),
+        [searchResult, setResult] = useState('')
 
     const history = useHistory()
 
@@ -32,6 +33,7 @@ function Header(props){
     }, [])
 
     const enterKeyPress = (event) => {
+        setResult(search)
         if(event.key === 'Enter'){
             axios.get(`/api/collections/searched/?searchVal=${search}`)
                 .then(res => {
@@ -39,7 +41,8 @@ function Header(props){
                     setSearch('')
                     setToggle(!toggle)
                     history.push({
-                        pathname: '/search'
+                        pathname: '/search',
+                        state: {searchResult: searchResult}
                     })
                 }).catch(err => console.log('Error...', err))
             }
@@ -54,7 +57,7 @@ function Header(props){
                     <p className='left-section-button'>Search</p> 
                 </div>
                 <nav className='right-section'>
-                    {Object.keys(props.authState.user).length !== 0 ? <p className='user'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
+                    {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
                     <Link className='link' to='/account/register'>Create Account</Link>}

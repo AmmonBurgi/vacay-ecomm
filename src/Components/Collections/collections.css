@@ -26,6 +26,9 @@
     outline: none;
     text-transform: uppercase;
 }
+.all-collections-tag button:hover{
+    cursor: pointer;
+}
 .collections-tag p{
     margin: 0;
     padding: 0;

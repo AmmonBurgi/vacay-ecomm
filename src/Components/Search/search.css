@@ -48,6 +48,7 @@
     border-bottom: 2px solid rgb(149,149,149);
 }
 .search-result{
+    margin-top: 5vh;
     width: 60%;
 }
 .search-result p{
@@ -66,4 +67,44 @@
 }
 .search-input-button:hover{
     color: rgb(149,149,149);
+}
+.search-all-display{
+    width: 60%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.search-all-card{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 23%;
+    height: 230px;
+    margin: 10px;
+}
+.search-all-sold-out{
+    text-transform: uppercase;
+    position: absolute;
+    font-weight: bolder;
+    font-size: 13px;
+    right: 0px;
+    left: 0px;
+    top: -30px;
+}
+.search-all-card img{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.search-all-align-title{
+    position: relative;
+}
+.search-all-align-title p{
+    margin: 2px;
+}
+.search-align-price{
+    font-size: 14px;
+    font-weight: bolder;
 }

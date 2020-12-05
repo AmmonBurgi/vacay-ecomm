@@ -11,8 +11,7 @@ import './header.css'
 
 function Header(props){
     const [toggle, setToggle] = useState(true),
-        [search, setSearch] = useState(''),
-        [searchResult, setResult] = useState('')
+        [search, setSearch] = useState('')
 
     const history = useHistory()
 
@@ -33,17 +32,16 @@ function Header(props){
     }, [])
 
     const enterKeyPress = (event) => {
-        setResult(search)
         if(event.key === 'Enter'){
             axios.get(`/api/collections/searched/?searchVal=${search}`)
-                .then(res => {
+            .then(res => {
                     props.setSearchArray(res.data)
-                    setSearch('')
                     setToggle(!toggle)
                     history.push({
                         pathname: '/search',
-                        state: {searchResult: searchResult}
+                        state: {searchResult: search}
                     })
+                    setSearch('')
                 }).catch(err => console.log('Error...', err))
             }
     }

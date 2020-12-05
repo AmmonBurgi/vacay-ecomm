@@ -30,9 +30,13 @@ function Search(props){
 
     const searchMap = props.searchArray.map((element, index) => {
         return (
-            <div key={index}>
-                <p>{element.product_id}</p>
-                <p>{element.product_title}</p>
+            <div onClick={() => props.history.push(`/collections/all/product/${element.product_id}`)} className='search-all-card' key={index} >
+                <img src={element.product_img} alt={element.product_title} />
+                <span className='search-all-align-title'>
+                    {element.pro_quantity === 0 ? <p className='search-all-sold-out'>Sold Out</p> : null}
+                    <p>{element.product_title}</p>
+                    <p className='search-align-price'>$ {element.product_price}</p>
+                </span>
             </div>
         )
     })
@@ -59,10 +63,10 @@ function Search(props){
                 <input className='search-input' onKeyPress={handleKeyPress} value={searchInput} onChange={(e) => setSearch(e.target.value)} />
             </nav>
             <nav className='search-result'>
-                <p>Your search for "{ Object.keys(props.location.state).length === 0 ? searchText : props.location.state.searchResult }" revealed the following:</p>
+                <p>Your search for "{ searchText.length !== 0 ? searchText : (props.location.state === undefined || Object.keys(props.location.state).length === 0 ? searchText : props.location.state.searchResult) }" revealed the following:</p>
                 <hr></hr>
             </nav>
-            <section>
+            <section className='search-all-display'>
                 {searchMap}
             </section>
         </div>

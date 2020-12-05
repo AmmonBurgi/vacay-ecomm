@@ -5,9 +5,11 @@
     align-items: center;
 }
 .story-header-tag{
+    margin-bottom: 2vh;
     width: 60%;
 }
 .story-header-tag p{
+margin: 0;
 font-size: 25px;
 }
 .story-header-tag hr{
@@ -42,4 +44,12 @@ font-size: 25px;
     font-size: 20px;
     margin-right: .5vw;
     color: black;
+}
+.story-text-info{
+    margin-top: 3vh;
+    width: 60%
+}
+.story-text-info p{
+    line-height: 1.6;
+    font-weight: lighter;
 }

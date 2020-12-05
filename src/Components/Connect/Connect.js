@@ -76,7 +76,9 @@ function Connect(props){
                     <label htmlFor='message'>Message</label>
                     <textarea id='message' value={message} onChange={(e) => setMessage(e.target.value) } />
                 </span>
-                <button className='connect-button' onClick={sendFeedback}>Send</button>
+                <span className='connect-button-box'>
+                    <button className='connect-button' onClick={sendFeedback}>Send</button>
+                </span>
             </section>
            
         </div>

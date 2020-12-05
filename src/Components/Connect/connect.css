@@ -1,8 +1,15 @@
 .connect-comp{
-    width: 60%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .connect-img{
-    width: 55%;
+    width: 40%;
+}
+.connect-header{
+    width: 60%;
+    margin-bottom: 1vh;
 }
 .connect-header p{
     margin: 0;
@@ -10,20 +17,21 @@
     text-transform: uppercase;
 }
 .connect-main{
-    width: 100%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
 }
 .connect-data{
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    box-sizing: border-box;
     width: 45%;
     margin: 1vh;
 }
 .connect-data input{
+    box-sizing: border-box;
     width: 100%;
     background: transparent;
     padding: 5px;
@@ -53,6 +61,7 @@
     margin-bottom: 5px;
 }
 .connect-text textarea{
+    box-sizing: border-box;
     resize: none;
     width: 100%;
     height: 20vh;
@@ -65,23 +74,27 @@
 .connect-text textarea:focus{
     outline: none;
 }
-.connect-button{
-    position: absolute;
-
+.connect-button-box{
     width: 45%;
+}
+.connect-button{
+    width: 100%;
     background-color: black;
     border: none;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     padding: 10px;
     color: white;
     font-weight: bolder;
     text-transform: uppercase;
 }
+.connect-button:hover{
+    cursor: pointer;
+}
 .connect-prev{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 60%;
     margin-top: 1vh;
     margin-bottom: .5vh;
 }

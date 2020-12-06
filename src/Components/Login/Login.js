@@ -13,6 +13,8 @@ function Login(props){
         .then((res) => {
             props.getUser(res.data)
             props.history.push('/')
+            setEmail('')
+            setPassword('')
         }).catch((err) => alert(err.response.data))
     }
 
@@ -25,11 +27,11 @@ function Login(props){
             <section className='login-main'>
                 <span className='login-input'>
                     <label>Email</label>
-                    <input onChange={(e) => setEmail(e.target.value)} />
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} />
                 </span>
                 <span className='login-input'>
                     <label>Password</label>
-                    <input onChange={(e) => setPassword(e.target.value)} />
+                    <input value={password} type='password' onChange={(e) => setPassword(e.target.value)} />
                 </span>
                 <p className='login-forgot'>Forgot your password?</p>
                 <button onClick={loginUser}>Login</button>

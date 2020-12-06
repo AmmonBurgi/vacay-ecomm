@@ -28,6 +28,9 @@
     font-weight: bolder;
     text-transform: uppercase;
 }
+.login-main button:hover{
+    cursor: pointer;
+}
 .login-input{
     display: flex;
     flex-direction: column;

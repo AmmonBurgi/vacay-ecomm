@@ -4,6 +4,10 @@ import {connect} from 'react-redux'
 import {getUser} from '../../redux/authReducer'
 import './login.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {faPinterest} from '@fortawesome/free-brands-svg-icons'
+
 function Login(props){
     const [email, setEmail] = useState(''),
         [password, setPassword] = useState('')
@@ -20,6 +24,21 @@ function Login(props){
 
     return(
         <div className='login-component'>
+            <div className='login-prev'>
+                <nav className='login-prev-left'>
+                    <p className='login-prev-home' onClick={() => props.history.push('/')}>Home </p>
+                    <p className='login-prev-arrow'>&#62;</p>
+                    <p className='login-prev-arrow'> login</p>
+                </nav>
+                <nav className='login-icons'>
+                    <a href='https://www.instagram.com/livemoreworkless/' >
+                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                    </a>
+                    <a href='https://www.pinterest.com/vacaysunglasses/' >
+                        <FontAwesomeIcon icon={faPinterest}></FontAwesomeIcon>
+                    </a>
+                </nav>
+            </div>
             <div className='login-tag'>
                 <p>Login</p>
                 <hr></hr>

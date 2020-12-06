@@ -66,3 +66,33 @@
 .login-return:hover{
     cursor: pointer;
 }
+.login-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.login-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.login-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.login-prev-home:hover{
+    cursor: pointer;
+}
+.login-prev-arrow{
+    color: rgb(149,149,149);
+}
+.login-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
+}

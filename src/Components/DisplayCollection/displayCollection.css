@@ -1,0 +1,35 @@
+.display-component{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.display-component hr{
+    width: 60%;
+}
+.display-main{
+    display: flex;
+    width: 60%;
+    height: 60vh;
+    margin: 1vh;
+}
+.display-image-box{
+    width: 60%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.display-image-box img{
+    width: 100%;
+    height: 100%;
+}
+.display-detail-box{
+    width: 40%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.display-detail-box hr{
+    width: 100%;
+}

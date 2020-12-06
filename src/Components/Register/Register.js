@@ -4,6 +4,10 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import './register.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {faPinterest} from '@fortawesome/free-brands-svg-icons'
+
 function Register(props){
     const [firstName, setFirst] = useState(''),
         [lastName, setLast] = useState(''),
@@ -38,6 +42,21 @@ function Register(props){
 
     return(
         <div className='register-component'>
+            <div className='register-prev'>
+                <nav className='register-prev-left'>
+                    <p className='register-prev-home' onClick={() => props.history.push('/')}>Home </p>
+                    <p className='register-prev-arrow'>&#62;</p>
+                    <p className='register-prev-arrow'> register</p>
+                </nav>
+                <nav className='register-icons'>
+                    <a href='https://www.instagram.com/livemoreworkless/' >
+                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                    </a>
+                    <a href='https://www.pinterest.com/vacaysunglasses/' >
+                        <FontAwesomeIcon icon={faPinterest}></FontAwesomeIcon>
+                    </a>
+                </nav>
+            </div>
             <div className='register-tag'>
                 <p>Register</p>
                 <hr></hr>

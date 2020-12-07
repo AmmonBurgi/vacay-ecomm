@@ -10,20 +10,40 @@
 .display-main{
     display: flex;
     width: 60%;
-    height: 60vh;
+    height: 50vh;
     margin: 1vh;
 }
 .display-image-box{
     width: 60%;
     height: 100%;
+    margin-right: 2%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+.display-img-choice{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: 100%;
+    width: 15%;
+}
+.display-img-choice img{
     box-sizing: border-box;
 }
+.display-border{
+    border: 2px solid black;
+}
+.none-border{
+    border: none;
+}
 .display-image-box img{
-    width: 100%;
-    height: 100%;
+    width: 85%;
+    height: auto;
 }
 .display-detail-box{
-    width: 40%;
+    width: 38%;
     height: 100%;
     box-sizing: border-box;
     display: flex;
@@ -32,4 +52,60 @@
 }
 .display-detail-box hr{
     width: 100%;
+}
+.display-add-to-cart{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+.add-to-cart{
+    width: 60%;
+    background-color: black;
+    border: black solid 1px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.add-to-cart:hover{
+    cursor: pointer;
+}
+.display-align-label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.display-align-label label{
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+.quantity-amount-value{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: transparent;
+    border: 2px solid rgb(153,153,153);
+}
+.quantity-amount-value:disabled{
+    color: black;
+}
+.quantity-amount-buttons{
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgb(153,153,153);
+}
+.quantity-amount-buttons:focus{
+    outline: none;
+    border: 2px solid black;
+}
+.quantity-amount-buttons:hover{
+    cursor: pointer;
 }

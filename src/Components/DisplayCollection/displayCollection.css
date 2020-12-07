@@ -53,12 +53,26 @@
 .display-detail-box hr{
     width: 100%;
 }
+.display-pro-title{
+    margin: 0;
+    margin-bottom: 1vh;
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+.display-pro-price{
+    margin: 0;
+    font-size: 20px;
+    font-weight: bolder;
+}
 .display-add-to-cart{
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: flex-end;
     box-sizing: border-box;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 .add-to-cart{
     width: 60%;
@@ -72,6 +86,13 @@
 }
 .add-to-cart:hover{
     cursor: pointer;
+}
+.add-to-cart:disabled{
+    background-color: rgb(127,127,127);
+    color: rgb(230, 230, 230);
+}
+.add-to-cart:disabled:hover{
+    cursor: initial;
 }
 .display-align-label{
     display: flex;
@@ -94,6 +115,16 @@
     background-color: transparent;
     border: 2px solid rgb(153,153,153);
 }
+.quantity-amount-value-disabled{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: transparent;
+    border: 2px solid rgb(153,153,153);
+}
 .quantity-amount-value:disabled{
     color: black;
 }
@@ -102,10 +133,68 @@
     background-color: transparent;
     border: 2px solid rgb(153,153,153);
 }
+.quantity-amount-buttons:disabled:hover{
+    cursor: initial;
+}
 .quantity-amount-buttons:focus{
     outline: none;
     border: 2px solid black;
 }
 .quantity-amount-buttons:hover{
     cursor: pointer;
+}
+.detail-list{
+    text-align: start;
+}
+.list-row{
+    margin-bottom: 1vh;
+}
+.detail-additional{
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.align-additional-remaining{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-remaining{
+    font-weight: lighter;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.product-remaining b{
+    font-size: 20px;
+}
+.display-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.display-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.display-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.display-prev-home:hover{
+    cursor: pointer;
+}
+.display-prev-arrow{
+    color: rgb(149,149,149);
+}
+.display-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
 }

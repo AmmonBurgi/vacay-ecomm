@@ -39,7 +39,7 @@ function CollectionsAll(props){
                 <nav className='collections-all-prev-left'>
                     <p className='collections-all-prev-home' onClick={() => props.history.push('/')}>Home </p>
                     <p>&#62;</p>
-                    <p className='collections-all-prev-home' onClick={() => props.history.push('/collection')}> collections</p>
+                    <p className='collections-all-prev-home' onClick={() => props.history.push('/collections')}> collections</p>
                     <p className='collections-all-prev-arrow'>&#62;</p>
                     <p className='collections-all-prev-arrow'>{props.match.params.type}</p>
                 </nav>

@@ -50,6 +50,13 @@ function DisplayCollection(props){
         }
     }
 
+    const handleAddToCart = () => {
+        axios.post('/api/cart/add-to-cart')
+        .then(() => {
+            alert('Item added to cart!')
+        }).catch(err => console.log(err))
+    }
+
     const {product_title, product_img, pro_quantity, product_price, type_title} = productObj
 
     return (
@@ -95,7 +102,7 @@ function DisplayCollection(props){
                                 <button disabled={pro_quantity === 0 ? 'disabled' : null} onClick={() => handleQuantity('plus')} className='quantity-amount-buttons'>+</button>
                             </nav>
                         </nav>
-                        <button disabled={pro_quantity === 0 ? 'disabled' : null} className='add-to-cart'>add to cart</button>
+                        <button onClick={handleAddToCart} disabled={pro_quantity === 0 ? 'disabled' : null} className='add-to-cart'>add to cart</button>
                     </div>
                     <p className='detail-additional'>Handcrafted Custom VACAY Design</p>
                     <ul className='detail-list'>

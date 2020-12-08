@@ -36,6 +36,7 @@ const express = require('express'),
 
     //Cart Endpoints
     app.post('/api/cart/add-to-cart', cartCtrl.addToCart)
+    app.get('/api/cart/all', cartCtrl.getCart)
     
 
     massive({

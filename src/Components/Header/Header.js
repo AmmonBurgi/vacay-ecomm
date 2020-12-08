@@ -7,6 +7,7 @@ import axios from 'axios'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 import './header.css'
 
 function Header(props){
@@ -59,7 +60,10 @@ function Header(props){
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
                     <Link className='link' to='/account/register'>Create Account</Link>}
-                    <Link className='link' to='/cart'>Cart</Link>
+                    <div>
+                        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+                        <p>{}</p>
+                    </div>
                 </nav>
             </nav>
         </div>

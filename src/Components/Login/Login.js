@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/authReducer'
+import {getCart} from '../../redux/cartReducer'
 import './login.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -15,6 +16,9 @@ function Login(props){
     const loginUser = () => {
         axios.post('/api/login', {email, password})
         .then((res) => {
+            axios.get('/api/cart/all').then(res => props.getCart(res.data))
+            .catch(err => console.log('Error...', err))
+
             props.getUser(res.data)
             props.history.push('/')
             setEmail('')
@@ -60,4 +64,4 @@ function Login(props){
     )
 }
 
-export default connect(null, {getUser})(Login)
+export default connect(null, {getUser, getCart})(Login)

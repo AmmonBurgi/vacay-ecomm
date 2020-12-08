@@ -2,15 +2,11 @@ import React, {useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getCart} from '../../redux/cartReducer'
+import './cart.css'
 
 function Cart(props){
 
-    // useEffect(() => {
-    //     axios.get('/api/collections/cart')
-    //         .then(res => {
-    //             props.getCart(res.data)
-    //         }).catch(err => console.log('Error...', err))
-    // }, [])
+
     const cartMap = props.cart.map((element, index) => {
         return (
             <div key={index}>
@@ -18,6 +14,8 @@ function Cart(props){
             </div>
         )
     })
+
+    console.log(props.cart)
 
     return(
         <div className='cart-component'>

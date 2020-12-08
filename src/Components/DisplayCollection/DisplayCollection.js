@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
 import './displayCollection.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -49,15 +50,15 @@ function DisplayCollection(props){
            setQuantity(addSub)
         }
     }
+    
+    const {product_id, product_title, product_img, pro_quantity, product_price, type_title, type_id} = productObj
 
     const handleAddToCart = () => {
-        axios.post('/api/cart/add-to-cart')
+        axios.post('/api/cart/add-to-cart', {product_id, product_title, product_img, product_price, type_id, addQuantity})
         .then(() => {
             alert('Item added to cart!')
         }).catch(err => console.log(err))
     }
-
-    const {product_title, product_img, pro_quantity, product_price, type_title} = productObj
 
     return (
         <div className='display-component'>
@@ -99,10 +100,12 @@ function DisplayCollection(props){
                             <nav id='quantity-amount' className='quantity-amount'>
                                 <button disabled={pro_quantity === 0 ? 'disabled' : null} onClick={() => handleQuantity('minus')} className='quantity-amount-buttons'>-</button>
                                 <button disabled='disabled' className={pro_quantity === 0 ? 'quantity-amount-value-disabled' : 'quantity-amount-value'}>{addQuantity}</button>
-                                <button disabled={pro_quantity === 0 ? 'disabled' : null} onClick={() => handleQuantity('plus')} className='quantity-amount-buttons'>+</button>
+                                <button 
+                                disabled={pro_quantity === 0 ? 'disabled' : null} 
+                                onClick={() => handleQuantity('plus')} className='quantity-amount-buttons'>+</button>
                             </nav>
                         </nav>
-                        <button onClick={handleAddToCart} disabled={pro_quantity === 0 ? 'disabled' : null} className='add-to-cart'>add to cart</button>
+                        <button onClick={!props.user.user_id ? () => alert('Please Login before adding items to cart!') : handleAddToCart} disabled={pro_quantity === 0 ? 'disabled' : null} className='add-to-cart'>add to cart</button>
                     </div>
                     <p className='detail-additional'>Handcrafted Custom VACAY Design</p>
                     <ul className='detail-list'>
@@ -118,4 +121,6 @@ function DisplayCollection(props){
     )
 }
 
-export default DisplayCollection
+const mapStateToProps = (reduxState) => reduxState.authState
+
+export default connect(mapStateToProps)(DisplayCollection)

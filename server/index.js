@@ -8,7 +8,8 @@ const express = require('express'),
     port = SERVER_PORT,
     app = express(),
     authCtrl = require('./controllers/authController'),
-    collectCtrl = require('./controllers/collectionsController')
+    collectCtrl = require('./controllers/collectionsController'),
+    cartCtrl = require('./controllers/cartController')
 
     app.use(express.json())
 
@@ -32,6 +33,9 @@ const express = require('express'),
     app.get('/api/collections/prescription', collectCtrl.getPrescription)
     app.get('/api/collections/searched', collectCtrl.searchedCollection)
     app.get('/api/collections/product', collectCtrl.getProduct)
+
+    //Cart Endpoints
+    app.post('/api/cart/add-to-cart', cartCtrl.addToCart)
     
 
     massive({

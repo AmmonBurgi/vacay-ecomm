@@ -20,6 +20,10 @@ module.exports={
         }).catch(err => res.status(500).send(err))
     },
     getCart: (req, res) => {
+        if(!req.session.user){
+            return res.status(204).send('No session can be found!')
+        }
+
         const db = req.app.get('db')
         const {user_id} = req.session.user
 

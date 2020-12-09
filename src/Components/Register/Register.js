@@ -32,6 +32,9 @@ function Register(props){
         }
         axios.post('/api/register', {firstName, lastName, email, password})
         .then(res => {
+            axios.get('/api/cart/all').then(res => props.getCart(res.data))
+            .catch(err => console.log('Error...', err))
+
             props.getUser(res.data)
             props.history.push('/')
         }).catch(err => {

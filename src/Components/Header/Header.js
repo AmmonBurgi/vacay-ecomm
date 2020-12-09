@@ -3,6 +3,7 @@ import {Link, useHistory} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/authReducer'
 import {setSearchArray} from '../../redux/searchReducer'
+import {getCart} from '../../redux/cartReducer'
 import axios from 'axios'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -20,6 +21,7 @@ function Header(props){
         axios.get('/api/logout')
         .then(() => {
             props.getUser({})
+            props.getCart([])
         }).catch(err => console.log(err))
     }
 
@@ -30,6 +32,13 @@ function Header(props){
                 props.getUser(res.data)
             }).catch(err => console.log(err))
         }
+        if(props.cartState.cart.length === 0){
+            axios.get('/api/cart/all').then(res => {
+                props.getCart(res.data)
+                console.log(res.data)
+            })
+            .catch(err => console.log('Error...', err))
+        }    
     }, [])
 
     const enterKeyPress = (event) => {
@@ -47,11 +56,24 @@ function Header(props){
             }
     }
 
+    const getSum = () => {
+        let total = 0;
+        if(props.cartState.cart.length !== 0){
+            const map = props.cartState.cart.map((element) => parseFloat(element.cart_price))
+            for(let i in map){
+                total += map[i]
+            }
+        }
+        return total;
+    }
+
     return (
         <div className={toggle === true ? 'header-component' : 'header-search-comp'}>
             <input value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' className={toggle === true ? 'none-header-search' : 'header-search-box'} />
             <nav className='align-main'>
-                <div className='left-section' onClick={() => setToggle(!toggle)}>
+                <div 
+                className='left-section' 
+                onClick={() => setToggle(!toggle)}>
                     <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
                     <p className='left-section-button'>Search</p> 
                 </div>
@@ -59,10 +81,14 @@ function Header(props){
                     {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
-                    <Link className='link' to='/account/register'>Create Account</Link>}
-                    <div>
-                        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-                        <p>{}</p>
+                    <Link 
+                    className='link' 
+                    to='/account/register'>Create Account</Link>}
+                    <div 
+                    onClick={Object.keys(props.authState.user).length !== 0 ? () => history.push('/cart') : () => alert('Please login before accessing cart!')}  
+                    className='cart-box' >
+                        <FontAwesomeIcon className='cart-icon' icon={faShoppingCart}></FontAwesomeIcon>
+                        <p>{props.cartState.cart.length} Cart {getSum() === 0 ? null : `$${getSum()}`}</p>
                     </div>
                 </nav>
             </nav>
@@ -72,4 +98,4 @@ function Header(props){
 
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, { getUser, setSearchArray })(Header)
+export default connect(mapStateToProps, { getUser, setSearchArray, getCart })(Header)

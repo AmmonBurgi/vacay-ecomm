@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {getUser} from '../../redux/authReducer'
+import {getCart} from '../../redux/cartReducer'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import './register.css'
@@ -88,4 +89,4 @@ function Register(props){
     )
 }
 
-export default connect(null, {getUser})(Register)
+export default connect(null, {getUser, getCart})(Register)

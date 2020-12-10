@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {getCart} from '../../redux/cartReducer'
 import {connect} from 'react-redux'
 import './displayCollection.css'
 
@@ -56,7 +57,11 @@ function DisplayCollection(props){
     const handleAddToCart = () => {
         axios.post('/api/cart/add-to-cart', {product_id, product_title, product_img, product_price, type_id, addQuantity})
         .then(() => {
-            alert('Item added to cart!')
+            axios.get('/api/cart/all').then(res => {
+                props.getCart(res.data)
+            }).catch(err => console.log('Error...', err));
+
+            alert('Item added to cart!');
         }).catch(err => console.log(err))
     }
 
@@ -123,4 +128,4 @@ function DisplayCollection(props){
 
 const mapStateToProps = (reduxState) => reduxState.authState
 
-export default connect(mapStateToProps)(DisplayCollection)
+export default connect(mapStateToProps, {getCart})(DisplayCollection)

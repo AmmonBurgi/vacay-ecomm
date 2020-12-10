@@ -31,5 +31,15 @@ module.exports={
         .then(cart => {
             res.status(200).send(cart)
         }).catch(() => res.status(500).send('Could not obtain users cart!'))
+    },
+    deleteProductCart: (req, res) => {
+        const db = req.app.get('db')
+        const {user_id} = req.session.user
+        const {productId} = req.query
+
+        db.cart.delete_product_cart(user_id, productId)
+        .then(() => {
+            res.sendStatus(200)
+        }).catch(err => res.status(500).send('Could not delete product from cart!', err))
     }
 }

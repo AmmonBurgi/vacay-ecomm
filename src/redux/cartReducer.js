@@ -5,6 +5,7 @@ const initialState = {
 const GET_CART = 'GET_CART'
 const INCREASE_QUANTITY = 'INCREASE_QUANTITY'
 const DECREASE_QUANTITY = 'DECREASE_QUANTITY'
+const DELETE_PRODUCT = 'DELETE_PRODUCT'
 
 export function getCart(cartObj){
     return {
@@ -23,6 +24,13 @@ export function increaseQuantity(productId){
 export function decreaseQuantity(productId){
     return {
         type: DECREASE_QUANTITY,
+        payload: productId
+    }
+}
+
+export function deleteProduct(productId){
+    return {
+        type: DELETE_PRODUCT,
         payload: productId
     }
 }
@@ -46,6 +54,8 @@ export default function(state = initialState, action){
                 }
                 return element
             })}
+        case DELETE_PRODUCT:
+            return {...state, cart: state.cart.filter(item => item.product_id !== payload)}
         default:
             return state
     }

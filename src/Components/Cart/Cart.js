@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {getCart, increaseQuantity, decreaseQuantity} from '../../redux/cartReducer'
+import {getCart, increaseQuantity, decreaseQuantity, deleteProduct} from '../../redux/cartReducer'
 import './cart.css'
 
 function Cart(props){
@@ -13,6 +13,14 @@ function Cart(props){
         }
         if(value === 'minus' && cartQuantity > 1)
            return props.decreaseQuantity(productId)
+    }
+
+    const deleteProduct = (productId) => {
+        props.deleteProduct(productId)
+        axios.delete(`/api/cart/?productId=${productId}`)
+        .then(() => {
+            alert('Product removed from cart!')
+        }).catch(err => console.log('Error...', err))
     }
 
     const getSum = () => {
@@ -39,11 +47,16 @@ function Cart(props){
                     <nav className='cart-pro-price-section'>
                         <p>${element.product_price}</p>
                     </nav>
-                    <nav className='cart-pro-quantity-section'>
-                        <button onClick={() => handleDecAndInc('minus', element.cart_quantity, element.product_id)}>-</button>
-                        <button disabled='disabled' id='cart-pro-quantity-value'>{element.cart_quantity || 0}</button>
-                        <button onClick={() => handleDecAndInc('plus', element.cart_quantity, element.product_id, element.pro_quantity)}>+</button>
-                    </nav>
+                    <div className='cart-pro-quantity-section'>
+                        <nav className='cart-pro-quantity-align'>
+                            <button onClick={() => handleDecAndInc('minus', element.cart_quantity, element.product_id)}>-</button>
+                            <button disabled='disabled' id='cart-pro-quantity-value'>{element.cart_quantity || 0}</button>
+                            <button onClick={() => handleDecAndInc('plus', element.cart_quantity, element.product_id, element.pro_quantity)}>+</button>
+                            <nav className='align-remove'>
+                                <p onClick={() => deleteProduct(element.product_id)}>remove</p>
+                            </nav>
+                        </nav>
+                    </div>
                     <nav className='cart-pro-total-section'>
                     <p>${element.product_price * element.cart_quantity}</p>
                     </nav>
@@ -112,4 +125,4 @@ function Cart(props){
 
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {getCart, increaseQuantity, decreaseQuantity})(Cart)
+export default connect(mapStateToProps, {getCart, increaseQuantity, decreaseQuantity, deleteProduct})(Cart)

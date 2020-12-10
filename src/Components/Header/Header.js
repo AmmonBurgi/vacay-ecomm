@@ -64,7 +64,7 @@ function Header(props){
                 total += map[i]
             }
         }
-        return total;
+        return total.toFixed(2);
     }
 
     return (

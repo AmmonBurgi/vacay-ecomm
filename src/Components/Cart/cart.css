@@ -65,9 +65,12 @@
 }
 .cart-product-card{
     width: 100%;
-    height: 15vh;
+    height: 16vh;
+    box-sizing: border-box;
+    padding-top: 3vh;
     display: flex;
     align-items: flex-start;
+    position: relative;
 }
 .cart-pro-title-section{
     height: 100%;
@@ -75,6 +78,11 @@
     display: flex;
     align-items: flex-start;
 }
+.cart-pro-title-section p{
+    margin: 0;
+    font-size: 21px;
+    text-transform: uppercase;
+} 
 .cart-pro-title-section img{
     height: 100%;
     width: auto;
@@ -83,6 +91,10 @@
     width: 20%;
     display: flex;
     justify-content: flex-start;
+}
+.cart-pro-price-section p{
+    font-size: 20px;
+    margin: 0;
 }
 .cart-pro-quantity-section{
     width: 20%;
@@ -93,4 +105,83 @@
     width: 10%;
     display: flex;
     justify-content: flex-end;
+}
+.cart-pro-total-section p{
+    font-size: 20px;
+    margin: 0;
+    font-weight: bolder;
+}
+#cart-pro-quantity-value{
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    background-color: transparent;
+    border: 2px solid rgb(153,153,153);
+}
+#cart-pro-quantity-value:disabled{
+    color: black;
+}
+.cart-pro-quantity-section button{
+    padding: 5px;
+    background-color: transparent;
+    border: 2px solid rgb(153,153,153);
+}
+.cart-pro-quantity-section button:focus{
+    outline-color: black;
+}
+.cart-product-bar{
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+.cart-checkout-section{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 15vh;
+    margin-top: 3vh;
+}
+.cart-message{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.cart-message p{
+    font-size: 16px;
+    margin: 0;
+}
+.cart-message textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+    box-sizing: border-box;
+}
+.cart-checkout-sub{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.cart-checkout-sub{
+    font-style: italic;
+}
+.cart-subtotal{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.cart-checkout-sub button{
+    width: 100%;
+    background-color: black;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.cart-checkout-sub button:hover{
+    cursor: pointer;
 }

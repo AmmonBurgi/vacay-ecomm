@@ -5,7 +5,14 @@ import {getCart, increaseQuantity, decreaseQuantity} from '../../redux/cartReduc
 import './cart.css'
 
 function Cart(props){
-    // const [quantityArray, setQuantityArr] = useState([])
+    
+    const handleDecAndInc = (value, cartQuantity, productId, originalQuantity) => {
+        if(value === 'plus' && originalQuantity > cartQuantity){
+           return props.increaseQuantity(productId)
+        }
+        if(value === 'minus' && cartQuantity > 1)
+           return props.decreaseQuantity(productId)
+    }
     
     let cartMap = null
     if(props.cartState.cart.length !== 0){
@@ -17,15 +24,15 @@ function Cart(props){
                         <p>{element.cart_title}</p>
                     </nav>
                     <nav className='cart-pro-price-section'>
-                        <p>{element.cart_price / element.cart_quantity}</p>
+                        <p>${element.product_price}</p>
                     </nav>
                     <nav className='cart-pro-quantity-section'>
-                        <button onClick={() => props.decreaseQuantity(element.product_id)}>-</button>
+                        <button onClick={() => handleDecAndInc('minus', element.cart_quantity, element.product_id)}>-</button>
                         <button>{element.cart_quantity || 0}</button>
-                        <button onClick={() => props.increaseQuantity(element.product_id)}>+</button>
+                        <button onClick={() => handleDecAndInc('plus', element.cart_quantity, element.product_id, element.pro_quantity)}>+</button>
                     </nav>
                     <nav className='cart-pro-total-section'>
-                        <p>$ 123</p>
+                    <p>${element.product_price * element.cart_quantity}</p>
                     </nav>
                 </div>
             )

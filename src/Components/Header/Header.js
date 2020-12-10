@@ -59,7 +59,7 @@ function Header(props){
     const getSum = () => {
         let total = 0;
         if(props.cartState.cart.length !== 0){
-            const map = props.cartState.cart.map((element) => parseFloat(element.cart_price))
+            const map = props.cartState.cart.map((element) => parseFloat(element.product_price * element.cart_quantity))
             for(let i in map){
                 total += map[i]
             }

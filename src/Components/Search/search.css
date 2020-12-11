@@ -81,8 +81,11 @@
     flex-direction: column;
     justify-content: space-between;
     width: 23%;
-    height: 230px;
-    margin: 10px;
+    height: 24vh;
+    margin-bottom: 1vh;
+    margin-right: 1%;
+    margin-left: 1%;
+    overflow: hidden;
 }
 .search-all-sold-out{
     text-transform: uppercase;
@@ -104,7 +107,16 @@
 .search-all-align-title p{
     margin: 2px;
 }
-.search-align-price{
+#search-align-price{
     font-size: 14px;
     font-weight: bolder;
+}
+
+@media(max-width: 1366px){
+    .search-all-align-title p{
+        font-size: 15px;
+    }
+    #search-align-price{
+        font-size: 13px;
+    }
 }

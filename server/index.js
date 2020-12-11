@@ -1,5 +1,3 @@
-const { configure } = require('@testing-library/react')
-
 require('dotenv').config()
 const express = require('express'),
     session = require('express-session'),
@@ -9,7 +7,8 @@ const express = require('express'),
     app = express(),
     authCtrl = require('./controllers/authController'),
     collectCtrl = require('./controllers/collectionsController'),
-    cartCtrl = require('./controllers/cartController')
+    cartCtrl = require('./controllers/cartController'),
+    mailCtrl = require('./controllers/mailController')
 
     app.use(express.json())
 
@@ -38,6 +37,9 @@ const express = require('express'),
     app.post('/api/cart/add-to-cart', cartCtrl.addToCart)
     app.get('/api/cart/all', cartCtrl.getCart)
     app.delete('/api/cart', cartCtrl.deleteProductCart)
+
+    //SendGrid Mail Endpoints
+    app.post('/api/mail/feedback', mailCtrl.sendFeedback)
     
 
     massive({

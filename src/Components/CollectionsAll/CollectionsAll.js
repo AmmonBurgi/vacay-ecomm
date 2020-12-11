@@ -27,7 +27,7 @@ function CollectionsAll(props){
                 <span className='collections-all-align-title'>
                     {element.pro_quantity === 0 ? <p className='collections-all-sold-out'>Sold Out</p> : null}
                     <p>{element.product_title}</p>
-                    <p className='all-align-price'>$ {element.product_price}</p>
+                    <p id='all-align-price'>$ {element.product_price}</p>
                 </span>
             </div>
         )

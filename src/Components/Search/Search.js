@@ -35,7 +35,7 @@ function Search(props){
                 <span className='search-all-align-title'>
                     {element.pro_quantity === 0 ? <p className='search-all-sold-out'>Sold Out</p> : null}
                     <p>{element.product_title}</p>
-                    <p className='search-align-price'>$ {element.product_price}</p>
+                    <p id='search-align-price'>$ {element.product_price}</p>
                 </span>
             </div>
         )

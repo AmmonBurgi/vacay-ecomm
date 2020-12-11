@@ -1,12 +1,37 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import emailjs from 'emailjs-com'
 import {getCart, increaseQuantity, decreaseQuantity, deleteProduct} from '../../redux/cartReducer'
 import './cart.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+import {faPinterest} from '@fortawesome/free-brands-svg-icons'
+
 function Cart(props){
     const [sellerMessage, setMessage] = useState('')
-    
+
+    const tempParams = {
+        to_name: 'Ammon',
+        from_name: `${props.authState.user.first_name} ${props.authState.user.last_name}`,
+        from_email: props.authState.user.email,
+        from_phone: props.authState.user.phone,
+        message: sellerMessage
+    }
+
+    const sendFeedback = () => {
+        emailjs.send('service_4i13xqt', 'template_cjdfeyi', tempParams, 
+        'user_TJ1zsDGcnKamDKqHqMJ4s')
+        .then(() => {
+            setMessage('')
+        }).catch(err => console.log('Failed...', err))
+    }
+
+    const handleCheckout = () => {
+        sendFeedback()
+    }
+
     const handleDecAndInc = (value, cartQuantity, productId, originalQuantity) => {
         if(value === 'plus' && originalQuantity > cartQuantity){
            return props.increaseQuantity(productId)
@@ -65,9 +90,23 @@ function Cart(props){
         }) 
     }
 
-    // console.log(props.cartState.cart)
     return(
         <div className='cart-component'>
+            <div className='cart-prev'>
+                <nav className='cart-prev-left'>
+                    <p className='cart-prev-home' onClick={() => props.history.push('/')}>Home </p>
+                    <p className='cart-prev-arrow'>&#62;</p>
+                    <p className='cart-prev-arrow'> cart</p>
+                </nav>
+                <nav className='cart-icons'>
+                    <a href='https://www.instagram.com/livemoreworkless/' >
+                        <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
+                    </a>
+                    <a href='https://www.pinterest.com/vacaysunglasses/' >
+                        <FontAwesomeIcon icon={faPinterest}></FontAwesomeIcon>
+                    </a>
+                </nav>
+            </div>
             {Object.keys(props.authState.user).length === 0 ? 
             <div>
                 Please Login before accessing cart!
@@ -80,7 +119,10 @@ function Cart(props){
                 </nav>
                 {props.cartState.cart.length === 0 ? 
                 <div>
-                    Cart is Empty!
+                    <p>Your cart is currently empty!</p>
+                    <p className='cart-align-browsing'>
+                        Continue browsing <a id='cart-continue-browsing' onClick={() => props.history.push('/collections/all')}>here!</a>
+                    </p>
                 </div>    
                 :
                 <div className='cart-main'>
@@ -112,7 +154,7 @@ function Cart(props){
                         <div className='cart-checkout-sub'>
                             <p className='cart-subtotal'>Subtotal: ${getSum()}</p>
                             <p>Shipping & taxes calculated at checkout!</p>
-                            <button>checkout</button>
+                            <button onClick={handleCheckout}>checkout</button>
                         </div>
                     </section>
                 </div>

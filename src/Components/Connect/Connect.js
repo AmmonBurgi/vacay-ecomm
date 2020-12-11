@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './connect.css'
-import emailjs from 'emailjs-com'
+import axios from 'axios'
 import {connect} from 'react-redux'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -13,27 +13,18 @@ function Connect(props){
         [phone, setPhone] = useState(''),
         [message, setMessage] = useState('')
 
-    const tempParams = {
-        to_name: 'Ammon',
-        from_name: name,
-        from_email: email,
-        from_phone: phone,
-        message: message
-    }
-
     const sendFeedback = () => {
-        emailjs.send('service_4i13xqt', 'template_cjdfeyi', tempParams, 
-        'user_TJ1zsDGcnKamDKqHqMJ4s')
-        .then((res) => {
-            console.log(res.text)
+        axios.post('/api/mail/feedback', {name, message, email, phone})
+        .then(res => {
             setName('')
             setEmail('')
             setPhone('')
             setMessage('')
-        }).catch(err => console.log('Failed...', err))
+            alert(res.data[0].message)
+        })
+        .catch(err => console.log('Error...', err))
     }
 
-    console.log(name, props.user.first_name)
     return(
         <div className='connect-comp'>
             <div className='connect-prev'>

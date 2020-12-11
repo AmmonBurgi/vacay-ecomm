@@ -35,7 +35,6 @@ function Header(props){
         if(props.cartState.cart.length === 0){
             axios.get('/api/cart/all').then(res => {
                 props.getCart(res.data)
-                console.log(res.data)
             })
             .catch(err => console.log('Error...', err))
         }    

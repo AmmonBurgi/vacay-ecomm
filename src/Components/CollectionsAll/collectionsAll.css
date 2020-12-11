@@ -22,7 +22,6 @@
 }
 .collections-all-display{
     width: 60%;
-    box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -33,8 +32,11 @@
     flex-direction: column;
     justify-content: space-between;
     width: 23%;
-    height: 230px;
-    margin: 10px;
+    height: 22vh;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 1vh;
+    overflow: hidden;
 }
 .collections-all-sold-out{
     text-transform: uppercase;
@@ -56,7 +58,7 @@
 .collections-all-align-title p{
     margin: 2px;
 }
-.all-align-price{
+#all-align-price{
     font-size: 14px;
     font-weight: bolder;
 }
@@ -89,4 +91,16 @@
     font-size: 20px;
     margin-right: .5vw;
     color: black;
+}
+
+@media(max-width: 1440px){
+}
+
+@media(max-width: 1366px){
+    .collections-all-align-title p{
+        font-size: 15px;
+    }
+    #all-align-price{
+        font-size: 13px;
+    }
 }

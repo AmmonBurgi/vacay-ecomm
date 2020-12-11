@@ -32,3 +32,14 @@
 .nav-links *:hover{
     color: rgb(110,203,184);
 }
+
+@media(max-width: 1366px){
+    .nav-component{
+        width: 70%;
+    }
+}
+@media(max-width: 425px){
+    .nav-component{
+        display: none;
+    }
+}

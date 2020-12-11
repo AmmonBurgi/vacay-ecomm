@@ -9,11 +9,14 @@ import axios from 'axios'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
+import {faTimes} from '@fortawesome/free-solid-svg-icons'
 import './header.css'
 
 function Header(props){
     const [toggle, setToggle] = useState(true),
-        [search, setSearch] = useState('')
+        [search, setSearch] = useState(''),
+        [phoneToggle, setPhoneToggle] = useState(false)
 
     const history = useHistory()
 
@@ -41,7 +44,7 @@ function Header(props){
     }, [])
 
     const enterKeyPress = (event) => {
-        if(event.key === 'Enter'){
+        if(event.key === 'Enter' || !event.key ){
             axios.get(`/api/collections/searched/?searchVal=${search}`)
             .then(res => {
                     props.setSearchArray(res.data)
@@ -76,7 +79,44 @@ function Header(props){
                     <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
                     <p className='left-section-button'>Search</p> 
                 </div>
-                <nav className='right-section'>
+                <div
+                onClick={() => setPhoneToggle(!phoneToggle)}
+                className='left-section-phone'
+                >
+                    {phoneToggle === false ? <FontAwesomeIcon icon={faBars}></FontAwesomeIcon> : <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>}
+                    {phoneToggle === false ? <p>Menu</p> : <p>Close Menu</p>}
+                    <hr></hr>
+                    <div className={phoneToggle === false ? 'nav-bar-menu-none' : 'nav-bar-menu'}>
+                        <nav>
+                            <FontAwesomeIcon onClick={enterKeyPress} icon={faSearch}></FontAwesomeIcon>
+                            <input value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' />
+                        </nav>
+                        <section>
+                            <div>
+                                <Link to='/collections'>SHOP</Link>
+                            </div>
+                            <div>
+                                <Link to='/story'>OUR STORY</Link>
+                            </div>
+                            <div>
+                                <Link to='/connect'>CONNECT</Link>
+                            </div>
+                        </section>
+                        <div className='phone-login-align'>
+                            {Object.keys(props.authState.user).length !== 0 ? 
+                            <p className='link-phone'>Logged In as {props.authState.user.first_name}</p> 
+                            : 
+                            <Link className='link-phone' to='/account/login'>Log In</Link>}
+                        </div>
+                        <div>
+                            {Object.keys(props.authState.user).length !== 0 ? 
+                            <Link className='link-phone' to='/' onClick={logoutUser}>Log out</Link>
+                            :
+                            <Link className='link-phone' to='/account/register'>Create Account</Link>}
+                        </div>
+                    </div>
+                </div>
+                <div className='right-section'>
                     {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
@@ -85,11 +125,11 @@ function Header(props){
                     to='/account/register'>Create Account</Link>}
                     <div 
                     onClick={Object.keys(props.authState.user).length !== 0 ? () => history.push('/cart') : () => alert('Please login before accessing cart!')}  
-                    className='cart-box' >
+                    id='cart-box' >
                         <FontAwesomeIcon className='cart-icon' icon={faShoppingCart}></FontAwesomeIcon>
                         <p>{props.cartState.cart.length} Cart {getSum() === 0 ? null : `$${getSum()}`}</p>
                     </div>
-                </nav>
+                </div>
             </nav>
         </div>
     )

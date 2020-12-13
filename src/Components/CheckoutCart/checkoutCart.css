@@ -1,0 +1,102 @@
+.checkout-cart-component{
+    margin-top: 4vh;
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.checkout-cart-component hr{
+    width: 100%;
+}
+.checkout-cart-map-display{
+    width: 100%;
+}
+.checkout-cart-card{
+    width: 100%;
+    height: 6vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+.checkout-cart-img-box{
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 100%;
+    width: auto;
+    margin: 0;
+    border-radius: 5px;
+}
+.checkout-cart-img-box p{
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.checkout-cart-img-align{
+    height: 100%;
+    position: relative;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.checkout-cart-img-align img{
+    height: 100%;
+    width: auto;
+    border-radius: 5px;
+}
+.checkout-cart-img-align div{
+    z-index: 100;
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    border-radius: 50%;
+    background-color: grey;
+    /* opacity: .9; */
+    padding: 5px;
+}
+.checkout-cart-card-price{
+    margin: 0;
+    font-weight: bolder;
+}
+.checkout-subtotal-result{
+    width: 100%;
+}
+.checkout-align-subtotal{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.checkout-align-subtotal p:last-child{
+    font-weight: bolder;
+}
+.checkout-align-shipping p:last-child{
+    font-weight: bolder;
+}
+.checkout-align-shipping{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.checkout-total-result{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.checkout-total-result p:first-child{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.checkout-total-result nav{
+    display: flex;
+    align-items: center;
+}
+.checkout-total-result nav p:first-child{
+    font-size: 12px;
+    margin-right: 10px;
+}
+.checkout-total-result nav p:last-child{
+    font-size: 20px;
+    font-weight: bolder;
+}

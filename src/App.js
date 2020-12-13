@@ -10,14 +10,22 @@ import {loadStripe} from '@stripe/stripe-js'
 
 const stripePromise = loadStripe('pk_test_51GxfLDIvVVGRQ9wLZdeKLkEieEKliFGS6yGGwLt2b0jHmVzlbSruFeMbzTX6ABfoZb1u2bX4legnRHxhn08QDbYf00iUQC9LPn')
 
-function App() {
+function App(props) {
   return (
     <Elements stripe={stripePromise} >
       <div className="App">
-        <Header />
-        <NavBar />
-        {routes}
-        <Footer />
+        {props.location.pathname === '/checkout/info' || props.location.pathname === '/checkout/info/shipping' || props.location.pathname === '/checkout/info/shipping/payment' ? 
+        <>
+          {routes}
+        </>
+        :
+        <>
+          <Header />
+          <NavBar />
+          {routes}
+          <Footer />
+        </>
+        }
       </div>
     </Elements>
   );

@@ -29,7 +29,8 @@ function Cart(props){
     }
 
     const handleCheckout = () => {
-        sendFeedback()
+        // sendFeedback()
+        props.history.push('/checkout/info')
     }
 
     const handleDecAndInc = (value, cartQuantity, productId, originalQuantity) => {

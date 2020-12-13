@@ -51,6 +51,7 @@
     margin-top: 1%;
     margin-bottom: 2%;
     transition: .25s;
+    position: relative;
 }
 .info-input-box-initial{
     height: 5vh;
@@ -63,7 +64,11 @@
     border: 2px solid rgb(110,203,184);
     padding: 1%;
     box-sizing: border-box;
-    margin: 3%;
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    position: relative;
 }
 .info-label-input{
     outline: none;
@@ -107,6 +112,13 @@
 .info-align-location{
     display: flex;
     width: 100%;
+}
+#info-state-box{
+    margin-right: 0;
+    margin-left: 0;
+}
+.info-align-location div{
+    width: 32%;
 }
 .info-title-tag{
     margin-left: 3%;
@@ -168,6 +180,7 @@
 }
 .info-front-back-button p:hover{
     color: rgb(97, 179, 162);
+    cursor: pointer;
 }
 .info-front-back-button button{
     width: 30%;
@@ -181,4 +194,37 @@
 }
 .info-front-back-button button:hover{
     background-color: rgb(97, 179, 162);
+    cursor: pointer;
+}
+.states-map{
+    display: initial;
+    appearance: none;
+    width: 100%;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+.states-none{
+    display: none;
+}
+.states-map:focus + .dropdown-arrow-box{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 25px;
+}
+.dropdown-arrow-box{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 25px;
+}
+#no-value-option{
+    color: rgb(132,132,132);
 }

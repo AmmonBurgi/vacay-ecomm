@@ -4,6 +4,9 @@ import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import {connect} from 'react-redux'
 import './information.css'
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faSortDown} from '@fortawesome/free-solid-svg-icons'
+
 function Information(props){
     const [emailInfo, setEmailInfo] = useState(props.authState.user.email || ''),
         [firstNameInfo, setInfoFirst] = useState(props.authState.user.first_name || ''),
@@ -15,9 +18,55 @@ function Information(props){
         [countryInfo, setInfoCountry] = useState(''),
         [stateInfo, setInfoState] = useState(''),
         [zipInfo, setInfoZip] = useState(''),
-        [phoneInfo, setInfoPhone] = useState(props.authState.user.phone || '')
+        [phoneInfo, setInfoPhone] = useState(props.authState.user.phone || ''),
+        [unitedToggle, setUnited] = useState(true),
+        [mexicoToggle, setMexico] = useState(false),
+        [canadaToggle, setCanada] = useState(false)
 
-        console.log(emailInfo)
+    const unitedStates = 
+    ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
+    const canadianProvinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia', 'Nunavut', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon Territory']
+
+    const mexicoStates = ['mexico']
+
+    const unitedMap = unitedStates.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+    const canadaMap = canadianProvinces.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+    const mexicoMap = mexicoStates.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+
+    const handleCountry = (event) => {
+        setInfoCountry(event.target.value)
+        if(event.target.value === 'United States'){
+                setUnited(true)
+                setMexico(false)
+                setCanada(false)
+        }
+        if(event.target.value === 'Canada'){
+            setUnited(false)
+            setMexico(false)
+            setCanada(true)
+        }
+        if(event.target.value === 'Mexico'){
+            setUnited(false)
+            setMexico(true)
+            setCanada(false)
+        }
+    }
+
+    console.log(countryInfo)
+    console.log(unitedToggle)
     return (
         <div className='information-component'>
             <section className='info-left-section'>
@@ -96,19 +145,28 @@ function Information(props){
                     <nav className='info-align-location'>
                         <div id='info-country-box' className={countryInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                             <p className={countryInfo.length === 0 ? 'info-none' : 'info-label'} >Country/Region</p>
-                            <input
-                             value={countryInfo}
-                             placeholder='Country/Region'
-                             className={countryInfo.length === 0 ? 'info-none-input' : 'info-label-input'}
-                             onChange={(e) => setInfoCountry(e.target.value)} />
+                            <select onChange={(e) => handleCountry(e)}>
+                                <option id='no-value-option' value={''}>Country</option>
+                                <option value='United States'>United States</option>
+                                <option value='Canada'>Canada</option>
+                                <option value='Mexico'>Mexico</option>
+                            </select>
                         </div>
                         <div id='info-state-box' className={stateInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
-                            <p className={stateInfo.length === 0 ? 'info-none' : 'info-label'} >State</p>
-                            <input 
-                            value={stateInfo}
-                            placeholder='State'
-                            className={stateInfo.length === 0 ? 'info-none-input' : 'info-label-input'}
-                            onChange={(e) => setInfoState(e.target.value)} />
+                            <p className={stateInfo.length === 0 ? 'info-none' : 'info-label'} >{canadaToggle === true ? 'Provinces' : 'States'}</p>
+                            <select className={unitedToggle === true ? 'states-map' : 'states-none'} onChange={e => setInfoState(e.target.value)}>
+                                <option value={''} id='no-value-option'>States</option>
+                                {unitedMap}
+                            </select>
+                                <FontAwesomeIcon className='dropdown-arrow-box' icon={faSortDown}></FontAwesomeIcon>
+                            <select className={canadaToggle === true ? 'states-map' : 'states-none'} onChange={e => setInfoState(e.target.value)}>
+                                <option>Provinces</option>
+                                {canadaMap}
+                            </select>
+                            <select className={mexicoToggle === true ? 'states-map' : 'states-none'} onChange={e => setInfoState(e.target.value)}>
+                                <option>States</option>
+                                {mexicoMap}
+                            </select>
                         </div>
                         <div id='info-zip-box' className={zipInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                             <p className={zipInfo.length === 0 ? 'info-none' : 'info-label'} >Zip Code</p>
@@ -128,8 +186,8 @@ function Information(props){
                         onChange={(e) => setInfoPhone(e.target.value)} />
                     </div>
                     <div className='info-front-back-button'>
-                        <p>&#60; Back To Cart</p>
-                        <button>Continue to Shipping</button>
+                        <p onClick={() => props.history.push('/cart')}>&#60; Back To Cart</p>
+                        <button onClick={() => props.history.push('/checkout/info/shipping')}>Continue to Shipping</button>
                     </div>
                 </section>
             </section>

@@ -39,7 +39,10 @@
     }
 }
 @media(max-width: 425px){
-    .nav-component{
+    .nav-links{
         display: none;
+    }
+    .nav-component{
+        justify-content: center;
     }
 }

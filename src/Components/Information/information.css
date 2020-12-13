@@ -1,0 +1,54 @@
+.information-component{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.info-left-section{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    box-sizing: border-box;
+    background-color: gainsboro;
+    align-items: flex-end;
+}
+.info-right-section{
+    width: 30%;
+    background-color: grey;
+}
+.info-contact-align{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.info-shipping-section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#info-input-box{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5%;
+    box-sizing: border-box;
+    background-color: grey;
+    margin: 5%;
+}
+.info-none{
+    display: initial;
+}
+.info-label{
+
+}
+.info-align-first-last{
+    display: flex;
+    width: 100%;
+}
+.info-align-location{
+    display: flex;
+    width: 100%;
+}

@@ -79,27 +79,27 @@ function Header(props){
                     <FontAwesomeIcon className='search-icon' icon={faSearch}></FontAwesomeIcon>
                     <p className='left-section-button'>Search</p> 
                 </div>
-                <div
-                onClick={() => setPhoneToggle(!phoneToggle)}
-                className='left-section-phone'
-                >
-                    {phoneToggle === false ? <FontAwesomeIcon icon={faBars}></FontAwesomeIcon> : <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>}
-                    {phoneToggle === false ? <p>Menu</p> : <p>Close Menu</p>}
+                <div className='left-section-phone'>
+                    <nav 
+                    onClick={() => setPhoneToggle(!phoneToggle)} className='phone-toggle-menu'>
+                        {phoneToggle === false ? <FontAwesomeIcon icon={faBars}></FontAwesomeIcon> : <FontAwesomeIcon icon={faTimes}></FontAwesomeIcon>}
+                        {phoneToggle === false ? <p>Menu</p> : <p>Close Menu</p>}
+                    </nav>
                     <hr></hr>
                     <div className={phoneToggle === false ? 'nav-bar-menu-none' : 'nav-bar-menu'}>
-                        <nav>
+                        <nav className='drop-menu-search-box'>
                             <FontAwesomeIcon onClick={enterKeyPress} icon={faSearch}></FontAwesomeIcon>
                             <input value={search} onChange={(e) => setSearch(e.target.value)} onKeyPress={enterKeyPress} placeholder='Search our store' />
                         </nav>
-                        <section>
-                            <div>
-                                <Link to='/collections'>SHOP</Link>
+                        <section className='drop-menu-nav-box'>
+                            <div className='drop-nav-border'>
+                                <Link onClick={() => setPhoneToggle(false)} to='/collections'>SHOP</Link>
                             </div>
-                            <div>
-                                <Link to='/story'>OUR STORY</Link>
+                            <div className='drop-nav-border'>
+                                <Link onClick={() => setPhoneToggle(false)} to='/story'>OUR STORY</Link>
                             </div>
-                            <div>
-                                <Link to='/connect'>CONNECT</Link>
+                            <div className='drop-nav-border'>
+                                <Link onClick={() => setPhoneToggle(false)} to='/connect'>CONNECT</Link>
                             </div>
                         </section>
                         <div className='phone-login-align'>
@@ -108,7 +108,7 @@ function Header(props){
                             : 
                             <Link className='link-phone' to='/account/login'>Log In</Link>}
                         </div>
-                        <div>
+                        <div className='phone-login-align'>
                             {Object.keys(props.authState.user).length !== 0 ? 
                             <Link className='link-phone' to='/' onClick={logoutUser}>Log out</Link>
                             :

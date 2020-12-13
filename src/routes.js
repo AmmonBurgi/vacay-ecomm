@@ -2,7 +2,6 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Landing from './Components/Landing/Landing'
 import Cart from './Components/Cart/Cart'
-import Checkout from './Components/Checkout/Checkout'
 import Collections from './Components/Collections/Collections'
 import Connect from './Components/Connect/Connect'
 import Login from './Components/Login/Login'
@@ -15,12 +14,12 @@ import Account from './Components/Account/Account'
 import CollectionsAll from './Components/CollectionsAll/CollectionsAll'
 import DisplayCollection from './Components/DisplayCollection/DisplayCollection'
 import Recovery from './Components/Recovery/Recovery'
+import Information from './Components/Information/Information'
 
 export default (
     <Switch>
         <Route exact path='/' component={Landing} />
         <Route path='/cart' component={Cart} />
-        <Route path='/checkout/:id' component={Checkout} />
         <Route path='/collections/all/product/:id' component={DisplayCollection} />
         <Route path='/collections/:type' component={CollectionsAll} />
         <Route path='/collections' component={Collections} />
@@ -29,9 +28,10 @@ export default (
         <Route path='/account/register' component={Register} />
         <Route path='/account/recovery' component={Recovery} />
         <Route path='/account' component={Account} />
-        <Route path='/payment/:id' component={Payment} />
+        <Route path='/checkout/info/shipping/payment' component={Payment} />
+        <Route path='/checkout/info/shipping' component={Shipping} />
+        <Route path='/checkout/info' component={Information} />
         <Route path='/search' component={Search} />
-        <Route path='/shipping/:id' component={Shipping} />
         <Route path='/story' component={Story} />
     </Switch>
 )

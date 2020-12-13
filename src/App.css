@@ -6,6 +6,12 @@
   align-items: center;
 }
 
+@media(max-width: 425px){
+  .App{
+    position: relative;
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

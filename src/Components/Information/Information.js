@@ -8,9 +8,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSortDown} from '@fortawesome/free-solid-svg-icons'
 
 function Information(props){
-    const [emailInfo, setEmailInfo] = useState(props.authState.user.email || ''),
+    const [infoToggle, setInfoToggle] = useState(Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? true : false),
+        [emailInfo, setEmailInfo] = useState(infoToggle ===  props.authState.user.email || ''),
         [firstNameInfo, setInfoFirst] = useState(props.authState.user.first_name || ''),
-        [lastNameInfo, setInfoLast] = useState(props.authState.user.last_name || ''),
+        [lastNameInfo, setInfoLast] = useState(props.authState.user.last_name || props.purchaseState.purchaseInfo.lastName || ''),
         [companyInfo, setInfoCompany] = useState(''),
         [addressInfo, setInfoAddress] = useState(''),
         [apartmentInfo, setInfoApartment] = useState(''),
@@ -84,15 +85,34 @@ function Information(props){
         if(countryInfo.length === 0){
             return alert('Please select Country/Region!')
         }
+        console.log(countryInfo, stateInfo)
         if(stateInfo.length === 0){
             return alert('Please select State/Province')
         }
         if(countryInfo === 'United States' || countryInfo === 'Mexico'){
-            if(zipInfo !== 5){
+            if(zipInfo.length !== 5){
                 return alert('Invalid Zip Code/Postal Code')
             }
         }
-
+        if(countryInfo === 'Canada'){
+            if(zipInfo.length !== 6){
+                return alert('Invalid Zip Code/Postal Code')
+            }
+        }
+        props.setPurchase({
+            email: emailInfo,
+            firstName: firstNameInfo,
+            lastName: lastNameInfo,
+            company: companyInfo,
+            address: addressInfo,
+            apartment: apartmentInfo,
+            city: cityInfo,
+            country: countryInfo,
+            state: stateInfo,
+            zipCode: zipInfo,
+            phone: phoneInfo
+        })
+        props.history.push('/checkout/info/shipping')
     }
 
     return (
@@ -216,7 +236,7 @@ function Information(props){
                     </div>
                     <div className='info-front-back-button'>
                         <p onClick={() => props.history.push('/cart')}>&#60; Back To Cart</p>
-                        <button onClick={() => props.history.push('/checkout/info/shipping')}>Continue to Shipping</button>
+                        <button onClick={handlePurchaseInfo}>Continue to Shipping</button>
                     </div>
                 </section>
             </section>
@@ -229,4 +249,4 @@ function Information(props){
 
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps)(Information)
+export default connect(mapStateToProps, {setPurchase})(Information)

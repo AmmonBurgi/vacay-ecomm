@@ -24,20 +24,23 @@ function CheckoutCart(props){
         return total.toFixed(2);
     }
 
-    const cartMap = props.cart.map((element, index) => {
-        return (
-            <div key={index} className='checkout-cart-card'>
-                <div className='checkout-cart-img-box'>
-                    <div className='checkout-cart-img-align'>
-                        <div>{element.cart_quantity}</div>
-                        <img src={element.product_img} />
+    let cartMap = null
+    if(props.cart.length !== 0){
+         cartMap = props.cart.map((element, index) => {
+            return (
+                <div key={index} className='checkout-cart-card'>
+                    <div className='checkout-cart-img-box'>
+                        <div className='checkout-cart-img-align'>
+                            <div>{element.cart_quantity}</div>
+                            <img src={element.product_img} />
+                        </div>
+                        <p>{element.cart_title}</p>
                     </div>
-                    <p>{element.cart_title}</p>
+                    <p className='checkout-cart-card-price'>$ {element.product_price * element.cart_quantity}</p>
                 </div>
-                <p className='checkout-cart-card-price'>$ {element.product_price * element.cart_quantity}</p>
-            </div>
-        )
-    })
+            )
+        })
+    }
 
     return (
         <div className='checkout-cart-component'>

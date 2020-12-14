@@ -3,6 +3,27 @@
     display: flex;
     justify-content: flex-end;
 }
+.ship-left-section-none{
+   text-align: center;
+   font-size: 18px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    box-sizing: border-box;
+    align-items: flex-end;
+}
+.ship-left-none-text{
+    letter-spacing: 2px;
+}
+.ship-left-section-none p b{
+    text-transform: uppercase;
+    color: rgb(110,203,184);
+}
+.ship-left-section-none p b:hover{
+    color: rgb(97, 179, 162);
+    cursor: pointer;
+}
 .ship-left-section{
     width: 40%;
     display: flex;

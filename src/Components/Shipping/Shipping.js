@@ -1,15 +1,43 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './shipping.css'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
+import {connect} from 'react-redux'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
 
 function Shipping(props){
-    const [dotToggle, setDot] = useState(true)
+    const [dotToggle, setDot] = useState(true),
+            [purchaseInfoToggle, setInfoToggle] = useState(true)
+
+    useEffect(() => {
+        if(Object.keys(props.purchaseInfo).length === 0){
+            setInfoToggle(false)
+        }
+    }, [])
 
     return(
         <div className='ship-component'>
+            {purchaseInfoToggle === false ? 
+            (
+            <div className='ship-left-section-none'>
+                <div className='info-checkout-title'>
+                    <p><b id='info-title-color'>Our Planet</b> Our Future</p>
+                </div>
+                <div className='checkout-purchase-nav'>
+                    <p onClick={() => props.history.push('/cart')} className='checkout-nav-no'>Cart</p>
+                    <p className='checkout-nav-icon'>&#62;</p>
+                    <p onClick={() => props.history.push('/checkout/info/')} className='checkout-nav-no'>Information</p>
+                    <p className='checkout-nav-icon'>&#62;</p>
+                    <p className='checkout-nav-go'>Shipping</p>
+                    <p className='checkout-nav-icon'>&#62;</p>
+                    <p onClick={() => props.history.push('/checkout/info/shipping/payment')} className='checkout-nav-no'>Payment</p>
+                </div>
+                <p className='ship-left-none-text'>You're missing information that is needed to finish your purchase! Please finish filling out your information <b>here!</b></p>
+            </div>
+            ) 
+            : 
+            (
             <section className='ship-left-section' >
                 <div className='info-checkout-title'>
                     <p><b id='info-title-color'>Our Planet</b> Our Future</p>
@@ -55,6 +83,7 @@ function Shipping(props){
                         <button onClick={() => props.history.push('/checkout/info/shipping/payment')}>Continue to Payment</button>
                 </div>
             </section>
+            )}
             <section className='ship-right-section' >
                 <CheckoutCart />
             </section>
@@ -62,4 +91,6 @@ function Shipping(props){
     )
 }
 
-export default Shipping
+const mapStateToProps = (reduxState) => reduxState.purchaseState
+
+export default connect(mapStateToProps)(Shipping)

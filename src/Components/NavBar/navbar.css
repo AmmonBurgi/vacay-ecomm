@@ -11,8 +11,10 @@
     text-decoration: none;
 }
 .main-link p{
-    margin-right: 10px;
     font-size: 18px;
+}
+.main-link p:first-child{
+    margin-right: 10px;
 }
 .planet{
     font-weight: bolder;
@@ -44,5 +46,9 @@
     }
     .nav-component{
         justify-content: center;
+        width: 100%;
+    }
+    .nav-component p{
+        font-size: 5vw;
     }
 }

@@ -9,8 +9,8 @@
     width: 60%;
 }
 .story-header-tag p{
-margin: 0;
-font-size: 25px;
+    margin: 0;
+    font-size: 25px;
 }
 .story-header-tag hr{
     width: 100%;
@@ -52,4 +52,26 @@ font-size: 25px;
 .story-text-info p{
     line-height: 1.6;
     font-weight: lighter;
+}
+
+@media(max-width: 425px){
+    .story-header-tag{
+        width: 100%;
+    }
+    .story-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .story-icons{
+        display: none;
+    }
+    .story-prev p{
+        font-size: 3vw;
+    }
+    .story-header-tag{
+        margin-bottom: 0;
+    }
+    .story-text-info{
+        width: 95%;
+    }
 }

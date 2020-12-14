@@ -1,4 +1,18 @@
 .story-video-component{
     width: 60%;
-    height: auto;
+    height: 70vh;
+    position: relative;
+}
+@media(max-width: 425px){
+    .story-video-component{
+        width: 95%;
+        height: auto;
+        position: relative;
+        padding-top: 56.25%;
+    }
+    .react-player{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }

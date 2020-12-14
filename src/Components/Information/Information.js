@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import {connect} from 'react-redux'
+import {setPurchase} from '../../redux/purchaseReducer'
 import './information.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -45,6 +46,7 @@ function Information(props){
         )
     })
 
+    
     const handleCountry = (event) => {
         setInfoCountry(event.target.value)
         if(event.target.value === 'United States'){
@@ -62,6 +64,35 @@ function Information(props){
             setMexico(true)
             setCanada(false)
         }
+    }
+
+    //Purchase Info
+    const handlePurchaseInfo = () => {
+        const emailArray = emailInfo.split('').filter(element => element === '@')
+        if(emailInfo.length === 0 || emailArray.length === 0){
+            return alert('Invalid Email!')
+        }
+        if(firstNameInfo.length === 0 || lastNameInfo.length === 0){
+            return alert('Invalid First or Last name!')
+        }
+        if(addressInfo.length === 0){
+            return alert('Invalid Address!')
+        }
+        if(cityInfo.length === 0){
+            return alert('Invalid City!')
+        }
+        if(countryInfo.length === 0){
+            return alert('Please select Country/Region!')
+        }
+        if(stateInfo.length === 0){
+            return alert('Please select State/Province')
+        }
+        if(countryInfo === 'United States' || countryInfo === 'Mexico'){
+            if(zipInfo !== 5){
+                return alert('Invalid Zip Code/Postal Code')
+            }
+        }
+
     }
 
     return (

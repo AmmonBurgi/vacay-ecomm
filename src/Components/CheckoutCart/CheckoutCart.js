@@ -1,8 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
+import {getCart} from '../../redux/cartReducer'
+import axios from 'axios'
 import './checkoutCart.css'
 
 function CheckoutCart(props){
+
+    useEffect(() => {
+        if(props.cart.length === 0){
+            axios.get('/api/cart/all').then(res => props.getCart(res.data))
+            .catch(err => console.log('Error...', err))
+        }
+    }, [])
 
     const getSum = () => {
         let total = 0;
@@ -60,4 +69,4 @@ function CheckoutCart(props){
 
 const mapStateToProps = (reduxState) => reduxState.cartState
 
-export default connect(mapStateToProps)(CheckoutCart)
+export default connect(mapStateToProps, {getCart})(CheckoutCart)

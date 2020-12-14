@@ -200,6 +200,7 @@
     display: initial;
     appearance: none;
     width: 100%;
+    height: 100%;
     font-size: 18px;
     border: none;
     outline: none;
@@ -207,14 +208,27 @@
 .states-none{
     display: none;
 }
-.states-map:focus + .dropdown-arrow-box{
-    position: absolute;
-    right: 10px;
-    top: 0;
-    bottom: 10px;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 25px;
+#info-state-box *:hover{
+    cursor: pointer;
+}
+#info-country-box *:hover{
+    cursor: pointer;
+}
+#info-state-box:hover .dropdown-arrow-box{
+    transition: .25s;
+    color: rgb(97, 179, 162);
+}
+#info-state-box:hover .states-map{
+    transition: .25s;
+    color: rgb(97, 179, 162);
+}
+#info-country-box:hover .dropdown-arrow-box{
+    transition: .25s;
+    color: rgb(97, 179, 162);
+}
+#info-country-box:hover .states-map{
+    transition: .25s;
+    color: rgb(97, 179, 162);
 }
 .dropdown-arrow-box{
     position: absolute;

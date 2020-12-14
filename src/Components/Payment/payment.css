@@ -1,0 +1,57 @@
+.pay-component{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.pay-left-section{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    box-sizing: border-box;
+    align-items: flex-end;
+}
+.pay-right-section{
+    border-left: 1px solid grey;
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 4%;
+    box-sizing: border-box;
+    background-color: rgb(250,250,250);
+}
+.pay-front-back-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 6vh;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.pay-front-back-button p{
+    color: rgb(110,203,184);
+    font-weight: bolder;
+    transition: .25s;
+}
+.pay-front-back-button p:hover{
+    color: rgb(97, 179, 162);
+    cursor: pointer;
+}
+.pay-front-back-button button{
+    width: 30%;
+    height: 100%;
+    font-weight: bolder;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(110,203,184);
+    transition: .25s;
+}
+.pay-front-back-button button:hover{
+    background-color: rgb(97, 179, 162);
+    cursor: pointer;
+}

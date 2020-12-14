@@ -1,0 +1,144 @@
+.ship-component{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.ship-left-section{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 3%;
+    box-sizing: border-box;
+    align-items: flex-end;
+}
+.ship-right-section{
+    border-left: 1px solid grey;
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 4%;
+    box-sizing: border-box;
+    background-color: rgb(250,250,250);
+}
+.ship-front-back-button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 6vh;
+    padding-left: 3%;
+}
+.ship-front-back-button p{
+    color: rgb(110,203,184);
+    font-weight: bolder;
+    transition: .25s;
+}
+.ship-front-back-button p:hover{
+    color: rgb(97, 179, 162);
+    cursor: pointer;
+}
+.ship-front-back-button button{
+    width: 30%;
+    height: 100%;
+    font-weight: bolder;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(110,203,184);
+    transition: .25s;
+}
+.ship-front-back-button button:hover{
+    background-color: rgb(97, 179, 162);
+    cursor: pointer;
+}
+.ship-align-change{
+    display: flex;
+    flex-direction: column;
+    width: 98%;
+    box-sizing: border-box;
+    padding: 2%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-left: 2%;
+    margin-top: 1vh;
+}
+.ship-align-change hr{
+    width: 100%;
+    color: white;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.ship-align-change p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.ship-change-contact{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ship-change-contact nav{
+    display: flex;
+}
+.ship-change-contact nav p:first-child{
+    font-weight: bolder;
+    margin-right: 2vw;
+    color: rgb(115,115,115);
+}
+#ship-change-nav{
+    color: rgb(110,203,184);
+    font-size: 14px;
+    font-weight: bolder;
+}
+#ship-change-nav:hover{
+    color: rgb(97, 179, 162);
+    cursor: pointer;
+}
+.ship-method-section{
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2%;
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+}
+.ship-method-title{
+    font-size: 20px;
+}
+.ship-method{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 1px solid grey;
+}
+.ship-method nav{
+    align-items: center;
+    display: flex;
+}
+.ship-dot-circle{
+    font-size: 18px;
+    color: rgb(110,203,184);
+    margin-right: 10px;
+}
+.ship-dot-circle:hover{
+    cursor: pointer;
+}
+.ship-dot-none{
+    margin-right: 10px;
+    font-size: 18px;
+    color: black;
+}

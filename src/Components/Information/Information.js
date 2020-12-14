@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import {connect} from 'react-redux'
 import './information.css'
@@ -65,8 +64,6 @@ function Information(props){
         }
     }
 
-    console.log(countryInfo)
-    console.log(unitedToggle)
     return (
         <div className='information-component'>
             <section className='info-left-section'>
@@ -145,12 +142,13 @@ function Information(props){
                     <nav className='info-align-location'>
                         <div id='info-country-box' className={countryInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                             <p className={countryInfo.length === 0 ? 'info-none' : 'info-label'} >Country/Region</p>
-                            <select onChange={(e) => handleCountry(e)}>
+                            <select className='states-map' onChange={(e) => handleCountry(e)}>
                                 <option id='no-value-option' value={''}>Country</option>
                                 <option value='United States'>United States</option>
                                 <option value='Canada'>Canada</option>
                                 <option value='Mexico'>Mexico</option>
                             </select>
+                            <FontAwesomeIcon className='dropdown-arrow-box' icon={faSortDown}></FontAwesomeIcon>
                         </div>
                         <div id='info-state-box' className={stateInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                             <p className={stateInfo.length === 0 ? 'info-none' : 'info-label'} >{canadaToggle === true ? 'Provinces' : 'States'}</p>
@@ -169,10 +167,10 @@ function Information(props){
                             </select>
                         </div>
                         <div id='info-zip-box' className={zipInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
-                            <p className={zipInfo.length === 0 ? 'info-none' : 'info-label'} >Zip Code</p>
+                            <p className={zipInfo.length === 0 ? 'info-none' : 'info-label'} >{unitedToggle === true ? 'Zip Code' : 'Postal Code'}</p>
                             <input 
                             value={zipInfo}
-                            placeholder='Zip Code'
+                            placeholder={unitedToggle === true ? 'Zip Code' : 'Postal Code'}
                             className={zipInfo.length === 0 ? 'info-none-input' : 'info-label-input'}
                             onChange={(e) => setInfoZip(e.target.value)} />
                         </div>
@@ -192,7 +190,7 @@ function Information(props){
                 </section>
             </section>
             <section className='info-right-section'>
-                <CheckoutCart cartState={props.cartState.cart} />
+                <CheckoutCart />
             </section>
         </div>
     )

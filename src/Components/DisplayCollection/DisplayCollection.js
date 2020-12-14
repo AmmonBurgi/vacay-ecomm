@@ -86,6 +86,7 @@ function DisplayCollection(props){
                     </a>
                 </nav>
             </div>
+            <p className='display-product-tag-title'>{product_title}</p>
             <hr></hr>
             <section className='display-main'>
                 <div className='display-image-box'>

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import {connect} from 'react-redux'
 import {setPurchase} from '../../redux/purchaseReducer'
+import {getUser} from '../../redux/authReducer'
+import axios from 'axios'
 import './information.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -9,20 +11,27 @@ import {faSortDown} from '@fortawesome/free-solid-svg-icons'
 
 function Information(props){
     const [infoToggle, setInfoToggle] = useState(Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? true : false),
-        [emailInfo, setEmailInfo] = useState(infoToggle ===  props.authState.user.email || ''),
-        [firstNameInfo, setInfoFirst] = useState(props.authState.user.first_name || ''),
-        [lastNameInfo, setInfoLast] = useState(props.authState.user.last_name || props.purchaseState.purchaseInfo.lastName || ''),
-        [companyInfo, setInfoCompany] = useState(''),
-        [addressInfo, setInfoAddress] = useState(''),
-        [apartmentInfo, setInfoApartment] = useState(''),
-        [cityInfo, setInfoCity] = useState(''),
-        [countryInfo, setInfoCountry] = useState(''),
-        [stateInfo, setInfoState] = useState(''),
-        [zipInfo, setInfoZip] = useState(''),
-        [phoneInfo, setInfoPhone] = useState(props.authState.user.phone || ''),
+        [emailInfo, setEmailInfo] = useState(infoToggle === false ? props.authState.user.email : props.purchaseState.purchaseInfo.email || ''),
+        [firstNameInfo, setInfoFirst] = useState(infoToggle === false ? props.authState.user.first_name : props.purchaseState.purchaseInfo.firstName || ''),
+        [lastNameInfo, setInfoLast] = useState(infoToggle === false ? props.authState.user.last_name : props.purchaseState.purchaseInfo.lastName || ''),
+        [companyInfo, setInfoCompany] = useState(props.purchaseState.purchaseInfo.company || ''),
+        [addressInfo, setInfoAddress] = useState(props.purchaseState.purchaseInfo.address || ''),
+        [apartmentInfo, setInfoApartment] = useState(props.purchaseState.purchaseInfo.apartment || ''),
+        [cityInfo, setInfoCity] = useState(props.purchaseState.purchaseInfo.state || ''),
+        [countryInfo, setInfoCountry] = useState(props.purchaseState.purchaseInfo.country || ''),
+        [stateInfo, setInfoState] = useState(props.purchaseState.purchaseInfo.state || ''),
+        [zipInfo, setInfoZip] = useState(props.purchaseState.purchaseInfo.zip || ''),
+        [phoneInfo, setInfoPhone] = useState(infoToggle === false ? props.authState.user.phone : props.purchaseState.purchaseInfo.phone || ''),
         [unitedToggle, setUnited] = useState(true),
         [mexicoToggle, setMexico] = useState(false),
         [canadaToggle, setCanada] = useState(false)
+
+    useEffect(() => {
+        if(Object.keys(props.authState.user).length === 0){
+            axios.get('/api/session').then(res => props.getUser(res.data))
+            .catch(err => console.log('Error...', err))
+        }
+    }, [])
 
     const unitedStates = 
     ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
@@ -249,4 +258,4 @@ function Information(props){
 
 const mapStateToProps = (reduxState) => reduxState
 
-export default connect(mapStateToProps, {setPurchase})(Information)
+export default connect(mapStateToProps, {getUser, setPurchase})(Information)

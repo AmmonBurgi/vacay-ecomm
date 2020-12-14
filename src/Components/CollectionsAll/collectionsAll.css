@@ -104,3 +104,32 @@
         font-size: 13px;
     }
 }
+@media(max-width: 425px){
+    .collections-all-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .collections-all-icons{
+        display: none;
+    }
+    .collections-all-prev-left p{
+        font-size: 3vw;
+    }
+    .collections-all-tag{
+        width: 100%;
+        align-items: center;
+    }
+    .collections-all-tag p{
+        font-size: 6vw;
+    }
+    .collections-all-display{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+    .collections-all-card{
+        width: 90%;
+        height: auto;
+    }
+}

@@ -10,18 +10,20 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSortDown} from '@fortawesome/free-solid-svg-icons'
 
 function Information(props){
-    const [infoToggle, setInfoToggle] = useState(Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? true : false),
-        [emailInfo, setEmailInfo] = useState(infoToggle === false ? props.authState.user.email : props.purchaseState.purchaseInfo.email || ''),
-        [firstNameInfo, setInfoFirst] = useState(infoToggle === false ? props.authState.user.first_name : props.purchaseState.purchaseInfo.firstName || ''),
-        [lastNameInfo, setInfoLast] = useState(infoToggle === false ? props.authState.user.last_name : props.purchaseState.purchaseInfo.lastName || ''),
-        [companyInfo, setInfoCompany] = useState(props.purchaseState.purchaseInfo.company || ''),
-        [addressInfo, setInfoAddress] = useState(props.purchaseState.purchaseInfo.address || ''),
-        [apartmentInfo, setInfoApartment] = useState(props.purchaseState.purchaseInfo.apartment || ''),
-        [cityInfo, setInfoCity] = useState(props.purchaseState.purchaseInfo.state || ''),
-        [countryInfo, setInfoCountry] = useState(props.purchaseState.purchaseInfo.country || ''),
-        [stateInfo, setInfoState] = useState(props.purchaseState.purchaseInfo.state || ''),
-        [zipInfo, setInfoZip] = useState(props.purchaseState.purchaseInfo.zip || ''),
-        [phoneInfo, setInfoPhone] = useState(infoToggle === false ? props.authState.user.phone : props.purchaseState.purchaseInfo.phone || ''),
+    const {purchaseInfo} = props.purchaseState
+    const {user} = props.authState
+
+    const [emailInfo, setEmailInfo] = useState((Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? purchaseInfo.email : user.email) || ''),
+        [firstNameInfo, setInfoFirst] = useState((Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? purchaseInfo.firstName : user.first_name) || ''),
+        [lastNameInfo, setInfoLast] = useState((Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? purchaseInfo.lastName : user.last_name) || ''),
+        [companyInfo, setInfoCompany] = useState(purchaseInfo.company || ''),
+        [addressInfo, setInfoAddress] = useState(purchaseInfo.address || ''),
+        [apartmentInfo, setInfoApartment] = useState(purchaseInfo.apartment || ''),
+        [cityInfo, setInfoCity] = useState(purchaseInfo.city || ''),
+        [countryInfo, setInfoCountry] = useState(purchaseInfo.country || ''),
+        [stateInfo, setInfoState] = useState(purchaseInfo.state || ''),
+        [zipInfo, setInfoZip] = useState(purchaseInfo.zipCode || ''),
+        [phoneInfo, setInfoPhone] = useState((Object.keys(props.purchaseState.purchaseInfo).length !== 0 ? purchaseInfo.phone : user.phone) || ''),
         [unitedToggle, setUnited] = useState(true),
         [mexicoToggle, setMexico] = useState(false),
         [canadaToggle, setCanada] = useState(false)

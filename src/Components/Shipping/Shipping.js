@@ -16,6 +16,7 @@ function Shipping(props){
         }
     }, [])
 
+    const {email, address, city, state, zipCode, country} = props.purchaseInfo
     return(
         <div className='ship-component'>
             {purchaseInfoToggle === false ? 
@@ -33,7 +34,7 @@ function Shipping(props){
                     <p className='checkout-nav-icon'>&#62;</p>
                     <p onClick={() => props.history.push('/checkout/info/shipping/payment')} className='checkout-nav-no'>Payment</p>
                 </div>
-                <p className='ship-left-none-text'>You're missing information that is needed to finish your purchase! Please finish filling out your information <b>here!</b></p>
+                <p className='ship-left-none-text'>You're missing information that is needed to finish your purchase! Please finish filling out your information <b onClick={() => props.history.push('/checkout/info')}>here!</b></p>
             </div>
             ) 
             : 
@@ -55,7 +56,7 @@ function Shipping(props){
                     <div className='ship-change-contact'>
                         <nav>
                             <p>Contact</p>
-                            <p>{'Email'}</p>
+                            <p>{email || ''}</p>
                         </nav>
                         <p id='ship-change-nav' onClick={() => props.history.push('/checkout/info')} >Change</p>
                     </div>
@@ -63,7 +64,7 @@ function Shipping(props){
                     <div className='ship-change-contact'>
                         <nav>
                             <p>Ship To</p>
-                            <p>{'Address'}</p>
+                            <p>{`${address}, ${city} ${state} ${zipCode}, ${country}` || ''}</p>
                         </nav>
                         <p id='ship-change-nav' onClick={() => props.history.push('/checkout/info')}>Change</p>
                     </div>

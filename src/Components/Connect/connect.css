@@ -119,3 +119,34 @@
     margin-right: .5vw;
     color: black;
 }
+
+@media(max-width: 425px){
+    .connect-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .connect-icons{
+        display: none;
+    }
+    .connect-header{
+        width: 100%;
+    }
+    .connect-header p{
+        font-size: 6vw;
+    }
+    .connect-img{
+        width: 95%;
+    }
+    .connect-main{
+        width: 100%;
+    }
+    .connect-data{
+        width: 70%;
+    }
+    .connect-text{
+        width: 70%;
+    }
+    .connect-button-box{
+        width: 70%;
+    }
+}

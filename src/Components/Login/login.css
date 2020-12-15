@@ -96,3 +96,28 @@
     margin-right: .5vw;
     color: black;
 }
+
+@media(max-width: 425px){
+    .login-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .login-icons{
+        display: none;
+    }
+    .login-tag{
+        width: 100%;
+    }
+    .login-tag p{
+        font-size: 6vw;
+    }
+    .login-main{
+        width: 100%;
+    }
+    .login-input{
+        width: 70%;
+    }
+    .login-main button{
+        width: 70%;
+    }
+}

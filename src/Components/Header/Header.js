@@ -106,18 +106,18 @@ function Header(props){
                             {Object.keys(props.authState.user).length !== 0 ? 
                             <p className='link-phone'>Logged In as {props.authState.user.first_name}</p> 
                             : 
-                            <Link className='link-phone' to='/account/login'>Log In</Link>}
+                            <Link className='link-phone' onClick={() => setPhoneToggle(false)} to='/account/login'>Login</Link>}
                         </div>
                         <div className='phone-login-align'>
                             {Object.keys(props.authState.user).length !== 0 ? 
                             <Link className='link-phone' to='/' onClick={logoutUser}>Log out</Link>
                             :
-                            <Link className='link-phone' to='/account/register'>Create Account</Link>}
+                            <Link className='link-phone' onClick={() => setPhoneToggle(false)} to='/account/register'>Create Account</Link>}
                         </div>
                     </div>
                 </div>
                 <div className='right-section'>
-                    {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Log In</Link>}
+                    {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Login</Link>}
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
                     <Link 

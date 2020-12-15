@@ -89,3 +89,28 @@
     margin-right: .5vw;
     color: black;
 }
+
+@media(max-width: 425px){
+    .register-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .register-icons{
+        display: none;
+    }
+    .register-tag{
+        width: 100%;
+    }
+    .register-tag p{
+        font-size: 6vw;
+    }
+    .register-main{
+        width: 100%;
+    }
+    .register-input{
+        width: 70%;
+    }
+    .register-main button{
+        width: 70%;
+    }
+}

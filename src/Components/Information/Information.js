@@ -137,7 +137,7 @@ function Information(props){
                     <p className='checkout-nav-icon'>&#62;</p>
                     <p className='checkout-nav-go'>Information</p>
                     <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info/shipping')} className='checkout-nav-no'>Shipping</p>
+                    <p onClick={handlePurchaseInfo} className='checkout-nav-no'>Shipping</p>
                     <p className='checkout-nav-icon'>&#62;</p>
                     <p onClick={() => props.history.push('/checkout/info/shipping/payment')} className='checkout-nav-no'>Payment</p>
                 </div>

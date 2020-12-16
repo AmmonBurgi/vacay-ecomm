@@ -55,3 +55,46 @@
     background-color: rgb(97, 179, 162);
     cursor: pointer;
 }
+.payment-main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pay-shipping-section{
+    width: 94%;
+    /* height: 15vh; */
+    box-sizing: border-box;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid grey;
+    border-radius: 5px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.pay-shipping-section hr{
+    width: 100%;
+}
+.pay-ship-info{
+    display: flex;
+    width: auto;
+}
+.pay-ship-info p{
+    margin: 0;
+}
+.pay-ship-info p:first-child{
+    margin-right: 10px;
+}
+.payment-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 94%;
+}
+.billing-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 94%;
+}

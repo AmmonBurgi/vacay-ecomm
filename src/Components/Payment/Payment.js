@@ -10,7 +10,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
 
 function Payment(props){
-    const [total, setTotal] = useState(0)
+    const [total, setTotal] = useState(0),
+        [newBillingToggle, setNewBillingToggle] = useState(false),
+        [billingToggle, setBillingToggle] = useState(true)
 
     const stripe = useStripe(),
         elements = useElements()
@@ -52,6 +54,10 @@ function Payment(props){
         }).catch(err => console.log(err))
     }
 
+    const handleBillingToggle = () => {
+        setBillingToggle(!billingToggle)
+        setNewBillingToggle(!newBillingToggle)
+    }
     return(
         <div className='pay-component'>
             {Object.keys(props.purchaseState.purchaseInfo).length === 0 ? <AlertWarning warning={`You're missing information that is needed to finish your purchase! Please finish filling out your information `} pushFunction={() => props.history.push('/checkout/info')} /> : null}
@@ -86,41 +92,89 @@ function Payment(props){
                         </nav>
                     </div>
                     <div className='payment-section'>
-                        <p>Payment</p>
+                        <p id='payment-card-title'>Payment</p>
                         <p>All transactions are secure and encrypted.</p>
                         <div className='stripe-pay-form'>
                             <div>
 
                             </div>
                             <div className='card-element-wrapper'>
+                                <div className='card-list'>
+                                    <nav>
+                                        <FontAwesomeIcon icon={faDotCircle} className='billing-choice-icon' ></FontAwesomeIcon>
+                                        <b>Card</b>
+                                    </nav>
+                                </div>
                                 <CardNumberElement
                                 className='number-element'
                                 options={{
                                     style: {
                                       base: {
-                                        fontSize: '17px',
                                         backgroundColor: 'white',
-                                        color: '#424770',
+                                        color: 'black',
                                         '::placeholder': {
-                                          color: '#aab7c4',
+                                          color: 'grey',
                                         },
                                       },
                                       invalid: {
-                                        color: '#9e2146',
+                                        color: 'salmon'
                                       },
                                     },
                                   }}  
                               />
-                                <CardExpiryElement />
-                                <CardCvcElement />
+                                <CardExpiryElement 
+                                className='number-element'
+                                options={{
+                                    style: {
+                                      base: {
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        '::placeholder': {
+                                          color: 'grey',
+                                        },
+                                      },
+                                      invalid: {
+                                        color: 'salmon',
+                                      },
+                                    },
+                                  }}  
+                                />
+                                <CardCvcElement 
+                                className='number-element'
+                                options={{
+                                    style: {
+                                      base: {
+                                        backgroundColor: 'white',
+                                        color: 'black',
+                                        '::placeholder': {
+                                          color: 'grey',
+                                        },
+                                      },
+                                      invalid: {
+                                        color: 'salmon',
+                                      },
+                                    },
+                                  }}  
+                                />
                             </div>
                         </div>
                     </div>
                     <div className='billing-section'>
-                        <p>Billing Address</p>
+                        <p id='payment-card-title'>Billing Address</p>
                         <p>Select the address that matches your payment method.</p>
-                        <div>
-
+                        <div className='billing-choice-wrapper'>
+                            <nav className='billing-choice-align'>
+                                <FontAwesomeIcon onClick={billingToggle === false ? handleBillingToggle : null} className={billingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
+                                <p>Same as shipping address</p>
+                            </nav>
+                            <hr></hr>
+                            <nav className='billing-choice-align'>
+                                <FontAwesomeIcon onClick={newBillingToggle === false ? handleBillingToggle : null} className={newBillingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
+                                <p>Use a different billing address</p>
+                            </nav>
+                            <div className={newBillingToggle === true ? 'billing-input-wrapper' : 'none'}>
+                                  <p>hello</p>
+                            </div>
                         </div>
                     </div>
                 </section>

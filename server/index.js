@@ -8,7 +8,8 @@ const express = require('express'),
     authCtrl = require('./controllers/authController'),
     collectCtrl = require('./controllers/collectionsController'),
     cartCtrl = require('./controllers/cartController'),
-    mailCtrl = require('./controllers/mailController')
+    mailCtrl = require('./controllers/mailController'),
+    stripeCtrl = require('./controllers/stripeController')
 
     app.use(express.json())
 
@@ -40,6 +41,9 @@ const express = require('express'),
 
     //SendGrid Mail Endpoints
     app.post('/api/mail/feedback', mailCtrl.sendFeedback)
+
+    //Stripe Endpoints
+    app.post('/api/payment/intent', stripeCtrl.payIntent)
     
 
     massive({

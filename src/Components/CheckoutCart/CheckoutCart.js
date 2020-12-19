@@ -5,14 +5,7 @@ import axios from 'axios'
 import './checkoutCart.css'
 
 function CheckoutCart(props){
-
-    useEffect(() => {
-        if(props.cart.length === 0){
-            axios.get('/api/cart/all').then(res => props.getCart(res.data))
-            .catch(err => console.log('Error...', err))
-        }
-    }, [])
-
+    
     const getSum = () => {
         let total = 0;
         if(props.cart.length !== 0){
@@ -23,6 +16,17 @@ function CheckoutCart(props){
         }
         return total.toFixed(2);
     }
+
+    useEffect(() => {
+        if(props.getTotalFunction){
+            props.getTotalFunction(getSum())
+        }
+        if(props.cart.length === 0){
+            axios.get('/api/cart/all').then(res => props.getCart(res.data))
+            .catch(err => console.log('Error...', err))
+        }
+    }, [])
+
 
     let cartMap = null
     if(props.cart.length !== 0){
@@ -41,6 +45,8 @@ function CheckoutCart(props){
             )
         })
     }
+
+    console.log(props)
 
     return (
         <div className='checkout-cart-component'>

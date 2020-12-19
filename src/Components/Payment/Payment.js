@@ -1,18 +1,56 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
+import axios from 'axios'
 import {connect} from 'react-redux'
+import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
 import './payment.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
 
 function Payment(props){
+    const [total, setTotal] = useState(0)
 
+    const stripe = useStripe(),
+        elements = useElements()
+
+    const {firstName, lastName, company, apartment, phone, email, address, city, country, zipCode, state} = props.purchaseState.purchaseInfo
+
+    const getTotal = (sum) => {
+        setTotal(sum)
+    }
+        
     const handleConfirmPurchase = () => {
-        props.history.push('/account')
+        axios.post('/api/payment/intent', {email, total})
+        .then(async (res) => {
+            console.log(res.data)
+            const result = await stripe.confirmCardPayment((res.data), {
+                payment_method: {
+                    card: elements.getElement(CardElement),
+                    billing_details: {
+                        address: {
+                            city: city,
+                            country: country,
+                            postal_code: zipCode,
+                            state: state,
+                            line1: address,
+                            line2: apartment !== null || apartment !== undefined ? apartment : null
+                        },
+                        email: email,
+                        name: `${firstName} ${lastName}`,
+                        phone: phone !== null || phone !== undefined ? phone : null 
+                    }
+                }
+            })
+            if(result.error){
+                console.log(result.error)
+            } else (
+                console.log(result.paymentIntent.status)
+            )
+            props.history.push('/account')
+        }).catch(err => console.log(err))
     }
 
-    const {email, address, city, country, zipCode, state} = props.purchaseState.purchaseInfo
     return(
         <div className='pay-component'>
             {Object.keys(props.purchaseState.purchaseInfo).length === 0 ? 
@@ -65,6 +103,14 @@ function Payment(props){
                     <div className='payment-section'>
                         <p>Payment</p>
                         <p>All transactions are secure and encrypted.</p>
+                        <div className='stripe-pay-form'>
+                            <div>
+
+                            </div>
+                            <div className='card-element-wrapper'>
+                                <CardElement />
+                            </div>
+                        </div>
                     </div>
                     <div className='billing-section'>
                         <p>Billing Address</p>
@@ -81,7 +127,7 @@ function Payment(props){
             </section>
             }
             <section className='pay-right-section' >
-                <CheckoutCart />
+                <CheckoutCart getTotalFunction={getTotal} />
             </section>
         </div>
     )

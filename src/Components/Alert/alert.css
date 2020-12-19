@@ -1,0 +1,14 @@
+.alert-component{
+    width: 60%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(110,203,184);
+    position: absolute;
+    top: 1vh;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+}

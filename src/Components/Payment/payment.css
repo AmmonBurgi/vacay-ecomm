@@ -98,3 +98,9 @@
     align-items: flex-start;
     width: 94%;
 }
+.stripe-pay-form{
+    width: 100%;
+}
+.card-element-wrapper{
+    width: 100%;
+}

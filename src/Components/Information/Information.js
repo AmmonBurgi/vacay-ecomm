@@ -3,6 +3,7 @@ import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import {connect} from 'react-redux'
 import {setPurchase} from '../../redux/purchaseReducer'
 import {getUser} from '../../redux/authReducer'
+import AlertWarning from '../AlertWarning/AlertWarning'
 import axios from 'axios'
 import './information.css'
 
@@ -168,6 +169,7 @@ function Information(props){
 
     return (
         <div className='information-component'>
+            {Object.keys(props.authState.user).length === 0 ? (<AlertWarning warning={'You must login and add an item to your cart before continuing on to this page! Please Login '} pushFunction={() => props.history.push('/account/login')}/>) : null}
             <section className='info-left-section'>
                 <div className='info-checkout-title'>
                     <p><b id='info-title-color'>Our Planet</b> Our Future</p>

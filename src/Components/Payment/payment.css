@@ -103,4 +103,10 @@
 }
 .card-element-wrapper{
     width: 100%;
+    border-radius: 5px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+.number-element{
+    padding: 20px;
 }

@@ -17,10 +17,12 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-    border-radius: 10px
+    border-radius: 10px;
+    transition: .5s ease-in-out;
 }
 .message-wrapper p{
     letter-spacing: 2px;
+    font-size: 1vw;
 }
 .message-wrapper p b{
     color: black;
@@ -28,4 +30,8 @@
 }
 .message-wrapper p b:hover{
     color: grey;
+    cursor: pointer;
+}
+.no-wrapper{
+    opacity: 0;
 }

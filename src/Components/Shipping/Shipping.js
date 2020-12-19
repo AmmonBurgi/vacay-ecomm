@@ -9,8 +9,7 @@ import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
 
 function Shipping(props){
     const [dotToggle, setDot] = useState(true),
-            [purchaseInfoToggle, setInfoToggle] = useState(true),
-            [alertToggle, setAlert] = useState(false)
+            [purchaseInfoToggle, setInfoToggle] = useState(true)
 
     useEffect(() => {
         if(Object.keys(props.purchaseInfo).length === 0){

@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
+import {CardCvcElement, CardNumberElement, CardExpiryElement, useElements, useStripe} from '@stripe/react-stripe-js'
+import AlertWarning from '../AlertWarning/AlertWarning'
 import './payment.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -26,7 +27,7 @@ function Payment(props){
             console.log(res.data)
             const result = await stripe.confirmCardPayment((res.data), {
                 payment_method: {
-                    card: elements.getElement(CardElement),
+                    card: elements.getElement(CardCvcElement, CardNumberElement, CardExpiryElement),
                     billing_details: {
                         address: {
                             city: city,
@@ -53,23 +54,7 @@ function Payment(props){
 
     return(
         <div className='pay-component'>
-            {Object.keys(props.purchaseState.purchaseInfo).length === 0 ? 
-            <div className='ship-left-section-none'>
-                 <div className='info-checkout-title'>
-                    <p><b id='info-title-color'>Our Planet</b> Our Future</p>
-                </div>
-                <div className='checkout-purchase-nav'>
-                    <p onClick={() => props.history.push('/cart')} className='checkout-nav-no'>Cart</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info')} className='checkout-nav-no'>Information</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info/shipping')} className='checkout-nav-no'>Shipping</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p className='checkout-nav-go'>Payment</p>
-                </div>
-                <p className='ship-left-none-text'>You're missing information that is needed to finish your purchase! Please finish filling out your information <b onClick={() => props.history.push('/checkout/info')}>here!</b></p>
-            </div>    
-            :
+            {Object.keys(props.purchaseState.purchaseInfo).length === 0 ? <AlertWarning warning={`You're missing information that is needed to finish your purchase! Please finish filling out your information `} pushFunction={() => props.history.push('/checkout/info')} /> : null}
             <section className='pay-left-section' >
                 <div className='info-checkout-title'>
                     <p><b id='info-title-color'>Our Planet</b> Our Future</p>
@@ -108,7 +93,26 @@ function Payment(props){
 
                             </div>
                             <div className='card-element-wrapper'>
-                                <CardElement />
+                                <CardNumberElement
+                                className='number-element'
+                                options={{
+                                    style: {
+                                      base: {
+                                        fontSize: '17px',
+                                        backgroundColor: 'white',
+                                        color: '#424770',
+                                        '::placeholder': {
+                                          color: '#aab7c4',
+                                        },
+                                      },
+                                      invalid: {
+                                        color: '#9e2146',
+                                      },
+                                    },
+                                  }}  
+                              />
+                                <CardExpiryElement />
+                                <CardCvcElement />
                             </div>
                         </div>
                     </div>
@@ -125,7 +129,6 @@ function Payment(props){
                     <button onClick={handleConfirmPurchase}>Confirm Purchase</button>
                 </div>
             </section>
-            }
             <section className='pay-right-section' >
                 <CheckoutCart getTotalFunction={getTotal} />
             </section>

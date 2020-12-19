@@ -40,3 +40,23 @@ cart_price DECIMAL(65, 30) not null,
 product_img text,
 type_id integer
 );
+
+create table vacay_history(
+history_id serial primary key,
+user_id integer references vacay_users(user_id),
+date_purchased date
+first_address text,
+second_address text,
+city text,
+country varchar(100),
+zip varchar(6),
+state varchar(500)
+);
+
+create table vacay_history_pro(
+history_pro_id serial primary key,
+history_id integer REFERENCES vacay_history(history_id)
+product_id integer,
+product_title varchar(100),
+product_img TEXT
+);

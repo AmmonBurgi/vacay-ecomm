@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './shipping.css'
 import CheckoutCart from '../CheckoutCart/CheckoutCart'
+import AlertWarning from '../AlertWarning/AlertWarning'
 import {connect} from 'react-redux'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
@@ -21,27 +22,8 @@ function Shipping(props){
     const {email, address, city, state, zipCode, country} = props.purchaseInfo
     return(
         <div className='ship-component'>
-            {purchaseInfoToggle === false ? 
-            (
-            <div className='ship-left-section-none'>
-                <div className='info-checkout-title'>
-                    <p><b id='info-title-color'>Our Planet</b> Our Future</p>
-                </div>
-                <div className='checkout-purchase-nav'>
-                    <p onClick={() => props.history.push('/cart')} className='checkout-nav-no'>Cart</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info/')} className='checkout-nav-no'>Information</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p className='checkout-nav-go'>Shipping</p>
-                    <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info/shipping/payment')} className='checkout-nav-no'>Payment</p>
-                </div>
-                <p className='ship-left-none-text'>You're missing information that is needed to finish your purchase! Please finish filling out your information <b onClick={() => props.history.push('/checkout/info')}>here!</b></p>
-            </div>
-            ) 
-            : 
-            (
             <section className='ship-left-section' >
+                {purchaseInfoToggle === false ? <AlertWarning warning={`You're missing information that is needed to finish your purchase! Please finish filling out your information `} pushFunction={() => props.history.push('/checkout/info')} /> : null}
                 <div className='info-checkout-title'>
                     <p><b id='info-title-color'>Our Planet</b> Our Future</p>
                 </div>
@@ -86,7 +68,6 @@ function Shipping(props){
                         <button onClick={() => props.history.push('/checkout/info/shipping/payment')}>Continue to Payment</button>
                 </div>
             </section>
-            )}
             <section className='ship-right-section' >
                 <CheckoutCart />
             </section>

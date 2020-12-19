@@ -1,0 +1,31 @@
+.alert-component{
+    width: 100vw;
+    height: 100vh;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+.message-wrapper{
+    width: 40%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px
+}
+.message-wrapper p{
+    letter-spacing: 2px;
+}
+.message-wrapper p b{
+    color: black;
+    text-transform: uppercase;
+}
+.message-wrapper p b:hover{
+    color: grey;
+}

@@ -68,18 +68,19 @@ function Information(props){
 
     
     const handleCountry = (event) => {
+        setCountryAlert(false)
         setInfoCountry(event.target.value)
-        if(event.target.value === 'United States'){
+        if(event.target.value === 'US'){
                 setUnited(true)
                 setMexico(false)
                 setCanada(false)
         }
-        if(event.target.value === 'Canada'){
+        if(event.target.value === 'CA'){
             setUnited(false)
             setMexico(false)
             setCanada(true)
         }
-        if(event.target.value === 'Mexico'){
+        if(event.target.value === 'MX'){
             setUnited(false)
             setMexico(true)
             setCanada(false)
@@ -110,12 +111,12 @@ function Information(props){
         if(stateInfo.length === 0){
             return setStateAlert(true)
         }
-        if(countryInfo === 'United States' || countryInfo === 'Mexico'){
+        if(countryInfo === 'US' || countryInfo === 'MX'){
             if(zipInfo.length !== 5){
                 return setZipAlert(true)
             }
         }
-        if(countryInfo === 'Canada'){
+        if(countryInfo === 'CA'){
             if(zipInfo.length !== 6){
                 return setZipAlert(true)
             }
@@ -159,10 +160,6 @@ function Information(props){
     const handleZip = (event) => {
         setZipAlert(false)
         setInfoZip(event.target.value)
-    }
-    const handleInputCountry = (event) => {
-        setCountryAlert(false)
-        setInfoCountry(event.target.value)
     }
     const handleState = (event) => {
         setStateAlert(false)
@@ -208,17 +205,18 @@ function Information(props){
                             placeholder='First Name'
                             className={firstNameInfo.length === 0 ? 'info-none-input' : 'info-label-input'} 
                             value={firstNameInfo} 
-                            onChange={(e) => handleFirst(e.target.value)} />
+                            onChange={(e) => handleFirst(e)} />
                         </div>
                         <div id='info-last-box' className={lastNameInfo.length === 0 ? (lastAlert === false ? 'info-input-box' : 'alert-info-input-box') : (lastAlert === false ? 'info-input-box-initial' : 'alert-info-input-box-initial')}>
                             <p className={lastNameInfo.length === 0 ? 'info-none' : 'info-label'} >Last Name</p>
                             <input 
                             placeholder='Last Name'
                             className={lastNameInfo.length === 0 ? 'info-none-input' : 'info-label-input'} value={lastNameInfo} 
-                            onChange={(e) => handleLast(e.target.value)} />
+                            onChange={(e) => handleLast(e)} />
                         </div>
                     </nav>
-                    <p className={firstAlert === true || lastAlert === true ? 'alert-message' : 'no-alert-message'} >First Name or Last Name is invalid!</p>
+                    <p className={firstAlert === true ? 'alert-message' : 'no-alert-message'} >First Name invalid!</p>
+                    <p className={lastAlert === true ? 'alert-message' : 'no-alert-message'} >Last Name Invalid!</p>
                     <div id='info-company-box' className={companyInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                         <p className={companyInfo.length === 0 ? 'info-none' : 'info-label'} >Company (optional)</p>
                         <input 
@@ -232,7 +230,7 @@ function Information(props){
                         <input 
                         value={addressInfo}
                         placeholder='Address'
-                        className={addressInfo.length === 0 ? 'info-none-input' : 'info-label-input'}onChange={(e) => handleAddress(e.target.value)} />
+                        className={addressInfo.length === 0 ? 'info-none-input' : 'info-label-input'}onChange={(e) => handleAddress(e)} />
                     </div>
                     <p className={addressAlert === true ? 'alert-message' : 'no-alert-message'} >Invalid Address!</p>
                     <div id='info-apartment-box' className={apartmentInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
@@ -242,19 +240,19 @@ function Information(props){
                         placeholder='Apartment, suite, etc.(optional)'
                         className={apartmentInfo.length === 0 ? 'info-none-input' : 'info-label-input'} onChange={(e) => setInfoApartment(e.target.value)} />
                     </div>
-                    <div id='info-city-box' className={cityInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
+                    <div id='info-city-box' className={cityInfo.length === 0 ? (cityAlert === false ? 'info-input-box' : 'alert-info-input-box') : (cityAlert === false ? 'info-input-box-initial' : 'alert-info-input-box-initial')}>
                         <p className={cityInfo.length === 0 ? 'info-none' : 'info-label'}>City</p>
                         <input 
                         value={cityInfo}
                         placeholder='City'
                         className={cityInfo.length === 0 ? 'info-none-input' : 'info-label-input'} 
-                        onChange={(e) => handleCity(e.target.value)} />
+                        onChange={(e) => handleCity(e)} />
                     </div>
                     <p className={cityAlert === true ? 'alert-message' : 'no-alert-message'} >Invalid City!</p>
                     <nav className='info-align-location'>
                         <div id='info-country-box' className={countryInfo.length === 0 ? (countryAlert === false ? 'info-input-box' : 'alert-info-input-box') : (countryAlert === false ? 'info-input-box-initial' : 'alert-input-info-box-initial')}>
                             <p className={countryInfo.length === 0 ? 'info-none' : 'info-label'} >Country/Region</p>
-                            <select className='states-map' onChange={(e) => handleInputCountry(e)}>
+                            <select className='states-map' onChange={(e) => handleCountry(e)}>
                                 <option id='no-value-option' value={''}>Country</option>
                                 <option value='US'>United States</option>
                                 <option value='CA'>Canada</option>
@@ -264,16 +262,16 @@ function Information(props){
                         </div>
                         <div id='info-state-box' className={stateInfo.length === 0 ? (stateAlert === false ? 'info-input-box' : 'alert-info-input-box') : (stateAlert === false ? 'info-input-box-initial' : 'alert-info-input-box-initial')}>
                             <p className={stateInfo.length === 0 ? 'info-none' : 'info-label'} >{canadaToggle === true ? 'Provinces' : 'States'}</p>
-                            <select className={unitedToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e.target.value)}>
+                            <select className={unitedToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e)}>
                                 <option value={''} id='no-value-option'>States</option>
                                 {unitedMap}
                             </select>
                                 <FontAwesomeIcon className='dropdown-arrow-box' icon={faSortDown}></FontAwesomeIcon>
-                            <select className={canadaToggle === true ? 'states-map' : 'states-none'} onChange={e => setInfoState(e.target.value)}>
+                            <select className={canadaToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e)}>
                                 <option>Provinces</option>
                                 {canadaMap}
                             </select>
-                            <select className={mexicoToggle === true ? 'states-map' : 'states-none'} onChange={e => setInfoState(e.target.value)}>
+                            <select className={mexicoToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e)}>
                                 <option>States</option>
                                 {mexicoMap}
                             </select>
@@ -284,7 +282,7 @@ function Information(props){
                             value={zipInfo}
                             placeholder={unitedToggle === true ? 'Zip Code' : 'Postal Code'}
                             className={zipInfo.length === 0 ? 'info-none-input' : 'info-label-input'}
-                            onChange={(e) => handleZip(e.target.value)} />
+                            onChange={(e) => handleZip(e)} />
                         </div>
                     </nav>
                     <p className={countryAlert === true ? 'alert-message' : 'no-alert-message'}>Invalid Country!</p>

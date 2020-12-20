@@ -8,6 +8,7 @@ import './payment.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
+import {faSortDown} from '@fortawesome/free-solid-svg-icons'
 
 function Payment(props){
     const [total, setTotal] = useState(0),
@@ -73,6 +74,30 @@ function Payment(props){
             props.history.push('/account')
         }).catch(err => console.log(err))
     }
+
+    const unitedStates = 
+    ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+
+    const canadianProvinces = ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Northwest Territories', 'Nova Scotia', 'Nunavut', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon Territory']
+
+    const mexicoStates = ['mexico']
+
+    const unitedMap = unitedStates.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+    const canadaMap = canadianProvinces.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+    const mexicoMap = mexicoStates.map((element, index) => {
+        return(
+            <option key={index} value={element}>{element}</option>
+        )
+    })
+
 
     const handleBillingToggle = () => {
         setBillingToggle(!billingToggle)
@@ -156,6 +181,7 @@ function Payment(props){
                             <p>Standard Shipping - <b>Free</b></p>
                         </nav>
                     </div>
+
                     <div className='payment-section'>
                         <p id='payment-card-title'>Payment</p>
                         <p>All transactions are secure and encrypted.</p>
@@ -224,9 +250,11 @@ function Payment(props){
                             </div>
                         </div>
                     </div>
+
                     <div className='billing-section'>
                         <p id='payment-card-title'>Billing Address</p>
                         <p>Select the address that matches your payment method.</p>
+
                         <div className='billing-choice-wrapper'>
                             <nav className='billing-choice-align'>
                                 <FontAwesomeIcon onClick={billingToggle === false ? handleBillingToggle : null} className={billingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
@@ -242,64 +270,112 @@ function Payment(props){
                                     <div
                                     className={firstBill.length === 0 ? (firstAlert === false ? 'pay-box-input' : 'alert-pay-box') : (firstAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
                                     >
-                                        <p>First Name</p>
+                                        <p className={firstBill.length === 0 ? 'bill-label-none' : 'bill-label'}>First Name</p>
                                         <input 
+                                        className={firstBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                         onChange={(e) => handleFirstInput(e)} placeholder='First Name' />
                                     </div>
-                                    <div>
-                                        <p>Last Name</p>
+
+                                    <div className={lastBill.length === 0 ? (lastAlert === false ? 'pay-box-input' : 'alert-pay-box') : (lastAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
+                                    >
+                                        <p className={lastBill.length === 0 ? 'bill-label-none' : 'bill-label'}>Last Name</p>
                                         <input 
+                                        className={lastBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                         onChange={(e) => handleLastInput(e)}
                                         placeholder='Last Name' />
                                     </div>
+
                                   </nav>
-                                  <div>
-                                      <p>Company (optional)</p>
+                                  <p id={firstAlert === false ? 'none' : 'bill-warning'} >Invalid First Name!</p>
+                                  <p id={lastAlert === false ? 'none' : 'bill-warning'} >Invalid Last Name!</p>
+
+                                  <div className={companyBill.length === 0 ? 'pay-box-input' : 'pay-box-input-init'}>
+                                      <p className={companyBill.length === 0 ? 'bill-label-none' : 'bill-label'}>Company (optional)</p>
                                       <input
+                                      className={companyBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                       onChange={(e) => setCompanyBill(e.target.value)}
                                       placeholder='Company (optional)' />
                                   </div>
-                                  <div>
-                                      <p>Address</p>
+
+                                  <div className={addressBill.length === 0 ? (addressAlert === false ? 'pay-box-input' : 'alert-pay-box') : (addressAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
+                                  >
+                                      <p className={addressBill.length === 0 ? 'bill-label-none' : 'bill-label'}>Address</p>
                                       <input 
+                                      className={addressBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                       onChange={(e) => handleAddressInput(e)}
                                       placeholder='Address' />
                                   </div>
-                                  <div>
-                                      <p>Apartment, suite, etc. (optional)</p>
+
+                                  <p id={addressAlert === false ? 'none' : 'bill-warning'} >Invalid Address!</p>
+
+                                  <div className={apartmentBill.length === 0 ? 'pay-box-input' : 'pay-box-input-init'}>
+                                      <p className={apartmentBill.length === 0 ? 'bill-label-none' : 'bill-label'}>Apartment, suite, etc. (optional)</p>
                                       <input
+                                      className={apartmentBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                       onChange={(e) => setApartmentBill(e.target.value)}
                                       placeholder='Apartment, suite, etc.' />
                                   </div>
-                                  <div>
-                                      <p>City</p>
+
+                                  <div className={cityBill.length === 0 ? (cityAlert === false ? 'pay-box-input' : 'alert-pay-box') : (cityAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
+                                  >
+                                      <p className={cityBill.length === 0 ? 'bill-label-none' : 'bill-label'}>City</p>
                                       <input
+                                      className={cityBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                       onChange={(e) => handleCityInput(e)}
                                       placeholder='City' />
                                   </div>
-                                  <nav>
-                                      <div>
-                                          <p>Country/Region</p>
-                                          <select onChange={(e) => handleCountryInput(e)}>
 
+                                  <p id={cityAlert === false ? 'none' : 'bill-warning'} >Invalid City!</p>
+
+                                  <nav className='bill-location-wrapper'>
+                                      <div className={countryBill.length === 0 ? (countryAlert === false ? 'pay-box-input' : 'alert-pay-box') : (countryAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
+                                      >
+                                          <p className={countryBill.length === 0 ? 'bill-label-none' : 'bill-label'}>Country/Region</p>
+                                          <select className='bill-states' onChange={(e) => handleCountryInput(e)}>
+                                            <option value={'US'} >United States</option>
+                                            <option value={'CA'} >Canada</option>
+                                            <option value={'MX'} >Mexico</option>
+                                          </select>
+                                          <FontAwesomeIcon className='dropdown-arrow-bill' icon={faSortDown}></FontAwesomeIcon>
+                                      </div>
+                                      <div className={stateBill.length === 0 ? (stateAlert === false ? 'pay-box-input' : 'alert-pay-box') : (stateAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}
+                                      >
+                                          <p className={stateBill.length === 0 ? 'info-none' : 'info-label'} >{canadaToggle === true ? 'Provinces' : 'States'}</p>
+                                          <select value={stateBill} className={unitedToggle === true ? 'bill-states' : 'bill-none'} onChange={(e) => handleCityInput(e)}>
+                                              <option value={''}>State</option>
+                                            {unitedMap}
+                                          </select>
+                                          <FontAwesomeIcon className='dropdown-arrow-bill' icon={faSortDown}></FontAwesomeIcon>
+                                          <select value={stateBill}  className={canadaToggle === true ? 'bill-states' : 'bill-none'} onChange={(e) => handleCityInput(e)}>
+                                            <option value={''} >Province</option>
+                                            {canadaMap}
+                                          </select>
+                                          <select value={stateBill} className={mexicoToggle === true ? 'bill-states' : 'bill-none'} onChange={(e) => handleCityInput(e)}>
+                                              <option value={''} >State</option>
+                                            {mexicoMap}
                                           </select>
                                       </div>
-                                      <div>
-                                          <p>State</p>
-                                          <select onChange={(e) => handleCityInput(e)}>
-
-                                          </select>
-                                      </div>
-                                      <div>
-                                          <p>Zip Code</p>
+                                      <div className={zipBill.length === 0 ? (zipAlert === false ? 'pay-box-input' : 'alert-pay-box') : (zipAlert === false ? 'pay-box-input-init' : 'alert-pay-box-input-init')}>
+                                          <p className={zipBill.length === 0 ? 'bill-label-none' : 'bill-label'} >Zip Code</p>
                                           <input
+                                          value={zipBill}
+                                          className={zipBill.length === 0 ? 'bill-none-input' : 'bill-input'}
                                           onChange={(e) => handleZipInput(e)}
                                           placeholder='Zip Code' />
                                       </div>
                                   </nav>
-                                  <div>
-                                      <p>Phone (optional)</p>
-                                      <input placeholder='Phone (optional)' />
+
+                                  <p id={countryAlert === false ? 'none' : 'bill-warning'} >Invalid Country/Region!</p>
+                                  <p id={stateAlert === false ? 'none' : 'bill-warning'} >Invalid State/Province!</p>
+                                  <p id={zipAlert === false ? 'none' : 'bill-warning'} >Invalid Zip/Postal Code!</p>
+
+                                  <div className={phoneBill.length === 0 ? 'pay-box-input' : 'pay-box-input-init'}>
+                                      <p className={phoneBill.length === 0 ? 'bill-label-none' : 'bill-label'} >Phone (optional)</p>
+                                      <input
+                                      value={phoneBill}
+                                      className={phoneBill.length === 0 ? 'bill-none-input' : 'bill-input'}
+                                      onChange={(e) => setPhoneBill(e.target.value)}
+                                      placeholder='Phone (optional)' />
                                   </div>
                             </div>
                         </div>

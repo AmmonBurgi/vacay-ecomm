@@ -270,11 +270,11 @@ function Information(props){
                             </select>
                                 <FontAwesomeIcon className='dropdown-arrow-box' icon={faSortDown}></FontAwesomeIcon>
                             <select className={canadaToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e)}>
-                                <option>Provinces</option>
+                                <option value={''}>Provinces</option>
                                 {canadaMap}
                             </select>
                             <select className={mexicoToggle === true ? 'states-map' : 'states-none'} onChange={e => handleState(e)}>
-                                <option>States</option>
+                                <option value=''>States</option>
                                 {mexicoMap}
                             </select>
                         </div>
@@ -293,6 +293,7 @@ function Information(props){
                     <div id='info-phone-box' className={phoneInfo.length === 0 ? 'info-input-box' : 'info-input-box-initial'}>
                         <p className={phoneInfo.length === 0 ? 'info-none' : 'info-label'}>Phone (optional)</p>
                         <input 
+                        type='number'
                         placeholder='Phone (optional)'
                         className={phoneInfo.length === 0 ? 'info-none-input' : 'info-label-input'} 
                         value={phoneInfo} 

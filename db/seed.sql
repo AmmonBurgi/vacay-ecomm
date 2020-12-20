@@ -58,5 +58,7 @@ history_pro_id serial primary key,
 history_id integer REFERENCES vacay_history(history_id)
 product_id integer,
 product_title varchar(100),
-product_img TEXT
+product_img TEXT,
+pro_quantity integer,
+product_price decimal(20, 2)
 );

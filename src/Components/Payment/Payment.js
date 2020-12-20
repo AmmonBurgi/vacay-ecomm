@@ -45,6 +45,7 @@ function Payment(props){
     }
         
     const handleConfirmPurchase = () => {
+        const cart = props.cartState.cart
         axios.post('/api/payment/intent', {email, total})
         .then(async (res) => {
             console.log(res.data)
@@ -69,9 +70,13 @@ function Payment(props){
             if(result.error){
                 console.log(result.error)
             } else (
-                console.log(result.paymentIntent.status)
+                // console.log(result.paymentIntent.status)
+                axios.post('/api/purchase/history', {address, apartment, city, country, zipCode, state, cart})
+                .then((response) => {
+                    props.history.push('/account')
+                }).catch(err => console.log('Error...', err))
             )
-            props.history.push('/account')
+            
         }).catch(err => console.log(err))
     }
 

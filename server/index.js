@@ -44,7 +44,9 @@ const express = require('express'),
 
     //Stripe Endpoints
     app.post('/api/payment/intent', stripeCtrl.payIntent)
-    
+    //Payment History Endpoints
+    app.post('/api/purchase/history', stripeCtrl.payHistory)
+    app.get('/api/purchase/history', stripeCtrl.getHistory)
 
     massive({
         connectionString: CONNECTION_STRING,

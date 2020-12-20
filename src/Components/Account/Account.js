@@ -5,7 +5,8 @@ import axios from 'axios'
 function Account(props){
 
     useEffect(() => {
-        axios.get('/api/collections/matte').then(() => console.log('hello')).catch(err => console.log(err))
+        axios.get('/api/purchase/history').then(res => console.log(res.data))
+        .catch(err => console.log(err))
     }, [])
     return (
         <div>

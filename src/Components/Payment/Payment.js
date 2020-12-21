@@ -59,24 +59,25 @@ function Payment(props){
                             postal_code: zipCode,
                             state: state,
                             line1: address,
-                            line2: apartment !== null || apartment !== undefined ? apartment : null
+                            line2: (apartment.length !== 0) ? apartment : 'null'
                         },
                         email: email,
                         name: `${firstName} ${lastName}`,
-                        phone: phone !== null || phone !== undefined ? phone : null 
+                        phone: (phone.length !== 0) ? phone : 'null'
                     }
                 }
             })
-            if(result.error){
-                console.log(result.error)
-            } else (
-                // console.log(result.paymentIntent.status)
-                axios.post('/api/purchase/history', {address, apartment, city, country, zipCode, state, cart})
-                .then((response) => {
+            console.log(result)
+            if(result.paymentIntent.status === 'succeeded'){
+                let secondAddress = apartment === undefined ? null : apartment
+                axios.post('/api/purchase/history', {address, secondAddress, city, country, zipCode, state, cart})
+                .then(() => {
                     props.history.push('/account')
                 }).catch(err => console.log('Error...', err))
-            )
-            
+            }
+            if(result.error){
+                console.log(result.error)
+            }
         }).catch(err => console.log(err))
     }
 

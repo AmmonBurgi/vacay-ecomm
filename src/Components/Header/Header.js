@@ -117,7 +117,7 @@ function Header(props){
                     </div>
                 </div>
                 <div className='right-section'>
-                    {Object.keys(props.authState.user).length !== 0 ? <p className='link'>Logged In as {props.authState.user.first_name}</p> : <Link className='link' to='/account/login'>Login</Link>}
+                    {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/account'>Logged In as {props.authState.user.first_name}</Link> : <Link className='link' to='/account/login'>Login</Link>}
                     <div className='login-border'></div>
                     {Object.keys(props.authState.user).length !== 0 ? <Link className='link' to='/' onClick={logoutUser}>Log out</Link> :
                     <Link 

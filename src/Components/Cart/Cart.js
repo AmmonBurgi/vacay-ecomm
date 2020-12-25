@@ -73,18 +73,20 @@ function Cart(props){
                     <nav className='cart-pro-price-section'>
                         <p>${element.product_price}</p>
                     </nav>
-                    <div className='cart-pro-quantity-section'>
-                        <nav className='cart-pro-quantity-align'>
-                            <button onClick={() => handleDecAndInc('minus', element.cart_quantity, element.product_id)}>-</button>
-                            <button disabled='disabled' id='cart-pro-quantity-value'>{element.cart_quantity || 0}</button>
-                            <button onClick={() => handleDecAndInc('plus', element.cart_quantity, element.product_id, element.pro_quantity)}>+</button>
-                            <nav className='align-remove'>
-                                <p onClick={() => deleteProduct(element.product_id)}>remove</p>
+                    <nav className='align-buttons-total'>
+                        <div className='cart-pro-quantity-section'>
+                            <nav className='cart-pro-quantity-align'>
+                                <button onClick={() => handleDecAndInc('minus', element.cart_quantity, element.product_id)}>-</button>
+                                <button disabled='disabled' id='cart-pro-quantity-value'>{element.cart_quantity || 0}</button>
+                                <button onClick={() => handleDecAndInc('plus', element.cart_quantity, element.product_id, element.pro_quantity)}>+</button>
+                                <nav className='align-remove'>
+                                    <p onClick={() => deleteProduct(element.product_id)}>remove</p>
+                                </nav>
                             </nav>
+                        </div>
+                        <nav className='cart-pro-total-section'>
+                            <p>${element.product_price * element.cart_quantity}</p>
                         </nav>
-                    </div>
-                    <nav className='cart-pro-total-section'>
-                    <p>${element.product_price * element.cart_quantity}</p>
                     </nav>
                 </div>
             )

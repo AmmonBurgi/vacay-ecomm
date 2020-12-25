@@ -39,7 +39,10 @@ module.exports = {
 
         db.history.get_history(user_id)
         .then((history) => {
-            res.status(200).send(history)
+            db.history.get_history_products(user_id)
+            .then(pro => {
+                res.status(200).send({historyArr: history, products: pro})
+            }).catch(err => console.log(err))
         }).catch(err => {
             res.status(500).send(err)
             console.log('History Error...', err)

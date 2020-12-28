@@ -1,0 +1,63 @@
+.account-component{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.account-prev{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin-top: 1vh;
+    margin-bottom: .5vh;
+}
+.account-prev-left{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.account-prev-left p{
+    margin-left: 2px;
+    margin-right: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.account-prev-home:hover{
+    cursor: pointer;
+}
+.account-prev-arrow{
+    color: rgb(149,149,149);
+}
+.account-icons *{
+    font-size: 20px;
+    margin-right: .5vw;
+    color: black;
+}
+.no-account-component{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.no-account-text{
+    text-transform: uppercase;
+}
+.no-account-text b:hover{
+    color: grey;
+    cursor: pointer;
+}
+.my-account-tag{
+    width: 60%;
+}
+.my-account-tag p{
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 0;
+}
+.account-main{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}

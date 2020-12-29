@@ -14,24 +14,38 @@ function Account(props){
     useEffect(() => {
         axios.get('/api/purchase/history')
         .then(res => {
-            setProducts(res.data.products)
+             setProducts(res.data.products)
             setHistory(res.data.historyArr)
         })
     }, [])
 
-    const productMap = products.map((element, index) => {
-        console.log(element)
-        return (
-            <div key={index} >
-                <p>{element.product_title}</p>
-            </div>
-        )
-    })
     const historyMap = history.map((element, index) => {
-        console.log(element)
+       const productMap = products.map((e, i) => {
+            if(e.history_id === element.history_id){
+                return (
+                    <div className='history-products' index={i}>
+                        <nav className='account-align-product-img'>
+                            <div>{e.pro_quantity}</div>
+                            <img src={e.product_img} alt={e.product_title} />
+                            <p>{e.product_title}</p>
+                        </nav>
+                        <p>$ {e.product_price}</p>
+                    </div>
+                )
+            }
+        })
+        const filter = element.date_purchased.split('').filter((element, index) => index < 10)
         return (
-            <div key={index} >
-                <p>{element.date_purchased}</p>
+            <div className='history-element' key={index} >
+                <div className='account-tag-columns'>
+                    <p><b>Date Purchased:</b> {filter.join('')}</p>
+                    {/* <p>Shipping Address: {`${element.first_address} ${element.last_address !== null ? `${element.last_address }` : ` `}, ${element.city}`}</p> */}
+                    <p><b>Shipping Address:</b> {`${element.first_address}, ${element.city} ${element.state} ${element.zip}, ${element.country}`}</p>
+                </div>
+                <hr></hr>
+                <div className='product-list'>
+                    {productMap}
+                </div>
             </div>
         )
     })
@@ -68,8 +82,12 @@ function Account(props){
             : 
             (
             <div className='account-main'>
-                <p>Order History</p>
-                {}
+                <div className='my-account-tag'>
+                    <p>My Account</p>
+                    <hr></hr>
+                </div>
+                <p className='order-tag'>Order History</p>
+                {historyMap}
             </div>
             )}
         </div>

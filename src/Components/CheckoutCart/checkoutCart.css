@@ -100,3 +100,8 @@
     font-size: 20px;
     font-weight: bolder;
 }
+@media(max-width: 1366px){
+    .checkout-cart-component{
+        width: 70%;
+    }
+}

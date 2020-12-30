@@ -103,6 +103,15 @@
     #all-align-price{
         font-size: 13px;
     }
+    .collections-all-prev{
+        width: 70%;
+    }
+    .collections-all-tag{
+        width: 70%;
+    }
+    .collections-all-display{
+        width: 70%;
+    }
 }
 @media(max-width: 425px){
     .collections-all-prev{

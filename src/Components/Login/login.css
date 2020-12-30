@@ -96,7 +96,17 @@
     margin-right: .5vw;
     color: black;
 }
-
+@media(max-width: 1366px){
+    .login-tag{
+        width: 70%;
+    }
+    .login-prev{
+        width: 70%;
+    }
+    .login-main{
+        width: 70%;
+    }
+}
 @media(max-width: 425px){
     .login-prev{
         width: 100%;

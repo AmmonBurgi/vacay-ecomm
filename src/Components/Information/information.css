@@ -286,3 +286,8 @@
 .no-alert-message{
     display: none;   
 }
+@media(max-width: 1366px){
+    .info-left-section{
+        width: 45%;
+    }
+}

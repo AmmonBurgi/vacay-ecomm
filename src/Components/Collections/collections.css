@@ -145,7 +145,26 @@
     margin-right: .5vw;
     color: black;
 }
-
+@media(max-width: 1366px){
+    .collections-prev{
+        width: 70%;
+    }
+    .collections-tag{
+        width: 70%;
+    }
+    .type-tag{
+        width: 70%;
+    }
+    .matte-section{
+        width: 70%;
+    }
+    .polarized-section{
+        width: 70%;
+    }
+    .prescription-section{
+        width: 70%;
+    }
+}
 @media(max-width: 425px){
     .collections-prev{
         width: 100%;

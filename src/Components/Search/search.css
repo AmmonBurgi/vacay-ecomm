@@ -111,7 +111,20 @@
     font-size: 14px;
     font-weight: bolder;
 }
-
+@media(max-width: 1366px){
+    .search-result{
+        width: 70%;
+    }
+    .search-prev{
+        width: 70%;
+    }
+    .search-box{
+        width: 70%;
+    }
+    .search-all-display{
+        width: 70%;
+    }
+}
 @media(max-width: 1366px){
     .search-all-align-title p{
         font-size: 15px;

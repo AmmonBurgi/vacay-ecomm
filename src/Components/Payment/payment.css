@@ -342,3 +342,8 @@
 #none{
     display: none;
 }
+@media(max-width: 1366px){
+    .pay-left-section{
+        width: 45%;
+    }
+}

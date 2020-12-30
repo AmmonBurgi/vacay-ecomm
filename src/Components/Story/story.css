@@ -53,7 +53,14 @@
     line-height: 1.6;
     font-weight: lighter;
 }
-
+@media(max-width: 1366px){
+    .story-prev{
+        width: 70%;
+    }
+    .story-header-tag{
+        width: 70%;
+    }
+}
 @media(max-width: 425px){
     .story-header-tag{
         width: 100%;

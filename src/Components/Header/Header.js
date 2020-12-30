@@ -104,7 +104,7 @@ function Header(props){
                         </section>
                         <div className='phone-login-align'>
                             {Object.keys(props.authState.user).length !== 0 ? 
-                            <p className='link-phone'>Logged In as {props.authState.user.first_name}</p> 
+                            <Link to='/account' className='link-phone'>Logged In as {props.authState.user.first_name}</Link> 
                             : 
                             <Link className='link-phone' onClick={() => setPhoneToggle(false)} to='/account/login'>Login</Link>}
                         </div>

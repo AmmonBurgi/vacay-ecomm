@@ -250,7 +250,17 @@
     margin-right: .5vw;
     color: black;
 }
-
+@media(max-width: 1366px){
+    .cart-prev{
+        width: 70%;
+    }
+    .shopping-cart-tag{
+        width: 70%;
+    }
+    .cart-main{
+        width: 70%;
+    }
+}
 @media(max-width: 425px){
     .cart-prev{
         width: 100%;

@@ -163,3 +163,8 @@
     font-size: 18px;
     color: black;
 }
+@media(max-width: 1366px){
+    .ship-left-section{
+        width: 45%;
+    }
+}

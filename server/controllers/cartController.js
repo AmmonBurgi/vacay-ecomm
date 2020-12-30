@@ -41,5 +41,22 @@ module.exports={
         .then(() => {
             res.sendStatus(200)
         }).catch(err => res.status(500).send('Could not delete product from cart!', err))
+    },
+    updateCart: (req, res) => {
+        const db = req.app.get('db')
+        const {user_id} = req.session.user
+        const {updateFilter} = req.body
+
+        updateFilter.forEach((element, index) => {
+            const {quantity, cartId, productPrice} = element
+            db.cart.updateCart(user_id, quantity, cartId, (productPrice * quantity))
+            .then(() => {
+                console.log('Updated Cart!')
+            }).catch(err => {
+                console.log(err)
+                res.status(500).send(err)
+            })
+        })
+        res.sendStatus(200)
     }
 }

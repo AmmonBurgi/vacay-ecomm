@@ -38,6 +38,7 @@ const express = require('express'),
     app.post('/api/cart/add-to-cart', cartCtrl.addToCart)
     app.get('/api/cart/all', cartCtrl.getCart)
     app.delete('/api/cart', cartCtrl.deleteProductCart)
+    app.put('/api/cart/update', cartCtrl.updateCart)
 
     //SendGrid Mail Endpoints
     app.post('/api/mail/feedback', mailCtrl.sendFeedback)

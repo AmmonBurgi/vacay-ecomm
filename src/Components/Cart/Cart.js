@@ -29,8 +29,18 @@ function Cart(props){
     }
 
     const handleCheckout = () => {
-        // sendFeedback()
-        props.history.push('/checkout/info')
+        const updateFilter = props.cartState.cart.map((element, index) => {
+            return {
+                quantity: element.cart_quantity,
+                cartId: element.cart_id,
+                productPrice: element.product_price
+            }
+        })
+        console.log(updateFilter)
+        axios.put('/api/cart/update', {updateFilter})
+        .then(() => {
+            props.history.push('/checkout/info')
+        }).catch(err => console.log(err))
     }
 
     const handleDecAndInc = (value, cartQuantity, productId, originalQuantity) => {

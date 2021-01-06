@@ -50,8 +50,6 @@ function Account(props){
         )
     })
 
-    console.log(products)
-    console.log(history)
     return (
         <div className='account-component'>
            <div className='account-prev'>

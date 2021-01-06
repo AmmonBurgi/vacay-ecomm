@@ -82,7 +82,7 @@
     font-style: italic;
 }
 .history-element{
-    border: 2px solid grey;
+    border: 2px solid rgb(186, 186, 186);
     border-radius: 5px;
     box-sizing: border-box;
     padding: 1%;
@@ -102,6 +102,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.account-tag-columns b{
+    font-style: italic;
 }
 .product-list{
     width: 100%;
@@ -136,5 +139,38 @@
     }
     .no-account-component{
         width: 70%;
+    }
+}
+@media(max-width: 425px){
+    .account-prev{
+        width: 100%;
+    }
+    .account-main{
+        width: 100%;
+    }
+    .no-account-component{
+        width: 100%;
+    }
+    .history-element{
+        border-right: none;
+        border-left: none;
+        border-radius: initial;
+        height: auto;
+        margin-bottom: 2vh;
+    }
+    .product-list{
+        height: 13vh;
+    }
+    .account-tag-columns{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        
+    }
+    .account-tag-columns *{
+        margin: 2px;
+    }
+    .history-products p{
+        font-size: 1.6vh;
     }
 }

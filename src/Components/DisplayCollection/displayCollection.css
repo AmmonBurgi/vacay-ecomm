@@ -4,6 +4,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 1;
+    transition: .75s ease-in-out;
+}
+.no-display-component{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
 }
 .display-component hr{
     width: 60%;

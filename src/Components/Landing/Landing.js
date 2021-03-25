@@ -1,12 +1,20 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import MyCarousel from '../MyCarousel/MyCarousel'
 import './landing.css'
 
 function Landing(props){
+    const [backFadeToggle, setBackFadeToggle] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100)
+        return () => clearTimeout(timer)
+    }, [])
 
 
     return (
-        <div className='landing-component'>
+        <div className={backFadeToggle === true ? 'landing-component' : 'no-landing-component'}>
             <MyCarousel />
             <div className='landing-main'>
                 <div className='landing-type'>

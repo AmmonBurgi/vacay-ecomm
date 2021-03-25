@@ -9,6 +9,7 @@
     overflow: hidden;
     transition: .5s;
     margin-bottom: .5vh;
+    z-index: 800;
 }
 .header-search-comp{
     display: flex;
@@ -26,6 +27,7 @@
     height: 15vh;
     background-color: black;
     margin-bottom: .5vh;
+    z-index: 800;
 }
 .align-main{
     display: flex;

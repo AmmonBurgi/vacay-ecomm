@@ -13,7 +13,8 @@ function DisplayCollection(props){
            [proDetails, setDetails] = useState([]),
             [mainImg, setMainImg] = useState(true),
             [secondImg, setSecondImg] = useState(false),
-            [addQuantity, setQuantity] = useState(1)
+            [addQuantity, setQuantity] = useState(1),
+            [backFadeToggle, setBackFadeToggle] = useState(false)
 
     useEffect(() => {
         axios.get(`/api/collections/product/?productId=${props.match.params.id}`)
@@ -21,6 +22,11 @@ function DisplayCollection(props){
             setProduct(res.data.mainProduct[0])
             setDetails(res.data.productDetails)
         }).catch(err => console.log('Error...', err))
+
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100)
+        return () => clearTimeout(timer)
     }, [])
 
     const detailsMap = proDetails.map((element, index) => {
@@ -66,7 +72,7 @@ function DisplayCollection(props){
     }
 
     return (
-        <div className='display-component'>
+        <div className={backFadeToggle === true ? 'display-component' : 'no-display-component'}>
             <div className='display-prev'>
                 <nav className='display-prev-left'>
                     <p className='display-prev-home' onClick={() => props.history.push('/')}>Home </p>

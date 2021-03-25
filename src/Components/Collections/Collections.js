@@ -9,7 +9,8 @@ import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 function Collections(props){
     const [matteArr, setMatte] = useState([]),
         [polarizedArr, setPolarized] = useState([]),
-        [prescriptionArr, setPres] = useState([])
+        [prescriptionArr, setPres] = useState([]),
+        [backFadeToggle, setBackFadeToggle] = useState(false)
 
     const matteReq = axios.get('/api/collections/matte')
     const polarizedReq = axios.get('/api/collections/polarized')
@@ -21,6 +22,10 @@ function Collections(props){
             setPolarized(res[1].data)
             setPres(res[2].data)
         })).catch(err => console.log('Error...', err))
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+          }, 100);
+          return () => clearTimeout(timer)
     }, [])
 
     const matteMap = matteArr.map((element, index) => {
@@ -73,7 +78,7 @@ function Collections(props){
 
 
     return(
-        <div className='collections-component'>
+        <div className={backFadeToggle === true ? 'collections-component' : 'no-collections-component'}>
             <div className='collections-prev'>
                 <nav className='collections-prev-left'>
                     <p className='collections-prev-home' onClick={() => props.history.push('/')}>Home </p>

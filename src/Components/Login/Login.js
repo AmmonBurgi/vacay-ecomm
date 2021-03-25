@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getUser} from '../../redux/authReducer'
@@ -11,7 +11,15 @@ import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 
 function Login(props){
     const [email, setEmail] = useState(''),
-        [password, setPassword] = useState('')
+        [password, setPassword] = useState(''),
+        [backFadeToggle, setBackFadeToggle] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100)
+        return () => clearTimeout(timer)
+    }, [])
 
     const loginUser = () => {
         axios.post('/api/login', {email, password})
@@ -27,7 +35,7 @@ function Login(props){
     }
 
     return(
-        <div className='login-component'>
+        <div className={backFadeToggle === true ? 'login-component' : 'no-login-component'}>
             <div className='login-prev'>
                 <nav className='login-prev-left'>
                     <p className='login-prev-home' onClick={() => props.history.push('/')}>Home </p>

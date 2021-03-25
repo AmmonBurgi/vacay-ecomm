@@ -7,17 +7,20 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 
 function CollectionsAll(props){
-    const [collections, setCollections] = useState([])
+    const [collections, setCollections] = useState([]),
+        [backFadeToggle, setBackFadeToggle] = useState(false)
 
     useEffect(() => {
         if(props.match.params.type){
-            return (
-                axios.get(`/api/collections/${props.match.params.type}`)
-                .then(res => {
-                    setCollections(res.data)
-                }).catch(err => console.log('Error...', err))
-            )
+            axios.get(`/api/collections/${props.match.params.type}`)
+            .then(res => {
+                setCollections(res.data)
+            }).catch(err => console.log('Error...', err))
         }
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100);
+        return () => clearTimeout(timer)
     }, [])
 
     const collectionsMap = collections.map((element, index) => {
@@ -34,7 +37,7 @@ function CollectionsAll(props){
     })
 
     return (
-        <div className='collections-all-component'>
+        <div className={backFadeToggle === true ? 'collections-all-component' : 'no-collections-all-component'}>
             <div className='collections-all-prev'>
                 <nav className='collections-all-prev-left'>
                     <p className='collections-all-prev-home' onClick={() => props.history.push('/')}>Home </p>

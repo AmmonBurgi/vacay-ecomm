@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import emailjs from 'emailjs-com'
@@ -10,7 +10,8 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 
 function Cart(props){
-    const [sellerMessage, setMessage] = useState('')
+    const [sellerMessage, setMessage] = useState(''),
+        [backFadeToggle, setBackFadeToggle] = useState(false)
 
     const tempParams = {
         to_name: 'Ammon',
@@ -19,6 +20,13 @@ function Cart(props){
         from_phone: props.authState.user.phone,
         message: sellerMessage
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+          }, 100);
+          return () => clearTimeout(timer)
+    }, [])
 
     const sendFeedback = () => {
         emailjs.send('service_4i13xqt', 'template_cjdfeyi', tempParams, 
@@ -104,7 +112,7 @@ function Cart(props){
     }
 
     return(
-        <div className='cart-component'>
+        <div className={backFadeToggle === true ? 'cart-component' : 'no-cart-component'}>
             <div className='cart-prev'>
                 <nav className='cart-prev-left'>
                     <p className='cart-prev-home' onClick={() => props.history.push('/')}>Home </p>

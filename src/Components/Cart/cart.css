@@ -3,6 +3,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 1;
+    transition: .75s ease-in-out;
+}
+.no-cart-component{
+    opacity: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .cart-main-component{
     width: 100%;

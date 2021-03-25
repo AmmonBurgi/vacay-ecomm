@@ -35,7 +35,9 @@ function Information(props){
         [countryAlert, setCountryAlert] = useState(false),
         [cityAlert, setCityAlert] = useState(false),
         [stateAlert, setStateAlert] = useState(false),
-        [addressAlert, setAddressAlert] = useState(false)
+        [addressAlert, setAddressAlert] = useState(false),
+        [total, setTotal] = useState(0),
+        [totalToggle, setTotalToggle] = useState(false)
 
     useEffect(() => {
         if(Object.keys(props.authState.user).length === 0){
@@ -43,6 +45,10 @@ function Information(props){
             .catch(err => console.log('Error...', err))
         }
     }, [])
+
+    const getTotalFunction = (result) => {
+        setTotal(result)
+    }
 
     const unitedStates = 
     ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Federated States of Micronesia','Florida','Georgia','Guam','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Marshall Islands','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Northern Mariana Islands','Ohio','Oklahoma','Oregon','Palau','Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
@@ -305,9 +311,12 @@ function Information(props){
                     </div>
                 </section>
             </section>
-            <section className='info-right-section'>
-                <CheckoutCart />
+            <section className={totalToggle === true ? 'info-right-section' : 'no-toggle'}>
+                <CheckoutCart getTotalFunction={getTotalFunction} />
             </section>
+            <div className={totalToggle === true ? 'info-right-toggle' : 'no-toggle'}>
+                <p>{total}</p>
+            </div>
         </div>
     )
 }

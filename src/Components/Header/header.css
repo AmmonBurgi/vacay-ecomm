@@ -258,3 +258,12 @@
         text-transform: none;
     }
 }
+
+@media(max-height: 425px){
+    .header-component{
+        height: 14vh;
+    }
+    .header-search-comp{
+        height: 17vh;
+    }
+}

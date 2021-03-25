@@ -105,3 +105,8 @@
         width: 70%;
     }
 }
+@media(max-width: 425px){
+    .checkout-cart-component{
+        border-left: none;
+    }
+}

@@ -6,19 +6,33 @@ import {connect} from 'react-redux'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import {faChevronUp} from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
 function Shipping(props){
     const [dotToggle, setDot] = useState(true),
-            [purchaseInfoToggle, setInfoToggle] = useState(true)
+            [purchaseInfoToggle, setInfoToggle] = useState(true),
+            [totalToggle, setTotalToggle] = useState(false)
 
     useEffect(() => {
-        if(Object.keys(props.purchaseInfo).length === 0){
+        if(Object.keys(props.purchaseState.purchaseInfo).length === 0){
             setInfoToggle(false)
         }
     }, [])
 
+    const getSum = () => {
+        let total = 0;
+        if(props.cartState.cart.length !== 0){
+            const map = props.cartState.cart.map((element) => parseFloat(element.product_price * element.cart_quantity))
+            for(let i in map){
+                total += map[i]
+            }
+        }
+        return total.toFixed(2);
+    }
 
-    const {email, address, city, state, zipCode, country} = props.purchaseInfo
+    const {email, address, city, state, zipCode, country} = props.purchaseState.purchaseInfo
     return(
         <div className='ship-component'>
             <section className='ship-left-section' >
@@ -70,10 +84,25 @@ function Shipping(props){
             <section className='ship-right-section' >
                 <CheckoutCart />
             </section>
+
+            <section className='phone-checkout'>
+                <div 
+                onClick={() => setTotalToggle(!totalToggle)} 
+                className='phone-checkout-toggle' >
+                    <nav>
+                        <FontAwesomeIcon className='toggle-shopping-cart' icon={faShoppingCart} ></FontAwesomeIcon>
+                        {totalToggle === false ? <p>Show Order Summary <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></p> : <p>Hide Order Summary <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon></p>}
+                    </nav>
+                    <p>${getSum()}</p>
+                </div>
+                <div className={totalToggle === false ? 'no-phone-checkout-wrapper' : 'phone-checkout-wrapper'}>
+                    <CheckoutCart />
+                </div>
+            </section>
         </div>
     )
 }
 
-const mapStateToProps = (reduxState) => reduxState.purchaseState
+const mapStateToProps = (reduxState) => reduxState
 
 export default connect(mapStateToProps)(Shipping)

@@ -163,8 +163,24 @@
     font-size: 18px;
     color: black;
 }
+
+
 @media(max-width: 1366px){
     .ship-left-section{
         width: 45%;
     }
 }
+@media(max-width: 425px){
+    .ship-component{
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: initial;
+    }
+    .ship-left-section{
+        width: 100%;
+    }
+    .ship-right-section{
+        display: none;
+    }
+}
+

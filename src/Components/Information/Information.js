@@ -9,6 +9,9 @@ import './information.css'
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faSortDown} from '@fortawesome/free-solid-svg-icons'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import {faChevronUp} from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
 function Information(props){
     const {purchaseInfo} = props.purchaseState
@@ -44,6 +47,7 @@ function Information(props){
             axios.get('/api/session').then(res => props.getUser(res.data))
             .catch(err => console.log('Error...', err))
         }
+        window.scrollTo(0, 0)
     }, [])
 
     const getTotalFunction = (result) => {
@@ -171,6 +175,17 @@ function Information(props){
     const handleState = (event) => {
         setStateAlert(false)
         setInfoState(event.target.value)
+    }
+
+    const getSum = () => {
+        let total = 0;
+        if(props.cartState.cart.length !== 0){
+            const map = props.cartState.cart.map((element) => parseFloat(element.product_price * element.cart_quantity))
+            for(let i in map){
+                total += map[i]
+            }
+        }
+        return total.toFixed(2);
     }
 
     return (
@@ -311,12 +326,24 @@ function Information(props){
                     </div>
                 </section>
             </section>
-            <section className={totalToggle === true ? 'info-right-section' : 'no-toggle'}>
-                <CheckoutCart getTotalFunction={getTotalFunction} />
+            <section className='info-right-section'>
+                <CheckoutCart />
             </section>
-            <div className={totalToggle === true ? 'info-right-toggle' : 'no-toggle'}>
-                <p>{total}</p>
-            </div>
+
+            <section className='phone-checkout'>
+                <div 
+                onClick={() => setTotalToggle(!totalToggle)} 
+                className='phone-checkout-toggle' >
+                    <nav>
+                        <FontAwesomeIcon className='toggle-shopping-cart' icon={faShoppingCart} ></FontAwesomeIcon>
+                        {totalToggle === false ? <p>Show Order Summary <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></p> : <p>Hide Order Summary <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon></p>}
+                    </nav>
+                    <p>${getSum()}</p>
+                </div>
+                <div className={totalToggle === false ? 'no-phone-checkout-wrapper' : 'phone-checkout-wrapper'}>
+                    <CheckoutCart />
+                </div>
+            </section>
         </div>
     )
 }

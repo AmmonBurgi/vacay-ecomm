@@ -29,7 +29,7 @@ function Shipping(props){
                 <div className='checkout-purchase-nav'>
                     <p onClick={() => props.history.push('/cart')} className='checkout-nav-no'>Cart</p>
                     <p className='checkout-nav-icon'>&#62;</p>
-                    <p onClick={() => props.history.push('/checkout/info/')} className='checkout-nav-no'>Information</p>
+                    <p onClick={() => props.history.push('/checkout/info')} className='checkout-nav-no'>Information</p>
                     <p className='checkout-nav-icon'>&#62;</p>
                     <p className='checkout-nav-go'>Shipping</p>
                     <p className='checkout-nav-icon'>&#62;</p>

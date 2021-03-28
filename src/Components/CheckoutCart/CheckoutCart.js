@@ -18,9 +18,6 @@ function CheckoutCart(props){
     }
 
     useEffect(() => {
-        if(props.getTotalFunction){
-            props.getTotalFunction(getSum())
-        }
         if(props.cart.length === 0){
             axios.get('/api/cart/all').then(res => props.getCart(res.data))
             .catch(err => console.log('Error...', err))
@@ -45,8 +42,6 @@ function CheckoutCart(props){
             )
         })
     }
-
-    console.log(props)
 
     return (
         <div className='checkout-cart-component'>

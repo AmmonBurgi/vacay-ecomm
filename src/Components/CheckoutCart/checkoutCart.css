@@ -108,5 +108,7 @@
 @media(max-width: 425px){
     .checkout-cart-component{
         border-left: none;
+        width: 100%;
+        margin-top: 2vh;
     }
 }

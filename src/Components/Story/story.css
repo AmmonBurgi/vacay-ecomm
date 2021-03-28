@@ -3,6 +3,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 1;
+    transition: .75s ease-in-out;
+}
+.no-story-component{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
 }
 .story-header-tag{
     margin-bottom: 2vh;

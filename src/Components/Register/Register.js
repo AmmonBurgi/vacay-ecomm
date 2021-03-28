@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {getUser} from '../../redux/authReducer'
 import {getCart} from '../../redux/cartReducer'
 import {connect} from 'react-redux'
@@ -13,7 +13,15 @@ function Register(props){
     const [firstName, setFirst] = useState(''),
         [lastName, setLast] = useState(''),
         [email, setEmail] = useState(''),
-        [password, setPassword] = useState('')
+        [password, setPassword] = useState(''),
+        [backFadeToggle, setBackFadeToggle] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100)
+        return () => clearTimeout(timer)
+    }, [])
 
     const registerUser = () => {
         const emailArray = email.split('').filter((element, index) => {
@@ -45,7 +53,7 @@ function Register(props){
     }
 
     return(
-        <div className='register-component'>
+        <div className={backFadeToggle === true ? 'register-component' : 'no-register-component'}>
             <div className='register-prev'>
                 <nav className='register-prev-left'>
                     <p className='register-prev-home' onClick={() => props.history.push('/')}>Home </p>

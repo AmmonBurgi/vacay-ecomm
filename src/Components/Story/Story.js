@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './story.css'
 import StoryVideo from './StoryVideo/StoryVideo'
 
@@ -7,9 +7,17 @@ import {faInstagram} from '@fortawesome/free-brands-svg-icons'
 import {faPinterest} from '@fortawesome/free-brands-svg-icons'
 
 function Story(props){
+    const [backFadeToggle, setBackFadeToggle] = useState(false)
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setBackFadeToggle(true)
+        }, 100);
+        return () => clearTimeout(timer)
+    }, [])
 
     return(
-        <div className='story-component'>
+        <div className={backFadeToggle === true ? 'story-component' : 'no-story-component'}>
             <div className='story-prev'>
                 <nav className='story-prev-left'>
                     <p className='story-prev-home' onClick={() => props.history.push('/')}>Home </p>

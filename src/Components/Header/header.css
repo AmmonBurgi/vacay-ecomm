@@ -179,13 +179,29 @@
         border-color: rgb(51, 51, 51);
     }
     .nav-bar-menu-none{
-        width: 0px;
+        box-sizing: border-box;
+        padding-top: 6vh;
+        z-index: 999;
+        transition: .5s ease-in-out;
         background-color: black;
-        display: none;
+        color: white;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: hidden;
     }
     .nav-bar-menu-none *{
-        display: none;
-        transition: .5s ease-in-out;
+        opacity: 0;
+        transition: .25s;
+    }
+    .nav-bar-menu *{
+        opacity: 1;
+        transition: .25s;
     }
     .nav-bar-menu{
         box-sizing: border-box;
@@ -202,6 +218,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        overflow: hidden;
     }
     .nav-bar-menu *{
         text-decoration: none;

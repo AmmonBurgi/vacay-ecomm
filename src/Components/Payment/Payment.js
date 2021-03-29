@@ -9,6 +9,9 @@ import './payment.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDotCircle} from '@fortawesome/free-solid-svg-icons'
 import {faSortDown} from '@fortawesome/free-solid-svg-icons'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
+import {faChevronUp} from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
 function Payment(props){
     const [total, setTotal] = useState(0),
@@ -33,7 +36,8 @@ function Payment(props){
         [zipAlert, setZipAlert] = useState(false),
         [mexicoToggle, setMexico] = useState(false),
         [canadaToggle, setCanada] = useState(false),
-        [unitedToggle, setUnited] = useState(true)
+        [unitedToggle, setUnited] = useState(true),
+        [totalToggle, setTotalToggle] = useState(false)
 
     const stripe = useStripe(),
         elements = useElements()
@@ -153,6 +157,17 @@ function Payment(props){
         setZipBill(e.target.value)
     }
 
+    const getSum = () => {
+        let total = 0;
+        if(props.cartState.cart.length !== 0){
+            const map = props.cartState.cart.map((element) => parseFloat(element.product_price * element.cart_quantity))
+            for(let i in map){
+                total += map[i]
+            }
+        }
+        return total.toFixed(2);
+    }
+
 
     return(
         <div className='pay-component'>
@@ -192,9 +207,6 @@ function Payment(props){
                         <p id='payment-card-title'>Payment</p>
                         <p>All transactions are secure and encrypted.</p>
                         <div className='stripe-pay-form'>
-                            <div>
-
-                            </div>
                             <div className='card-element-wrapper'>
                                 <div className='card-list'>
                                     <nav>
@@ -394,6 +406,21 @@ function Payment(props){
             </section>
             <section className='pay-right-section' >
                 <CheckoutCart getTotalFunction={getTotal} />
+            </section>
+
+            <section className='phone-checkout'>
+                <div 
+                onClick={() => setTotalToggle(!totalToggle)} 
+                className='phone-checkout-toggle' >
+                    <nav>
+                        <FontAwesomeIcon className='toggle-shopping-cart' icon={faShoppingCart} ></FontAwesomeIcon>
+                        {totalToggle === false ? <p>Show Order Summary <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon></p> : <p>Hide Order Summary <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon></p>}
+                    </nav>
+                    <p>${getSum()}</p>
+                </div>
+                <div className={totalToggle === false ? 'no-phone-checkout-wrapper' : 'phone-checkout-wrapper'}>
+                    <CheckoutCart />
+                </div>
             </section>
         </div>
     )

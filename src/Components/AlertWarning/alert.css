@@ -35,3 +35,14 @@
 .no-wrapper{
     opacity: 0;
 }
+
+@media(max-width: 425px){
+    .message-wrapper{
+        width: 95%;
+        height: 20vh;
+    }
+    .message-wrapper p{
+        letter-spacing: initial;
+        font-size: 3.5vw;
+    }
+}

@@ -1,0 +1,40 @@
+.recover-comp{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.recover-header{
+    margin-bottom: 1vh;
+    width: 100%;
+}
+.recover-header p{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4vw;
+    margin-bottom: 0;
+    /* font-weight: bold; */
+}
+
+.recover-form{
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+
+}
+.recover-form p{
+    font-size: .9vw;
+    margin-top: 0;
+    margin-bottom: 2vh;
+}
+#recover-form-title{
+    font-size: 1.2vw;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#recover-input-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1vh;
+}

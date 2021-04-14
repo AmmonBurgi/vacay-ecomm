@@ -399,9 +399,9 @@ function Payment(props){
                         </div>
                     </div>
                 </section>
-                <div className='pay-front-back-button'>
+                <div id='confirm-purchase-button' className='pay-front-back-button'>
                     <p onClick={() => props.history.push('/checkout/info')}>&#60; Back To Shipping</p>
-                    <button onClick={handleConfirmPurchase}>Confirm Purchase</button>
+                    <button id='confirm-purchase-button' onClick={handleConfirmPurchase}>Confirm Purchase</button>
                 </div>
             </section>
             <section className='pay-right-section' >

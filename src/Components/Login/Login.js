@@ -64,7 +64,7 @@ function Login(props){
                     <label>Password</label>
                     <input value={password} type='password' onChange={(e) => setPassword(e.target.value)} />
                 </span>
-                <p className='login-forgot'>Forgot your password?</p>
+                <p onClick={() => props.history.push('/account/recovery')} className='login-forgot'>Forgot your password?</p>
                 <button onClick={loginUser}>Login</button>
                 <p onClick={() => props.history.push('/')} className='login-return'>Return to Store</p>
             </section>

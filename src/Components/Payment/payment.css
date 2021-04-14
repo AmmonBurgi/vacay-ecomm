@@ -384,6 +384,8 @@
     .bill-location-wrapper{
         flex-direction: column;
     }
+    #confirm-purchase-button{
+        padding: 0;
+    }
 
-    
 }

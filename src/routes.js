@@ -15,6 +15,7 @@ import CollectionsAll from './Components/CollectionsAll/CollectionsAll'
 import DisplayCollection from './Components/DisplayCollection/DisplayCollection'
 import Recovery from './Components/Recovery/Recovery'
 import Information from './Components/Information/Information'
+import Reset from './Components/Reset/Reset'
 
 export default (
     <Switch>
@@ -33,5 +34,6 @@ export default (
         <Route path='/checkout/info' component={Information} />
         <Route path='/search' component={Search} />
         <Route path='/story' component={Story} />
+        <Route path='/reset/:token' component={Reset} />
     </Switch>
 )

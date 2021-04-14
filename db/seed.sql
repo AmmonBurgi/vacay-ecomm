@@ -62,3 +62,10 @@ product_img TEXT,
 pro_quantity integer,
 product_price decimal(20, 2)
 );
+
+create table reset_tokens(
+tokenId serial primary key,
+email varchar(300),
+token text,
+expiration DATE
+);

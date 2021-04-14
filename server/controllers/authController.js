@@ -1,4 +1,6 @@
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const uuid = require('uuidv1');
+const sgMail = require('@sendgrid/mail');
 
 module.exports = {
     register: async(req, res) => {
@@ -21,7 +23,7 @@ module.exports = {
         const db = req.app.get('db')
         const {email, password} = req.body
         
-        const user = await db.auth.check_user(email, password)
+        const user = await db.auth.check_user(email)
         if(!user[0]){
             return res.status(401).send('Email does not exist!')
         }
@@ -41,5 +43,59 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy()
         res.sendStatus(200)
+    },
+    passReset: async(req, res) => {
+        const {email} = req.body
+        const db = req.app.get('db')
+
+        const user = await db.auth.check_user(email)
+        if(user[0]){
+            const newToken = uuid()
+
+            const currentDate = new Date;
+            const expireDate = () => {
+                return new Date(new Date(currentDate).setHours(currentDate.getHours() + 1));
+            }
+
+            db.auth.create_token(email, newToken, expireDate)
+            .then(() => {
+                sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+                const msg = {
+                    to: email,
+                    from: 'elevate.energy.mail@gmail.com',
+                    subject: 'Password Recovery',
+                    html: 
+                    `<div>
+                        <b>Select the link below to reset your password!</b>
+                        <p>http://localhost:3000/#/reset/${newToken}---${email}</p>
+                    </div>`
+                 }
+
+                sgMail.send(msg)
+                .then(() => {
+                    console.log('Message Sent!')
+                })
+                .catch((error) => {
+                    console.log('Message did not send!')
+                    console.log(error)
+                })
+                })
+            .catch(err => {
+                console.log(err)
+                console.log('Token was not created!')
+            })
+
+
+        }
+
+        res.status(200).send({response: 'Password recovery email is on its way!'})
+    },
+    tokenCheck: (req, res) => {
+        const db = req.app.get('db')
+        const {token, email} = req.body
+
+        console.log(token, email)
+
     }
 }

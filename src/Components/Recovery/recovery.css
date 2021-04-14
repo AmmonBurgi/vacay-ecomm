@@ -15,20 +15,50 @@
     margin-bottom: 0;
     /* font-weight: bold; */
 }
+.recover-header hr{
+    margin-bottom: 3.5vh;
+}
 
 .recover-form{
     display: flex;
-    width: 45%;
+    width: 40%;
     flex-direction: column;
-
+}
+.recover-form input{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: solid rgb(153,153,153) 2px;
+}
+.recover-form input:focus{
+    outline: none;
+}
+.recover-form label{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-bottom: 5px;
 }
 .recover-form p{
-    font-size: .9vw;
+    font-size: .8vw;
     margin-top: 0;
     margin-bottom: 2vh;
 }
+.recover-form button{
+    width: 100%;
+    background-color: black;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 1.5vh;
+}
+.recover-form button:hover{
+    cursor: pointer;
+}
 #recover-form-title{
-    font-size: 1.2vw;
+    font-size: 1.1vw;
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -37,4 +67,10 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 1vh;
+}
+#recover-cancel-btn{
+    color: rgb(172, 172, 172);
+}
+#recover-cancel-btn:hover{
+    cursor: pointer;
 }

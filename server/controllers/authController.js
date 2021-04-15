@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const uuid = require('uuidv1');
 const sgMail = require('@sendgrid/mail');
+const moment = require('moment')
 
 module.exports = {
     register: async(req, res) => {
@@ -52,10 +53,7 @@ module.exports = {
         if(user[0]){
             const newToken = uuid()
 
-            const currentDate = new Date;
-            const expireDate = () => {
-                return new Date(new Date(currentDate).setHours(currentDate.getHours() + 1));
-            }
+            const expireDate = moment(moment()).add(1, 'hours').format('MMMM Do YYYY, h:mm:ss a')
 
             db.auth.create_token(email, newToken, expireDate)
             .then(() => {
@@ -95,7 +93,18 @@ module.exports = {
         const db = req.app.get('db')
         const {token, email} = req.body
 
-        console.log(token, email)
+        db.auth.get_token(email, token)
+        .then(tokens => {
+            const currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a')
 
+            console.log(tokens)
+            if(!tokens[0]){
+                return res.status(200).send({response: 'Token can not found!', expired: true})
+            }
+            if(tokens[0].expiration < currentDateTime){
+               return res.status(200).send({response: 'Token is expired!', expired: true})
+            }
+            res.status(200).send({response: 'Token is accepted!', expired: false})
+        }).catch(err => console.log(err))
     }
 }

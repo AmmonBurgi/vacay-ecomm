@@ -7,7 +7,6 @@ function Recovery(props){
     const [email, setEmail] = useState('')
 
     const handlePasswordReset = () => {
-        console.log(Date.now())
         axios.post('/api/auth/recover', {email})
         .then(() => alert('Email Sent!'))
         .catch((err) => console.log(err))

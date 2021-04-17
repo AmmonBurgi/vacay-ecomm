@@ -1,0 +1,67 @@
+.reset-component{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.reset-header{
+    width: 100%;
+}
+.reset-header p{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 1.4vw;
+    margin-bottom: 0;
+    /* font-weight: bold; */
+}
+.reset-header hr{
+    margin-bottom: 3.5vh;
+}
+
+.reset-expired-text{
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 1.2vw;
+    margin-bottom: 0;
+}
+
+.reset-main{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.reset-main nav{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+.reset-main input{
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: solid rgb(153,153,153) 2px;
+}
+.reset-main input:focus{
+    outline: none;
+}
+.reset-main label{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    margin-bottom: 5px;
+}
+
+.reset-main button{
+    width: 100%;
+    background-color: black;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    text-transform: uppercase;
+    margin-bottom: 1.5vh;
+}
+.reset-main button:hover{
+    cursor: pointer;
+}

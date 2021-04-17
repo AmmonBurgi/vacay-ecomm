@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
+import './reset.css'
+
 function Reset(props){
     const [passOne, setPassOne] = useState(''),
         [passTwo, setPassTwo] = useState(''),
@@ -12,7 +14,7 @@ function Reset(props){
         axios.post(`/api/auth/check`, {email, token})
         .then(res => {
             if(res.data.expired === true){
-                setTokenConfirmed(false)
+                setTokenConfirmed(true)
             }
             console.log(res.data.response)
         }).catch(err => console.log(err))
@@ -36,15 +38,15 @@ function Reset(props){
     }
 
     return (
-        <div>
-            <div>
+        <div className='reset-component'>
+            <div className='reset-header' >
                 <p>Password Reset</p>
                 <hr></hr>
             </div>
             {tokenConfirmed === false ? 
-            <p>This Page has expired!</p>
+            <p id='reset-expired-text'>This Page has expired!</p>
             :
-            <div>
+            <div className='reset-main'>
                 <nav>
                     <label>New Password</label>
                     <input 
@@ -59,7 +61,8 @@ function Reset(props){
                     value={passTwo}
                     onChange={(e) => setPassTwo(e.target.value)} />
                 </nav>
-                <button onClick={handlePasswordChange}>Confirm</button>
+                <button 
+                onClick={handlePasswordChange}>Confirm</button>
             </div>
             }
         </div>

@@ -25,8 +25,9 @@ const express = require('express'),
     app.post('/api/register', authCtrl.register)
     app.get('/api/session', authCtrl.session)
     app.get('/api/logout', authCtrl.logout)
-    app.post('/api/auth/reset', authCtrl.passReset)
+    app.post('/api/auth/recover', authCtrl.passReset)
     app.post('/api/auth/check', authCtrl.tokenCheck)
+    app.put('/api/auth/reset', authCtrl.changePassword)
 
     //Product Endpoints
     app.get('/api/collections/all', collectCtrl.allCollections)

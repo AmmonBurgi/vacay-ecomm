@@ -19,12 +19,20 @@ function Reset(props){
     }, [])
 
     const handlePasswordChange = () => {
+        const email = props.match.params.token.split('---')[1]
+
         if(passOne.length < 6){
             return alert('Password Invalid! Please try a different password!')
         }
         if(passOne !== passTwo){
             return alert('Passwords need to match!')
         }
+
+        axios.put(`/api/auth/reset/?email=${email}&password=${passOne}`)
+        .then((res) => {
+            alert(res.data.response)
+            props.history.push('/account/login')
+        }).catch(err => console.log(err))
     }
 
     return (

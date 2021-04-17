@@ -97,7 +97,6 @@ module.exports = {
         .then(tokens => {
             const currentDateTime = moment().format('MMMM Do YYYY, h:mm:ss a')
 
-            console.log(tokens)
             if(!tokens[0]){
                 return res.status(200).send({response: 'Token can not found!', expired: true})
             }
@@ -106,5 +105,24 @@ module.exports = {
             }
             res.status(200).send({response: 'Token is accepted!', expired: false})
         }).catch(err => console.log(err))
+    },
+    changePassword: (req, res) => {
+        const {email, password} = req.query
+        const db = req.app.get('db')
+
+        let salt = bcrypt.genSaltSync(10)
+        let hash = bcrypt.hashSync(password, salt)
+
+        db.auth.update_password(hash, email)
+        .then(() => {
+            res.status(200).send({response: 'Password successfully changed!'})
+            db.auth.delete_tokens(email)
+            .then(console.log('Token Deleted'))
+            .catch(err => console.log(err))
+        })
+        .catch(err => {
+            console.log('Password did not change!', err)
+            res.status(401).send(err)
+        })
     }
 }

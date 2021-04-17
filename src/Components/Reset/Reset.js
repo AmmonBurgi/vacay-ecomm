@@ -14,7 +14,7 @@ function Reset(props){
         axios.post(`/api/auth/check`, {email, token})
         .then(res => {
             if(res.data.expired === true){
-                setTokenConfirmed(true)
+                setTokenConfirmed(false)
             }
             console.log(res.data.response)
         }).catch(err => console.log(err))

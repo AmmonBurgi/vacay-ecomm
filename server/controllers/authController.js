@@ -61,7 +61,7 @@ module.exports = {
 
                 const msg = {
                     to: email,
-                    from: 'elevate.energy.mail@gmail.com',
+                    from: 'vacay.mailing@gmail.com',
                     subject: 'Password Recovery',
                     html: 
                     `<div>

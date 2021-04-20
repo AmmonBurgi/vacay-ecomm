@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import emailjs from 'emailjs-com'
 import {getCart, increaseQuantity, decreaseQuantity, deleteProduct} from '../../redux/cartReducer'
 import './cart.css'
 
@@ -13,14 +12,6 @@ function Cart(props){
     const [sellerMessage, setMessage] = useState(''),
         [backFadeToggle, setBackFadeToggle] = useState(false)
 
-    const tempParams = {
-        to_name: 'Ammon',
-        from_name: `${props.authState.user.first_name} ${props.authState.user.last_name}`,
-        from_email: props.authState.user.email,
-        from_phone: props.authState.user.phone,
-        message: sellerMessage
-    }
-
     useEffect(() => {
         const timer = setTimeout(() => {
             setBackFadeToggle(true)
@@ -29,9 +20,11 @@ function Cart(props){
     }, [])
 
     const sendFeedback = () => {
-        emailjs.send('service_4i13xqt', 'template_cjdfeyi', tempParams, 
-        'user_TJ1zsDGcnKamDKqHqMJ4s')
-        .then(() => {
+        const {first_name, last_name, email, phone} = props.authState.user
+
+        axios.post('/api/mail/feedback', {message: sellerMessage, name: `${first_name} ${last_name}`, email, phone})
+        .then((res) => {
+            console.log(res.data.response)
             setMessage('')
         }).catch(err => console.log('Failed...', err))
     }
@@ -44,7 +37,11 @@ function Cart(props){
                 productPrice: element.product_price
             }
         })
-        console.log(updateFilter)
+
+        if(sellerMessage.length !== 0){
+            sendFeedback()
+        }
+
         axios.put('/api/cart/update', {updateFilter})
         .then(() => {
             props.history.push('/checkout/info')
@@ -110,6 +107,8 @@ function Cart(props){
             )
         }) 
     }
+
+    console.log(props)
 
     return(
         <div className={backFadeToggle === true ? 'cart-component' : 'no-cart-component'}>

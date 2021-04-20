@@ -1,3 +1,5 @@
+const mail = require('@sendgrid/mail')
+
 require('dotenv').config()
 const express = require('express'),
     session = require('express-session'),

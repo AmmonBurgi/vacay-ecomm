@@ -23,5 +23,5 @@ module.exports = {
             res.status(500).send(err)
             console.log(err)
         })
-    }   
+    }
 }

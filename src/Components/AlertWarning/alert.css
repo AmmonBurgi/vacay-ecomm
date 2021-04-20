@@ -46,3 +46,14 @@
         font-size: 3.5vw;
     }
 }
+
+@media(max-height: 425px){
+    .message-wrapper{
+        width: 95%;
+        height: 50vh;
+    }
+    .message-wrapper p{
+        letter-spacing: initial;
+        font-size: 3.5vw;
+    }
+}

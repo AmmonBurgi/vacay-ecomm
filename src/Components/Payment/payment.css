@@ -176,6 +176,9 @@
     padding-top: 2%;
     padding-bottom: 2%;
 }
+.billing-choice-align:hover{
+    cursor: pointer;
+}
 .billing-choice-icon{
     margin-right: 10px;
     color: rgb(110,203,184);
@@ -388,4 +391,52 @@
         padding: 0;
     }
 
+}
+
+@media(max-height: 425px){
+    .pay-right-section{
+        display: none;
+    }
+    .pay-component{
+        flex-direction: column-reverse;
+    }
+    .pay-left-section{
+        width: 100%;
+    }
+    .pay-shipping-section{
+        width: 100%;
+    }
+    .payment-section{
+        width: 100%;
+    }
+    .billing-section{
+        width: 100%;
+    }
+
+    .payment-section > p{
+        font-size: 3vw;
+    }
+    #payment-card-title{
+        font-size: 4vw;
+    }
+    .billing-section > p{
+        font-size: 3vw;
+    }
+
+    .pay-align-first-last{
+        flex-direction: column;
+    }
+    .bill-location-wrapper{
+        flex-direction: column;
+    }
+    #confirm-purchase-button{
+        padding: 0;
+    }
+    .card-element-wrapper{
+        height: auto;
+    }
+    .number-element{
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+    }
 }

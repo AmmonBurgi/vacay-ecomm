@@ -390,7 +390,7 @@
         margin-left: 0;
     }
     .info-align-first-last{
-        justify-content: center;
+        flex-direction: column;
         box-sizing: border-box;
     }
     .info-align-first-last{
@@ -424,6 +424,164 @@
         height: 6.2vh;
     }
     #info-first-box{
+        width: 100%;
+    }
+    #info-last-box{
+        width: 100%;
+    }
+    .info-align-location{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .info-align-location div{
+        width: 100%;
+    }
+    .info-front-back-button{
+        width: 100%;
+        margin-top: 1vh;
+        padding: 0;
+    }
+    .info-front-back-button button{
+        width: 35%;
+    }
+    .info-right-section{
+        border-left: none;
+        border-bottom: 1px solid grey;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media(max-height: 425px){
+    .phone-checkout{
+        display: initial;
+        width: 100%;
+        border-bottom: 1.5px solid grey;
+        background-color: rgb(250,250,250);
+    }
+    .phone-checkout-wrapper{
+        border-top: 1px solid grey;
+        transform: scaleY(1);
+        width: 100%;
+        height: auto;
+        padding: 0 2% 0 2%;
+        box-sizing: border-box;
+        transition: .15s ease-in-out;
+    }
+    .no-phone-checkout-wrapper{
+        overflow: hidden;
+        transform-origin: top;
+        transform: scaleY(0);
+        width: 100%;
+        height: 0;
+        /* min-height: 0; */
+        padding: 0 2% 0 2%;
+        box-sizing: border-box;
+        transition: .15s ease-in-out;
+    }
+    .phone-checkout-toggle{
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+    .phone-checkout-toggle > p{
+        font-weight: bold;
+    }
+    .toggle-shopping-cart{
+        margin-right: 8px;
+        font-size: 5vw;
+    }
+    .phone-checkout-toggle > nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .phone-checkout-toggle > nav *{
+        color: rgb(97, 179, 162);
+    }
+    .info-right-section{
+        display: none;
+    }
+    .information-component{
+        flex-direction: column-reverse;
+        justify-content: initial;
+        align-items: center;
+    }
+    .info-left-section{
+        width: 100%;
+        align-items: center;
+        padding: 3%;
+    }
+    .checkout-purchase-nav{
+        padding-left: 0;
+        margin-bottom: 1vh;
+    }
+    .info-checkout-title{
+        padding-left: 0;
+        margin-top: 2vh;
+        margin-bottom: 0;
+    }
+    .info-checkout-title p{
+        margin: 0;
+        font-size: 24px;
+    }
+    .info-title-tag{
+        margin: 0;
+    }
+    #info-title-color{
+        font-size: 24px;
+        margin: 0;
+    }
+    .info-contact-align{
+        justify-content: center;
+        margin-bottom: 2vh;
+    }
+    .info-contact-align *{
+        margin-left: 0;
+    }
+    .info-shipping-section *{
+        margin-left: 0;
+    }
+    .info-align-first-last{
+        justify-content: center;
+        box-sizing: border-box;
+    }
+    .info-align-first-last{
+        margin: 0;
+        justify-content: space-between;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .info-input-box{
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        height: 12vh;
+    }
+    .alert-info-input-box{
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        height: 12vh;
+    }
+    .info-input-box-initial{
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        height: 12vh;
+    }
+    .alert-info-input-box-initial{
+        margin-right: 0;
+        margin-left: 0;
+        width: 100%;
+        height: 12vh;
+    }
+    #info-first-box{
         width: 48%;
     }
     #info-last-box{
@@ -441,6 +599,7 @@
         width: 100%;
         margin-top: 1vh;
         padding: 0;
+        height: 12vh;
     }
     .info-front-back-button button{
         width: 35%;
@@ -450,5 +609,5 @@
         border-bottom: 1px solid grey;
         width: 100%;
         height: auto;
-    }
+    } 
 }

@@ -274,13 +274,15 @@ function Payment(props){
                         <p>Select the address that matches your payment method.</p>
 
                         <div className='billing-choice-wrapper'>
-                            <nav className='billing-choice-align'>
-                                <FontAwesomeIcon onClick={billingToggle === false ? handleBillingToggle : null} className={billingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
+                            <nav 
+                            onClick={billingToggle === false ? handleBillingToggle : null} className='billing-choice-align'>
+                                <FontAwesomeIcon  className={billingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
                                 <p>Same as shipping address</p>
                             </nav>
                             <hr></hr>
-                            <nav className='billing-choice-align'>
-                                <FontAwesomeIcon onClick={newBillingToggle === false ? handleBillingToggle : null} className={newBillingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
+                            <nav 
+                            onClick={newBillingToggle === false ? handleBillingToggle : null} className='billing-choice-align'>
+                                <FontAwesomeIcon  className={newBillingToggle === true ? 'billing-choice-icon' : 'no-billing-choice-icon'} icon={faDotCircle} ></FontAwesomeIcon>
                                 <p>Use a different billing address</p>
                             </nav>
                             <div className={newBillingToggle === true ? 'billing-input-wrapper' : 'none'}>

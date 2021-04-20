@@ -201,3 +201,35 @@
     }
 }
 
+@media(max-height: 425px){
+    .ship-component{
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: initial;
+    }
+    .ship-left-section{
+        width: 100%;
+    }
+    .ship-right-section{
+        display: none;
+    }
+    .ship-align-change{
+        margin-left: 0;
+        width: 100%;
+    }
+    .ship-method-section{
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .ship-front-back-button {
+        padding-left: 0;
+        height: 12vh;
+    }
+    .ship-change-contact > nav{
+        text-align: left;
+        text-overflow: wrap;
+        overflow-y: auto;
+    }
+}
+

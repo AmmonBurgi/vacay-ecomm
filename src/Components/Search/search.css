@@ -124,12 +124,42 @@
     .search-all-display{
         width: 70%;
     }
-}
-@media(max-width: 1366px){
     .search-all-align-title p{
         font-size: 15px;
     }
     #search-align-price{
         font-size: 13px;
+    }
+}
+@media(max-width: 425px){
+    .search-prev{
+        width: 95%;
+    }
+    .search-box{
+        width: 100%;
+    }
+    .search-input-button{
+        margin-left: 0;
+    }
+    .search-result p{
+        font-size: 4vw;
+    }
+    .search-result{
+        width: 95%;
+    }
+    .search-all-display{
+        width: 95%;
+        justify-content: initial;
+        align-items: center;
+        flex-wrap: initial;
+        flex-direction: column;
+    }
+    .search-all-align-title p{
+        font-size: 3vw;
+    }
+    .search-all-card{
+        height: 40vh;
+        width: 95%;
+        margin-bottom: 5vh;
     }
 }

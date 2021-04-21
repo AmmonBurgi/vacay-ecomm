@@ -48,7 +48,8 @@ function Header(props){
             axios.get(`/api/collections/searched/?searchVal=${search}`)
             .then(res => {
                     props.setSearchArray(res.data)
-                    setToggle(!toggle)
+                    setToggle(true)
+                    setPhoneToggle(false)
                     history.push({
                         pathname: '/search',
                         state: {searchResult: search}

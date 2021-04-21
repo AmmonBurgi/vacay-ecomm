@@ -24,4 +24,9 @@ footer p{
     font-size: 12px;
     margin: 0;
     padding: 0;
-}@media
+}
+@media(max-height: 425px){
+    footer{
+        padding-top: 4vh;
+    }
+}

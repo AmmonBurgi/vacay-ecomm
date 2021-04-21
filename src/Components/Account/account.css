@@ -174,3 +174,36 @@
         font-size: 1.6vh;
     }
 }
+@media(max-height: 425px){
+    .account-prev{
+        width: 100%;
+    }
+    .account-main{
+        width: 100%;
+    }
+    .no-account-component{
+        width: 100%;
+    }
+    .history-element{
+        border-right: none;
+        border-left: none;
+        border-radius: initial;
+        height: auto;
+        margin-bottom: 2vh;
+    }
+    .product-list{
+        height: 13vh;
+    }
+    .account-tag-columns{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        
+    }
+    .account-tag-columns *{
+        margin: 2px;
+    }
+    .history-products p{
+        font-size: 1.6vh;
+    }
+}

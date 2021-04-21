@@ -64,3 +64,33 @@
 .reset-main button:hover{
     cursor: pointer;
 }
+
+@media(max-width: 425px){
+    .reset-component{
+        width: 95%;
+    }
+    .reset-main{
+        width: 70%;
+    }
+    .reset-header p{
+        font-size: 4.8vw;
+    }
+    #reset-expired-text{
+        font-size: 4vw;
+    }
+}
+
+@media(max-height: 425px){
+    .reset-component{
+        width: 95%;
+    }
+    .reset-main{
+        width: 70%;
+    }
+    .reset-header p{
+        font-size: 4.5vw;
+    }
+    #reset-expired-text{
+        font-size: 4vw;
+    }
+}

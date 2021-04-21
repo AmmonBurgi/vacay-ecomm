@@ -74,3 +74,41 @@
 #recover-cancel-btn:hover{
     cursor: pointer;
 }
+
+@media(max-width: 425px){
+    .recover-comp{
+        width: 95%;
+    }
+    .recover-header p{
+        font-size: 4.8vw;
+    }
+    .recover-form{
+        width: 70%;
+    }
+    .recover-form p{
+        font-size: 3.5vw;
+    }
+    #recover-form-title{
+         font-size: 4vw;
+    }
+}
+
+@media(max-height: 425px){
+    .recover-comp{
+        width: 95%;
+    }
+    .recover-header p{
+        font-size: 4.5vw;
+    }
+    .recover-form{
+        width: 70%;
+    }
+    .recover-form p{
+        font-size: 2.8vw;
+        margin-bottom: 7vh;
+        margin-top: 1vh;
+    }
+    #recover-form-title{
+         font-size: 3.8vw;
+    }
+}

@@ -233,3 +233,62 @@
         height: 25%;
     }
 }
+
+@media(max-height: 425px){
+    .collections-prev{
+        width: 100%;
+        justify-content: center;
+    }
+    .collections-icons{
+        display: none;
+    }
+    .collections-prev p{
+        font-size: 3vw;
+    }
+    .collections-tag{
+        width: 100%;
+    }
+    .all-collections-tag{
+        display: flex;
+        flex-direction: column;
+    }
+    .all-collections-tag p{
+        font-size: 6vw;
+        margin-bottom: 1vh;
+        margin-top: 1vh;
+    }
+    .type-tag{
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10vh;
+    }
+    .type-tag p{
+        font-size: 4.5vw;
+        margin-bottom: 1vh;
+    }
+    .type-tag button{
+        font-size: 2.5vw;
+    }
+    .matte-section{
+        margin-top: 3vh;
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+    }
+    .polarized-section{
+        margin-top: 3vh;
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+    }
+    .prescription-section{
+        margin-top: 3vh;
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+    }
+    .product-card{
+        width: 100%;
+        height: 25%;
+    }
+}

@@ -66,3 +66,17 @@
         font-size: 19px;
     }
 }
+
+@media(max-height: 425px){
+    .landing-main-type{
+        width: 75%;
+    }
+    .landing-type{
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .landing-main-type p{
+        font-size: 19px;
+    }
+}

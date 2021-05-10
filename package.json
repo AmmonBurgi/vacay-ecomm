@@ -2,7 +2,7 @@
   "name": "vacay-ecomm",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4040",
+  "proxy": "http://localhost:4046",
   "main": "server/index.js",
   "dependencies": {
     "@brainhubeu/react-carousel": "^1.19.26",

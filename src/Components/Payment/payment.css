@@ -366,9 +366,11 @@
     }
     .payment-section{
         width: 100%;
+        margin-top: 2vh;
     }
     .billing-section{
         width: 100%;
+        margin-top: 2vh;
     }
 
     .payment-section > p{
@@ -408,9 +410,11 @@
     }
     .payment-section{
         width: 100%;
+        margin-top: 7vh;
     }
     .billing-section{
         width: 100%;
+        margin-top: 7vh;
     }
 
     .payment-section > p{
@@ -438,5 +442,21 @@
     .number-element{
         margin-top: 2vh;
         margin-bottom: 1vh;
+    }
+
+    .pay-front-back-button{
+        height: 12vh;
+    }
+    .pay-box-input{
+        height: 10vh;
+    }
+    .pay-box-input-init{
+        height: 10vh;
+    }
+    .alert-pay-box-input-init{
+        height: 10vh;
+    }
+    .alert-pay-box{
+        height: 10vh;
     }
 }

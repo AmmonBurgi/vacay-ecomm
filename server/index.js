@@ -13,6 +13,8 @@ const express = require('express'),
     mailCtrl = require('./controllers/mailController'),
     stripeCtrl = require('./controllers/stripeController')
 
+    const path = require('path')
+
     app.use(express.json())
 
     app.use(session({
@@ -63,6 +65,8 @@ const express = require('express'),
         app.listen(port, () => console.log(`server listening on port ${port}`))
     })
 
-    
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../build/index.html'))
+      });
 
     
